@@ -14,25 +14,24 @@ class ScheduleTab extends StatefulWidget {
     static const androidIcon = Icon(Icons.calendar_today);
     static const iosIcon = Icon(CupertinoIcons.calendar);
     
-     @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text("Collection Schedule"),
+    Widget build(BuildContext context) {
+       return Scaffold(
+         appBar: AppBar(
+           backgroundColor: Colors.green,
+           title: Text("Collection Schedule"),
 
-      ),
+         ),
+       );
+    }
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a St0ild method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
-
   @override
-  _scheduleState createState() => new _scheduleState();
+  _ScheduleState createState() => _ScheduleState();
 }
 
-class _scheduleState extends State<schedule> {
+class _ScheduleState extends State<ScheduleTab> {
 
   /*StreamController<List<Map<String, String>>> eventsController =
   new StreamController();
