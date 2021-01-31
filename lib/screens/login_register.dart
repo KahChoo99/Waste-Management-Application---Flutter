@@ -121,7 +121,7 @@ class _LoginRegister extends State<LoginRegister> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset("assets/icon/recycle_icon.png", height: 200,),
+              Image.asset("assets/icon/apps_icon.png", height: 200,),
               Text("Solid Waste Management", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
               SizedBox(
                 height: 16,
