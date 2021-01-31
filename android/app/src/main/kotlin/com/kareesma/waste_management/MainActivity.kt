@@ -1,4 +1,4 @@
-package com.kareesma.waste_management
+package com.example.waste_management
 
 import io.flutter.embedding.android.FlutterActivity
 
