@@ -2,7 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/ui/curve_painter.dart';
 
-class UserRegister extends StatelessWidget {
+class UserRegister extends StatefulWidget{
+  @override
+  _UserRegister createState() => _UserRegister();
+}
+
+class _UserRegister extends State<UserRegister> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
