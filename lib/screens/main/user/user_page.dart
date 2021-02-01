@@ -39,15 +39,20 @@ class UserMainPage extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 2,
-                  child:
-                  Icon(Icons.app_registration, color: Color(0xFF65BEFF),size: 40,),
+                  child: Icon(
+                    Icons.app_registration,
+                    color: Color(0xFF65BEFF),
+                    size: 40,
+                  ),
                 ),
                 Expanded(
                   flex: 7,
                   child: Text('Register Complaints',
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 26 * screenWidth / demoWidth)),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26 * screenWidth / demoWidth)),
                 ),
-
               ],
             ),
           ),
@@ -76,15 +81,20 @@ class UserMainPage extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 2,
-                  child:
-                  Icon(Icons.preview_sharp, color: Color(0xFF65BEFF),size: 45,),
+                  child: Icon(
+                    Icons.preview_sharp,
+                    color: Color(0xFF65BEFF),
+                    size: 45,
+                  ),
                 ),
                 Expanded(
                   flex: 7,
                   child: Text('My Complaints',
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 26)),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26)),
                 ),
-
               ],
             ),
           ),
@@ -113,15 +123,20 @@ class UserMainPage extends StatelessWidget {
               children: [
                 Expanded(
                   flex: 2,
-                  child:
-                  Icon(Icons.account_circle_sharp, color: Color(0xFF65BEFF),size: 45,),
+                  child: Icon(
+                    Icons.account_circle_sharp,
+                    color: Color(0xFF65BEFF),
+                    size: 45,
+                  ),
                 ),
                 Expanded(
                   flex: 7,
                   child: Text('My Profile',
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 26)),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26)),
                 ),
-
               ],
             ),
           ),
@@ -129,63 +144,64 @@ class UserMainPage extends StatelessWidget {
       ],
     );
     return Scaffold(
-        body: Container(
-          alignment: Alignment.center,
-          child: Stack(
-            children: [
-              Positioned.fill(
-                  child: CustomPaint(
-                    painter: CurvePainter(),
-                  )),
-              Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(20, 50, 20, 0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 4,
-                          child: Image.asset(
-                            "assets/icon/apps_icon.png",
+      body: Container(
+        alignment: Alignment.center,
+        child: Stack(
+          children: [
+            Positioned.fill(
+                child: CustomPaint(
+              painter: CurvePainter(),
+            )),
+            Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.fromLTRB(20, 50, 20, 0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Image.asset(
+                          "assets/icon/apps_icon.png",
+                        ),
+                      ),
+                      Expanded(
+                        flex: 6,
+                        child: BorderedText(
+                          strokeWidth: 0.5,
+                          child: Text(
+                              "Solid Waste Management",
+                              style: TextStyle(
+                                  decorationColor: Colors.black,
+                                  shadows: [
+                                    Shadow(
+                                      blurRadius: 10.0,
+                                      color: Colors.grey.withOpacity(0.5),
+                                      offset: Offset(5, 5),
+                                    ),
+                                  ],
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30 * screenWidth / demoWidth
+                              )
                           ),
                         ),
-                        Expanded(
-                          flex: 6,
-                          child: BorderedText(
-                            strokeWidth: 0.5,
-                            child: Text(
-                                "Solid Waste Management",
-                                style: TextStyle(
-                                    decorationColor: Colors.black,
-                                    shadows: [
-                                      Shadow(
-                                        blurRadius: 10.0,
-                                        color: Colors.grey.withOpacity(0.5),
-                                        offset: Offset(5, 5),
-                                      ),
-                                    ],
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 30 * screenWidth / demoWidth)),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        width: screenWidth,
-                        child: buttonList,
                       ),
                     ],
                   ),
-                ],
-              ),
-
-            ],
-          ),
+                ),
+                Column(
+                  children: <Widget>[
+                    Container(
+                      width: screenWidth,
+                      child: buttonList,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -220,6 +236,6 @@ class UserMainPage extends StatelessWidget {
           ],
         ),
       ),
-      );
+    );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/ui/curve_painter.dart';
-import 'package:waste_management/screens/main/user/user_main_page.dart';
+import 'package:waste_management/screens/main/user/user_page.dart';
 
 class UserLogin extends StatefulWidget {
   @override
