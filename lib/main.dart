@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:waste_management/screens/main_layout.dart';
-import 'package:waste_management/screens/login_register.dart';
+import 'package:waste_management/screens/login_register/login_register.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

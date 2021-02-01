@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/ui/curve_painter.dart';
 
-class UserLogin extends StatefulWidget{
+class AdminLogin extends StatefulWidget{
   @override
-  _UserLogin createState() => _UserLogin();
+  _AdminLogin createState() => _AdminLogin();
 }
 
-class _UserLogin extends State<UserLogin> {
+class _AdminLogin extends State<AdminLogin> {
   @override
   void initState(){
     super.initState();
@@ -34,7 +34,7 @@ class _UserLogin extends State<UserLogin> {
         SizedBox(
           height: 30,
         ),
-        Text("User Login", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+        Text("Admin Login", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         SizedBox(
           height: 10,
         ),
@@ -84,9 +84,9 @@ class _UserLogin extends State<UserLogin> {
             minWidth: 150,
             height: 50,
             onPressed: () {},
-            color: Color(0xFF8AFF88),
+            color: Color(0xFFB969F8),
             child: Text('Login',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
             // textColor: Colors.black,
           ),
         ),
@@ -96,7 +96,10 @@ class _UserLogin extends State<UserLogin> {
       ],
     );
 
-    return Scaffold(
+    return StatefulBuilder(builder: (context, setState){
+      _emailEditingController.addListener(() => setState(() {}));
+      _passwordEditingController.addListener(() => setState(() {}));
+      return Scaffold(
         body: SingleChildScrollView(
           child: Container(
             height: screenHeight,
@@ -140,5 +143,6 @@ class _UserLogin extends State<UserLogin> {
           ),
         ),
       );
+    });
   }
 }
