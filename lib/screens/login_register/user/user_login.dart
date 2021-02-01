@@ -109,6 +109,7 @@ class _UserLogin extends State<UserLogin> {
     return StatefulBuilder(builder: (context, setState) {
       _emailEditingController.addListener(() => setState(() {}));
       _passwordEditingController.addListener(() => setState(() {}));
+
       return Scaffold(
         body: SingleChildScrollView(
           child: Container(
