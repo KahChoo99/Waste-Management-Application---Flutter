@@ -13,15 +13,15 @@ class _AdminLogin extends State<AdminLogin> {
     super.initState();
   }
 
+  bool _obscureText = true;
+
+  TextEditingController _emailEditingController = TextEditingController();
+  TextEditingController _passwordEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-
-    TextEditingController _emailEditingController = TextEditingController();
-    TextEditingController _passwordEditingController = TextEditingController();
-
-    bool _obscureText = true;
 
     void _togglePasswordView() {
       setState(() {
@@ -96,9 +96,10 @@ class _AdminLogin extends State<AdminLogin> {
       ],
     );
 
-    return StatefulBuilder(builder: (context, setState){
+    return StatefulBuilder(builder: (context, setState) {
       _emailEditingController.addListener(() => setState(() {}));
       _passwordEditingController.addListener(() => setState(() {}));
+
       return Scaffold(
         body: SingleChildScrollView(
           child: Container(
