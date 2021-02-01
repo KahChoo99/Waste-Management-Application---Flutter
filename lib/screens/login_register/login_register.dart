@@ -1,16 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:waste_management/screens/user/user_login.dart';
-import 'package:waste_management/screens/user/user_register.dart';
+import 'package:waste_management/screens/login_register/user/user_login.dart';
+import 'package:waste_management/screens/login_register/user/user_register.dart';
+import 'package:waste_management/screens/login_register/admin/admin_login.dart';
 import 'package:waste_management/ui/curve_painter.dart';
 
-class LoginRegister extends StatefulWidget {
-  @override
-  _LoginRegister createState() => _LoginRegister();
-}
-
-class _LoginRegister extends State<LoginRegister> {
+class LoginRegister extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -101,7 +97,12 @@ class _LoginRegister extends State<LoginRegister> {
             ),
             minWidth: 220,
             height: 50,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AdminLogin()),
+              );
+            },
             color: Color(0xFFA1D8FF),
             child: Text('Admin Login',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
@@ -117,12 +118,19 @@ class _LoginRegister extends State<LoginRegister> {
       alignment: Alignment.center,
       child: Stack(
         children: [
-          Positioned.fill(child: CustomPaint(painter: CurvePainter(),)),
+          Positioned.fill(
+              child: CustomPaint(
+                painter: CurvePainter(),
+              )),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset("assets/icon/apps_icon.png", height: 200,),
-              Text("Solid Waste Management", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+              Image.asset(
+                "assets/icon/apps_icon.png",
+                height: 200,
+              ),
+              Text("Solid Waste Management",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
               SizedBox(
                 height: 16,
               ),
