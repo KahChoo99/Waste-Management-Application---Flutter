@@ -14,15 +14,15 @@ class _UserLogin extends State<UserLogin> {
     super.initState();
   }
 
+  bool _obscureText = true;
+
+  TextEditingController _emailEditingController = TextEditingController();
+  TextEditingController _passwordEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-
-    TextEditingController _emailEditingController = TextEditingController();
-    TextEditingController _passwordEditingController = TextEditingController();
-
-    bool _obscureText = true;
 
     void _togglePasswordView() {
       setState(() {
