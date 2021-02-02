@@ -1,21 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
+import 'package:waste_management/widgets/custom_decoration.dart';
 
-class AdminLogin extends StatefulWidget{
+class AdminLogin extends StatefulWidget {
   @override
   _AdminLogin createState() => _AdminLogin();
 }
 
 class _AdminLogin extends State<AdminLogin> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
 
   bool _obscureText = true;
 
-  TextEditingController _emailEditingController = TextEditingController();
+  TextEditingController _usernameEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
 
   @override
@@ -34,16 +37,17 @@ class _AdminLogin extends State<AdminLogin> {
         SizedBox(
           height: 30,
         ),
-        Text("Admin Login", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+        Text(sAdminLogin,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         SizedBox(
           height: 10,
         ),
         Container(
           margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
           child: TextField(
-            controller: _emailEditingController,
+            controller: _usernameEditingController,
             decoration: InputDecoration(
-              labelText: "Email",
+              labelText: sUsername,
             ),
           ),
         ),
@@ -52,7 +56,7 @@ class _AdminLogin extends State<AdminLogin> {
           child: TextField(
             controller: _passwordEditingController,
             decoration: InputDecoration(
-              labelText: "Password",
+              labelText: sPassword,
               suffix: InkWell(
                 onTap: _togglePasswordView,
                 child: Icon(
@@ -68,15 +72,7 @@ class _AdminLogin extends State<AdminLogin> {
         ),
         Container(
           margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                blurRadius: 5,
-                offset: Offset(5, 5), // changes position of shadow
-              ),
-            ],
-          ),
+          decoration: mainButtonBoxDecoration,
           child: FlatButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
@@ -85,8 +81,11 @@ class _AdminLogin extends State<AdminLogin> {
             height: 50,
             onPressed: () {},
             color: Color(0xFFB969F8),
-            child: Text('Login',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
+            child: Text(sLogin,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24)),
             // textColor: Colors.black,
           ),
         ),
@@ -97,7 +96,7 @@ class _AdminLogin extends State<AdminLogin> {
     );
 
     return StatefulBuilder(builder: (context, setState) {
-      _emailEditingController.addListener(() => setState(() {}));
+      _usernameEditingController.addListener(() => setState(() {}));
       _passwordEditingController.addListener(() => setState(() {}));
 
       return Scaffold(
@@ -107,34 +106,25 @@ class _AdminLogin extends State<AdminLogin> {
             alignment: Alignment.center,
             child: Stack(
               children: [
-                Positioned.fill(child: CustomPaint(painter: CurvePainter(),)),
-                IconButton(
-                  padding: EdgeInsets.fromLTRB(20, 50, 0, 0),
-                  icon: Icon(Icons.arrow_back_ios, color: Colors.white,size: 40,),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
+                BackgroundPainter(),
+                ArrowBackPop(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset("assets/icon/apps_icon.png", height: 200,),
-                    Text("Solid Waste Management", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                    Image.asset(
+                      "assets/icon/apps_icon.png",
+                      height: 200,
+                    ),
+                    Text(sAppTitle,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 24)),
                     SizedBox(
                       height: 16,
                     ),
                     Container(
                       width: screenWidth,
                       margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            blurRadius: 5,
-                            offset: Offset(5, 5), // changes position of shadow
-                          ),
-                        ],
-                      ),
+                      decoration: mainContainerBGBoxDecoration,
                       child: loginPart,
                     ),
                   ],
