@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:waste_management/ui/curve_painter.dart';
+import 'package:waste_management/widgets/curve_painter.dart';
 
 class AdminLogin extends StatefulWidget{
   @override

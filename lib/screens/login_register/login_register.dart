@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:waste_management/screens/login_register/user/user_login.dart';
 import 'package:waste_management/screens/login_register/user/user_register.dart';
 import 'package:waste_management/screens/login_register/admin/admin_login.dart';
-import 'package:waste_management/ui/curve_painter.dart';
+import 'package:waste_management/widgets/curve_painter.dart';
 
 class LoginRegister extends StatelessWidget {
   @override
