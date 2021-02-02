@@ -1,12 +1,12 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:waste_management/constants/values.dart';
 
 class IconAndTitle extends StatelessWidget {
   final double screenWidth;
-  final double demoWidth;
 
-  const IconAndTitle({this.screenWidth, this.demoWidth});
+  const IconAndTitle({this.screenWidth});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class IconAndTitle extends StatelessWidget {
                       ],
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 30 * screenWidth / demoWidth)),
+                      fontSize: 30 * screenWidth / dDemoWidth)),
             ),
           ),
         ],
