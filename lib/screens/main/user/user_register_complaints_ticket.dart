@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
+import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
 
 class UserRegisterComplaintsTicket extends StatefulWidget {
@@ -14,17 +17,15 @@ class UserRegisterComplaintsTicket extends StatefulWidget {
 
 class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> {
   TextEditingController _messageEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double demoWidth = 411.42857142857144;
-
     double screenHeight = MediaQuery.of(context).size.height;
 
     Map<String, String> binData= widget.binData;
 
-    print(widget.binData);
-    List<String> binKeys = widget.binData.keys.toList();
+    List<String> binKeys = binData.keys.toList();
 
     Column cardList = Column(
       children: [
@@ -35,22 +36,12 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
           width: screenWidth,
           padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
           margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                blurRadius: 5,
-                offset: Offset(5, 5), // changes position of shadow
-              ),
-            ],
-          ),
+          decoration: mainContainerBGBoxDecoration,
           child: Column(
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Post Complaint",
+                child: Text(sPostComplaint,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
               ),
               SizedBox(
@@ -82,7 +73,7 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                 alignment: Alignment.centerLeft,
                 child: Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                  child: Text("Message:",
+                  child: Text(sMessage,
                       style: TextStyle(color: Color(0xFF65BEFF), fontWeight: FontWeight.bold, fontSize: 18)),
                 ),
               ),
@@ -92,7 +83,7 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                   maxLines: 8,
                   controller: _messageEditingController,
                   decoration: InputDecoration(
-                    hintText: "Description",
+                    hintText: sDescription,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0),
                       borderSide: BorderSide(
@@ -105,15 +96,7 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      blurRadius: 5,
-                      offset: Offset(5, 5), // changes position of shadow
-                    ),
-                  ],
-                ),
+                decoration: mainButtonBoxDecoration,
                 child: FlatButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
@@ -122,7 +105,7 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                   height: 50,
                   onPressed: () {},
                   color: Color(0xFFA1D8FF),
-                  child: Text('Submit',
+                  child: Text(sSubmit,
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                   textColor: Colors.black,
                 ),
@@ -140,20 +123,8 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
           alignment: Alignment.center,
           child: Stack(
             children: [
-              Positioned.fill(
-                  child: CustomPaint(
-                    painter: CurvePainter(),
-                  )
-              ),
-              IconButton(
-                padding: EdgeInsets.fromLTRB(20, 50, 0, 0),
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.white,
-                  size: 40,
-                ),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
+              BackgroundPainter(),
+              ArrowBackPop(),
               Column(
                 children: [
                   SizedBox(
@@ -165,7 +136,7 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                       SizedBox(
                         height: 10,
                       ),
-                      IconAndTitle(screenWidth: screenWidth, demoWidth: demoWidth,),
+                      IconAndTitle(screenWidth: screenWidth),
                       Container(
                         width: screenWidth,
                         child: cardList,

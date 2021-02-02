@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/values.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/screens/main/user/user_register_complaints.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -10,7 +12,6 @@ class UserMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double demoWidth = 411.42857142857144;
 
     Column buttonList = Column(
       children: [
@@ -29,7 +30,8 @@ class UserMainPage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => UserRegisterComplaints()),
+                MaterialPageRoute(
+                    builder: (context) => UserRegisterComplaints()),
               );
             },
             color: Colors.white,
@@ -46,11 +48,11 @@ class UserMainPage extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 7,
-                  child: Text('Register Complaints',
+                  child: Text(sRegisterComplaints,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 26 * screenWidth / demoWidth)),
+                          fontSize: 26 * screenWidth / dDemoWidth)),
                 ),
               ],
             ),
@@ -80,7 +82,7 @@ class UserMainPage extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 7,
-                  child: Text('My Complaints',
+                  child: Text(sMyComplaints,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -114,7 +116,7 @@ class UserMainPage extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 7,
-                  child: Text('My Profile',
+                  child: Text(sMyProfile,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -135,7 +137,7 @@ class UserMainPage extends StatelessWidget {
             BackgroundPainter(),
             Column(
               children: [
-                IconAndTitle(screenWidth: screenWidth, demoWidth: demoWidth,),
+                IconAndTitle(screenWidth: screenWidth),
                 Column(
                   children: <Widget>[
                     Container(
@@ -169,13 +171,13 @@ class UserMainPage extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               title: Text(
-                "Home",
+                sHome,
               ),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.logout),
               title: Text(
-                "Log Out",
+                sLogOut,
               ),
             ),
           ],
