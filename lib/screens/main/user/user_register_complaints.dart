@@ -46,14 +46,14 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    flex: 3,
+                    flex: 4,
                     child: Container(
                       child: Text(binKey,
                           style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
                     ),
                   ),
                   Expanded(
-                    flex: 7,
+                    flex: 6,
                     child: Container(
                       child: Text(binData[binKey],
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
