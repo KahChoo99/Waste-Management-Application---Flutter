@@ -62,7 +62,7 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                     ),
                   ),
                   SizedBox(
-                    width: 15,
+                    width: 10,
                   ),
                   Expanded(
                     flex: 7,

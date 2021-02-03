@@ -22,8 +22,8 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
     Map<String, String> binData= {
       sBinID: "B0001",
       sFTState: "Selangor",
-      sCapital: "Kuala Selangor",
-      sCity: "Tanjong Karang",
+      sDistrict: "Kuala Selangor",
+      sSubDistrict: "Tanjong Karang",
       sArea: "Taman Seri Jaya"
     };
 
