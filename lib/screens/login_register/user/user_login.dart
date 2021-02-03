@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:waste_management/ui/curve_painter.dart';
+import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/widgets/arrow_back_pop.dart';
+import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/screens/main/user/user_main_page.dart';
+import 'package:waste_management/widgets/custom_decoration.dart';
 
 class UserLogin extends StatefulWidget {
   @override
@@ -16,7 +20,7 @@ class _UserLogin extends State<UserLogin> {
 
   bool _obscureText = true;
 
-  TextEditingController _emailEditingController = TextEditingController();
+  TextEditingController _usernameEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
 
   @override
@@ -35,7 +39,7 @@ class _UserLogin extends State<UserLogin> {
         SizedBox(
           height: 30,
         ),
-        Text("User Login",
+        Text(sUserLogin,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         SizedBox(
           height: 10,
@@ -43,9 +47,9 @@ class _UserLogin extends State<UserLogin> {
         Container(
           margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
           child: TextField(
-            controller: _emailEditingController,
+            controller: _usernameEditingController,
             decoration: InputDecoration(
-              labelText: "Email",
+              labelText: sUsername,
             ),
           ),
         ),
@@ -54,7 +58,7 @@ class _UserLogin extends State<UserLogin> {
           child: TextField(
             controller: _passwordEditingController,
             decoration: InputDecoration(
-              labelText: "Password",
+              labelText: sPassword,
               suffix: InkWell(
                 onTap: _togglePasswordView,
                 child: Icon(
@@ -70,15 +74,7 @@ class _UserLogin extends State<UserLogin> {
         ),
         Container(
           margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                blurRadius: 5,
-                offset: Offset(5, 5), // changes position of shadow
-              ),
-            ],
-          ),
+          decoration: mainButtonBoxDecoration,
           child: FlatButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
@@ -94,8 +90,8 @@ class _UserLogin extends State<UserLogin> {
                     (route) => false,
               );
             },
-            color: Color(0xFF8AFF88),
-            child: Text('Login',
+            color: buttonGreen,
+            child: Text(sLogin,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             // textColor: Colors.black,
           ),
@@ -107,7 +103,7 @@ class _UserLogin extends State<UserLogin> {
     );
 
     return StatefulBuilder(builder: (context, setState) {
-      _emailEditingController.addListener(() => setState(() {}));
+      _usernameEditingController.addListener(() => setState(() {}));
       _passwordEditingController.addListener(() => setState(() {}));
 
       return Scaffold(
@@ -117,19 +113,8 @@ class _UserLogin extends State<UserLogin> {
             alignment: Alignment.center,
             child: Stack(
               children: [
-                Positioned.fill(
-                    child: CustomPaint(
-                      painter: CurvePainter(),
-                    )),
-                IconButton(
-                  padding: EdgeInsets.fromLTRB(20, 50, 0, 0),
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.white,
-                    size: 40,
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
+                BackgroundPainter(),
+                ArrowBackPop(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -137,7 +122,7 @@ class _UserLogin extends State<UserLogin> {
                       "assets/icon/apps_icon.png",
                       height: 200,
                     ),
-                    Text("Solid Waste Management",
+                    Text(sAppTitle,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 24)),
                     SizedBox(
@@ -146,17 +131,7 @@ class _UserLogin extends State<UserLogin> {
                     Container(
                       width: screenWidth,
                       margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            blurRadius: 5,
-                            offset: Offset(5, 5), // changes position of shadow
-                          ),
-                        ],
-                      ),
+                      decoration: mainContainerBGBoxDecoration,
                       child: loginPart,
                     ),
                   ],
