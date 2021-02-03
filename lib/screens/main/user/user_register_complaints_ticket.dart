@@ -126,35 +126,35 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
     );
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          height: screenHeight,
-          alignment: Alignment.center,
-          child: Stack(
-            children: [
-              BackgroundPainter(),
-              ArrowBackPop(),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      IconAndTitle(screenWidth: screenWidth),
-                      Container(
-                        width: screenWidth,
-                        child: cardList,
+      body: Stack(
+        children: [
+          BackgroundPainter(),
+          ArrowBackPop(),
+          SingleChildScrollView(
+            child: Container(
+              height: screenHeight,
+              alignment: Alignment.center,
+              child: Column(
+                    children: [
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          IconAndTitle(screenWidth: screenWidth),
+                          Container(
+                            width: screenWidth,
+                            child: cardList,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        ],
+      )
     );
   }
 }

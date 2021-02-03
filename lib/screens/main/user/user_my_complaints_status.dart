@@ -21,11 +21,12 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
 
     Map<String, String> binComplaintData = widget.binComplaintData;
 
     String complaintID = binComplaintData[sComplaintID];
+    String complaintMessage = "ddaeghulkytsadhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuauisdhiadbasuvduhasvduashdbasbdjasbdsajbdjasdsadhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuauisdhiadbasuvduhasvduashdbasbdjasbdsajbdjasd";
+    String commentMessage = "ddaeghulkytsadhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuauisdhiadbasuvduhasvduashdbasbdjasbdsajbdjasdsadhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuauisdhiadbasuvduhasvduashdbasbdjasbdsajbdjasd";
 
     List<String> binKeys = binComplaintData.keys.toList();
 
@@ -96,7 +97,27 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text("TESTING HERE",
+                    child: Text(complaintMessage,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18)),
+                  )),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: Text(sComment,
+                      style: TextStyle(
+                          color: wordAndIconBlue,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16)),
+                ),
+              ),
+              Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(commentMessage,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18)),
                   )),
@@ -125,15 +146,14 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
     );
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          height: screenHeight,
-          alignment: Alignment.center,
-          child: Stack(
-            children: [
-              BackgroundPainter(),
-              ArrowBackPop(),
-              Column(
+      body: Stack(
+        children: [
+          BackgroundPainter(),
+          ArrowBackPop(),
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.center,
+              child: Column(
                 children: [
                   SizedBox(
                     height: 50,
@@ -150,10 +170,10 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
                   ),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        ],
+      )
     );
   }
 }
