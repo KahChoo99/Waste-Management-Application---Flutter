@@ -1,16 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/screens/login_register/user/user_register_detail.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 
-class UserRegister extends StatefulWidget {
+class UserRegisterUsername extends StatefulWidget {
   @override
-  _UserRegister createState() => _UserRegister();
+  _UserRegisterUsername createState() => _UserRegisterUsername();
 }
 
-class _UserRegister extends State<UserRegister> {
+class _UserRegisterUsername extends State<UserRegisterUsername> {
   @override
   void initState() {
     super.initState();
@@ -97,9 +99,14 @@ class _UserRegister extends State<UserRegister> {
             ),
             minWidth: 150,
             height: 50,
-            onPressed: () {},
-            color: Color(0xFFA1D8FF),
-            child: Text(sSignUp,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserRegisterDetail()),
+              );
+            },
+            color: buttonBlue,
+            child: Text(sContinue,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             // textColor: Colors.black,
           ),
