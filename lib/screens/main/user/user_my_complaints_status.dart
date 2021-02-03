@@ -57,16 +57,17 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
                     Expanded(
                       flex: 4,
                       child: Container(
+                        padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         child: Text(binKey,
                             style: TextStyle(
                                 color: wordAndIconBlue,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 18)),
+                                fontSize: 16)),
                       ),
                     ),
                     SizedBox(
-                      width: 15,
+                      width: 10,
                     ),
                     Expanded(
                       flex: 6,
@@ -74,7 +75,7 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         child: Text(binComplaintData[binKey],
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20)),
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                       ),
                     )
                   ],
@@ -82,12 +83,13 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Text(sMessage,
                       style: TextStyle(
                           color: wordAndIconBlue,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18)),
+                          fontSize: 16)),
                 ),
               ),
               Container(

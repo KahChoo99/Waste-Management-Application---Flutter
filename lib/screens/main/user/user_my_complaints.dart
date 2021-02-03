@@ -25,7 +25,8 @@ class _UserMyComplaints extends State<UserMyComplaints> {
       sFTState: "Selangor",
       sDistrict: "Kuala Selangor",
       sSubDistrict: "Tanjong Karang",
-      sArea: "Taman Seri Jaya"
+      sArea: "Taman Seri Jaya",
+      sCleaningPeriod: "2 times per week"
     };
 
     List<String> binKeys = binComplaintData.keys.toList();
@@ -49,9 +50,13 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                     Expanded(
                       flex: 4,
                       child: Container(
+                        padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                         child: Text(binKey,
-                            style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
+                            style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
                       ),
+                    ),
+                    SizedBox(
+                      width: 10,
                     ),
                     Expanded(
                       flex: 6,
@@ -62,8 +67,11 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                     )
                   ],
                 ),
-              Text(sStatus,
-                  style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                child: Text(sStatus,
+                    style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
+              ),
               FlatButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),

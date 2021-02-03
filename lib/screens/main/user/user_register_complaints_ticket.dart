@@ -54,22 +54,23 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    flex: 3,
+                    flex: 4,
                     child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Text(binKey,
-                            style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
+                            style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
                     ),
                   ),
                   SizedBox(
                     width: 10,
                   ),
                   Expanded(
-                    flex: 7,
+                    flex: 6,
                     child: Container(
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Text(binData[binKey],
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                     ),
                   )
                 ],
@@ -77,9 +78,10 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Text(sMessage,
-                      style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
+                      style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
                 ),
               ),
               Container(
