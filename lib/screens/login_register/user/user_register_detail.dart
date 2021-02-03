@@ -7,6 +7,11 @@ import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 
 class UserRegisterDetail extends StatefulWidget {
+  final String username;
+  final String password;
+
+  const UserRegisterDetail({this.username, this.password});
+
   @override
   _UserRegisterDetail createState() => _UserRegisterDetail();
 }
