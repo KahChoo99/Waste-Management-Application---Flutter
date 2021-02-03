@@ -7,7 +7,8 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
       .then((_) {
-    runApp(MyAdaptingApp());
+    runApp(
+        MyAdaptingApp());
   });
 }
 
@@ -15,6 +16,7 @@ class MyAdaptingApp extends StatelessWidget {
   @override
   Widget build(context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Solid Waste Management App',
       theme: ThemeData(
         primarySwatch: Colors.green,

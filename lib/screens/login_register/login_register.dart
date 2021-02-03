@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/themes.dart';
 import 'package:waste_management/screens/login_register/user/user_login.dart';
-import 'package:waste_management/screens/login_register/user/user_register.dart';
+import 'package:waste_management/screens/login_register/user/user_register_username.dart';
 import 'package:waste_management/screens/login_register/admin/admin_login.dart';
-import 'package:waste_management/ui/curve_painter.dart';
+import 'package:waste_management/widgets/curve_painter.dart';
+import 'package:waste_management/widgets/custom_decoration.dart';
 
 class LoginRegister extends StatelessWidget {
   @override
@@ -18,15 +21,7 @@ class LoginRegister extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                blurRadius: 5,
-                offset: Offset(5, 5), // changes position of shadow
-              ),
-            ],
-          ),
+          decoration: mainButtonBoxDecoration,
           child: FlatButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
@@ -39,8 +34,8 @@ class LoginRegister extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => UserLogin()),
               );
             },
-            color: Color(0xFFA1D8FF),
-            child: Text('User Login',
+            color: buttonBlue,
+            child: Text(sUserLogin,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             textColor: Colors.black,
           ),
@@ -50,15 +45,7 @@ class LoginRegister extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                blurRadius: 5,
-                offset: Offset(5, 5), // changes position of shadow
-              ),
-            ],
-          ),
+          decoration: mainButtonBoxDecoration,
           child: FlatButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
@@ -68,11 +55,11 @@ class LoginRegister extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => UserRegister()),
+                MaterialPageRoute(builder: (context) => UserRegisterUsername()),
               );
             },
-            color: Color(0xFFA1D8FF),
-            child: Text('User Register',
+            color: buttonBlue,
+            child: Text(sUserRegister,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             textColor: Colors.black,
           ),
@@ -82,15 +69,7 @@ class LoginRegister extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                blurRadius: 5,
-                offset: Offset(5, 5), // changes position of shadow
-              ),
-            ],
-          ),
+          decoration: mainButtonBoxDecoration,
           child: FlatButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
@@ -103,8 +82,8 @@ class LoginRegister extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => AdminLogin()),
               );
             },
-            color: Color(0xFFA1D8FF),
-            child: Text('Admin Login',
+            color: buttonBlue,
+            child: Text(sAdminLogin,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             // textColor: Colors.black,
           ),
@@ -118,10 +97,7 @@ class LoginRegister extends StatelessWidget {
       alignment: Alignment.center,
       child: Stack(
         children: [
-          Positioned.fill(
-              child: CustomPaint(
-                painter: CurvePainter(),
-              )),
+          BackgroundPainter(),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -129,7 +105,7 @@ class LoginRegister extends StatelessWidget {
                 "assets/icon/apps_icon.png",
                 height: 200,
               ),
-              Text("Solid Waste Management",
+              Text(sAppTitle,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
               SizedBox(
                 height: 16,
@@ -137,17 +113,7 @@ class LoginRegister extends StatelessWidget {
               Container(
                 width: screenWidth,
                 margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      blurRadius: 5,
-                      offset: Offset(5, 5), // changes position of shadow
-                    ),
-                  ],
-                ),
+                decoration: mainContainerBGBoxDecoration,
                 child: buttonList,
               ),
             ],
