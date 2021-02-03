@@ -56,10 +56,15 @@ const sSelectDistrict = "Select District";
 const sSelectSubDistrict = "Select Sub District";
 const sCreate = "Create";
 const sCreateSuccessfully = "Create Successfully";
+const sHowManyDaysPerWeek = "How Many Days Per Week";
 //// Update Bins
 const sUpdateBins = "Update Bins";
+const sUpdate = "Update";
+const sUpdateSuccessfully = "Update Successfully";
 //// View Complaints
 const sViewComplaints = "View Complaints";
+const sUpdateStatus = "Update Status";
+const sComment = "Comment";
 //// View Work Report
 const sViewWorkReport = "View Work Report";
 //// Users Details
