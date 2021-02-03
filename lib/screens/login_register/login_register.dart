@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/themes.dart';
 import 'package:waste_management/screens/login_register/user/user_login.dart';
-import 'package:waste_management/screens/login_register/user/user_register.dart';
+import 'package:waste_management/screens/login_register/user/user_register_username.dart';
 import 'package:waste_management/screens/login_register/admin/admin_login.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -33,7 +34,7 @@ class LoginRegister extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => UserLogin()),
               );
             },
-            color: Color(0xFFA1D8FF),
+            color: buttonBlue,
             child: Text(sUserLogin,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             textColor: Colors.black,
@@ -54,10 +55,10 @@ class LoginRegister extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => UserRegister()),
+                MaterialPageRoute(builder: (context) => UserRegisterUsername()),
               );
             },
-            color: Color(0xFFA1D8FF),
+            color: buttonBlue,
             child: Text(sUserRegister,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             textColor: Colors.black,
@@ -81,7 +82,7 @@ class LoginRegister extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => AdminLogin()),
               );
             },
-            color: Color(0xFFA1D8FF),
+            color: buttonBlue,
             child: Text(sAdminLogin,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             // textColor: Colors.black,

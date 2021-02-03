@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/themes.dart';
 import 'package:waste_management/screens/main/user/user_register_complaints_ticket.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
@@ -19,11 +20,11 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     Map<String, String> binData= {
-      sBinID: "12345",
-      sArea: "Tanjong Karang",
-      sLocality: "None",
-      sLandMark: "Tak tahu",
-      sCity: "Selangor"
+      sBinID: "B0001",
+      sFTState: "Selangor",
+      sCapital: "Kuala Selangor",
+      sCity: "Tanjong Karang",
+      sArea: "Taman Seri Jaya"
     };
 
     List<String> binKeys = binData.keys.toList();
@@ -31,7 +32,7 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
     Column cardList = Column(
       children: [
         SizedBox(
-          height: 30,
+          height: 20,
         ),
         Container(
           padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -48,7 +49,7 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                     flex: 3,
                     child: Container(
                       child: Text(binKey,
-                          style: TextStyle(color: Color(0xFF65BEFF), fontWeight: FontWeight.bold, fontSize: 18)),
+                          style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
                     ),
                   ),
                   Expanded(
@@ -70,7 +71,7 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                     MaterialPageRoute(builder: (context) => UserRegisterComplaintsTicket(binData: binData,)),
                   );
                 },
-                color: Color(0xFF8AFF88),
+                color: buttonGreen,
                 child: Text(sTicket,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                 // textColor: Colors.black,
@@ -82,6 +83,7 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
     );
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
         alignment: Alignment.center,
         child: Stack(
@@ -96,9 +98,6 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(
-                      height: 10,
-                    ),
                     IconAndTitle(screenWidth: screenWidth),
                     Text(sRegisterComplaints,
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),

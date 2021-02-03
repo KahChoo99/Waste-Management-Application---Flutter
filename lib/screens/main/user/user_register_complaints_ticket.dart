@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/themes.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
+import 'package:waste_management/widgets/alert_dialog.dart';
 
 class UserRegisterComplaintsTicket extends StatefulWidget {
   final Map<String, String> binData;
@@ -30,7 +32,7 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
     Column cardList = Column(
       children: [
         SizedBox(
-          height: 30,
+          height: 20,
         ),
         Container(
           width: screenWidth,
@@ -56,8 +58,11 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                     child: Container(
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                       child: Text(binKey,
-                            style: TextStyle(color: Color(0xFF65BEFF), fontWeight: FontWeight.bold, fontSize: 18)),
+                            style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
                     ),
+                  ),
+                  SizedBox(
+                    width: 15,
                   ),
                   Expanded(
                     flex: 7,
@@ -74,13 +79,15 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                 child: Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Text(sMessage,
-                      style: TextStyle(color: Color(0xFF65BEFF), fontWeight: FontWeight.bold, fontSize: 18)),
+                      style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
                 ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                 child: TextField(
                   maxLines: 8,
+                  maxLength: 225,
+                  maxLengthEnforced: true,
                   controller: _messageEditingController,
                   decoration: InputDecoration(
                     hintText: sDescription,
@@ -103,9 +110,9 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                   ),
                   minWidth: 220,
                   height: 50,
-                  onPressed: () {},
-                  color: Color(0xFFA1D8FF),
-                  child: Text(sSubmit,
+                  onPressed: () => showConfirmSubmit(context, binData, _messageEditingController),
+                  color: buttonBlue,
+                  child: Text(sContinue,
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                   textColor: Colors.black,
                 ),
@@ -133,9 +140,6 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(
-                        height: 10,
-                      ),
                       IconAndTitle(screenWidth: screenWidth),
                       Container(
                         width: screenWidth,

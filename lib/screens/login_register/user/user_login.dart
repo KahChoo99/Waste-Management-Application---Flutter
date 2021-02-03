@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/themes.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/screens/main/user/user_main_page.dart';
@@ -89,7 +90,7 @@ class _UserLogin extends State<UserLogin> {
                     (route) => false,
               );
             },
-            color: Color(0xFF8AFF88),
+            color: buttonGreen,
             child: Text(sLogin,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             // textColor: Colors.black,

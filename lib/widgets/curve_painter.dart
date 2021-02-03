@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:waste_management/constants/themes.dart';
 
 class BackgroundPainter extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class CurvePainter extends CustomPainter {
     var paint = Paint();
     paint.shader = LinearGradient(
             begin: Alignment.centerLeft,
-            colors: [Color(0xFF6CF869), Color(0xFF65BEFF)])
+            colors: curvePainterGradient)
         .createShader(
             Rect.fromLTRB(0, size.height * 0.6, size.height * 0.6, size.width));
     paint.style = PaintingStyle.fill; // Change this to fill

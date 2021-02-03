@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/constants/themes.dart';
 import 'package:waste_management/constants/values.dart';
+import 'package:waste_management/screens/main/user/user_my_complaints.dart';
+import 'package:waste_management/screens/main/user/user_my_profile.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/screens/main/user/user_register_complaints.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -42,7 +45,7 @@ class UserMainPage extends StatelessWidget {
                   flex: 2,
                   child: Icon(
                     Icons.app_registration,
-                    color: Color(0xFF65BEFF),
+                    color: wordAndIconBlue,
                     size: 40,
                   ),
                 ),
@@ -67,7 +70,12 @@ class UserMainPage extends StatelessWidget {
             ),
             minWidth: 220,
             height: 80,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserMyComplaints()),
+              );
+            },
             color: Colors.white,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -76,7 +84,7 @@ class UserMainPage extends StatelessWidget {
                   flex: 2,
                   child: Icon(
                     Icons.preview_sharp,
-                    color: Color(0xFF65BEFF),
+                    color: wordAndIconBlue,
                     size: 45,
                   ),
                 ),
@@ -101,7 +109,12 @@ class UserMainPage extends StatelessWidget {
             ),
             minWidth: 220,
             height: 80,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserMyProfile()),
+              );
+            },
             color: Colors.white,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -110,7 +123,7 @@ class UserMainPage extends StatelessWidget {
                   flex: 2,
                   child: Icon(
                     Icons.account_circle_sharp,
-                    color: Color(0xFF65BEFF),
+                    color: wordAndIconBlue,
                     size: 45,
                   ),
                 ),
@@ -130,6 +143,7 @@ class UserMainPage extends StatelessWidget {
     );
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Container(
         alignment: Alignment.center,
         child: Stack(
@@ -154,7 +168,7 @@ class UserMainPage extends StatelessWidget {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF65BEFF), Color(0xFFB969F8)],
+            colors: bottomNavigatorGradient,
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             tileMode: TileMode.clamp,
