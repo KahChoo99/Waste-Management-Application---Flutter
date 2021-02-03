@@ -30,18 +30,15 @@ showConfirmSubmit(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      flex: 3,
+                      flex: 4,
                       child: Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                         child: Text(binKey,
                             style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
                       ),
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
                     Expanded(
-                      flex: 7,
+                      flex: 6,
                       child: Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                         child: Text(binData[binKey],
@@ -137,7 +134,7 @@ showSubmitSuccess(BuildContext context) {
             SizedBox(
               height: 10,
             ),
-            Text(sComplaintID + " " + dateString + "0001",
+            Text("$sComplaintID = ${dateString}0001",
                 style:
                 TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
             SizedBox(
