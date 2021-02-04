@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/screens/login_register/user/user_register_detail.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
-import 'package:waste_management/screens/main/user/user_main_page.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 
-class UserLogin extends StatefulWidget {
+class UserRegisterUsername extends StatefulWidget {
   @override
-  _UserLogin createState() => _UserLogin();
+  _UserRegisterUsername createState() => _UserRegisterUsername();
 }
 
-class _UserLogin extends State<UserLogin> {
+class _UserRegisterUsername extends State<UserRegisterUsername> {
   @override
   void initState() {
     super.initState();
@@ -22,6 +22,8 @@ class _UserLogin extends State<UserLogin> {
 
   TextEditingController _usernameEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
+  TextEditingController _confirmPasswordEditingController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +36,12 @@ class _UserLogin extends State<UserLogin> {
       });
     }
 
-    Column loginPart = Column(
+    Column registerPart = Column(
       children: [
         SizedBox(
           height: 30,
         ),
-        Text(sUserLogin,
+        Text(sUserRegister,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         SizedBox(
           height: 10,
@@ -69,6 +71,22 @@ class _UserLogin extends State<UserLogin> {
             obscureText: _obscureText,
           ),
         ),
+        Container(
+          margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+          child: TextField(
+            controller: _confirmPasswordEditingController,
+            decoration: InputDecoration(
+              labelText: sConfirmPassword,
+              suffix: InkWell(
+                onTap: _togglePasswordView,
+                child: Icon(
+                  _obscureText ? Icons.visibility : Icons.visibility_off,
+                ),
+              ),
+            ),
+            obscureText: _obscureText,
+          ),
+        ),
         SizedBox(
           height: 20,
         ),
@@ -82,16 +100,13 @@ class _UserLogin extends State<UserLogin> {
             minWidth: 150,
             height: 50,
             onPressed: () {
-              Navigator.pushAndRemoveUntil(
+              Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => UserMainPage(),
-                ),
-                    (route) => false,
+                MaterialPageRoute(builder: (context) => UserRegisterDetail()),
               );
             },
-            color: buttonGreen,
-            child: Text(sLogin,
+            color: buttonBlue,
+            child: Text(sContinue,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
             // textColor: Colors.black,
           ),
@@ -105,6 +120,7 @@ class _UserLogin extends State<UserLogin> {
     return StatefulBuilder(builder: (context, setState) {
       _usernameEditingController.addListener(() => setState(() {}));
       _passwordEditingController.addListener(() => setState(() {}));
+      _confirmPasswordEditingController.addListener(() => setState(() {}));
 
       return Scaffold(
         body: SingleChildScrollView(
@@ -132,7 +148,7 @@ class _UserLogin extends State<UserLogin> {
                       width: screenWidth,
                       margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
                       decoration: mainContainerBGBoxDecoration,
-                      child: loginPart,
+                      child: registerPart,
                     ),
                   ],
                 ),
