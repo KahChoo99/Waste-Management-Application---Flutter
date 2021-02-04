@@ -10,9 +10,8 @@ import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
 import 'package:waste_management/screens/main/admin/admin_create_bin.dart';
-
-import 'admin_view_complaints.dart';
-import 'admin_view_users_details.dart';
+import 'package:waste_management/screens/main/admin/admin_view_complaints.dart';
+import 'package:waste_management/screens/main/admin/admin_view_users_details.dart';
 
 class AdminMainPage extends StatelessWidget {
   @override
