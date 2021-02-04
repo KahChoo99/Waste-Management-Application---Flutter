@@ -3,33 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
-import 'package:waste_management/screens/main/user/user_my_complaints_status.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
 
-class UserMyComplaints extends StatefulWidget {
+class AdminViewUsersDetails extends StatefulWidget {
   @override
-  _UserMyComplaints createState() => _UserMyComplaints();
+  _AdminViewUsersDetails createState() => _AdminViewUsersDetails();
 }
 
-class _UserMyComplaints extends State<UserMyComplaints> {
+class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    Map<String, String> binComplaintData= {
-      sComplaintID: "202102030001",
-      sBinID: "B0001",
-      sFTState: "Selangor",
-      sDistrict: "Kuala Selangor",
-      sSubDistrict: "Pasangan",
-      sArea: "Taman Seri Jaya",
-      sCleaningPeriod: "2 times per week"
+    Map<String, String> userData= {
+      sUserID: "001",
+      sName: "Apa saja la",
+      sEmail: "entahla@gmail.com",
+      sAddress: "B76, Taman Seri Jaya, 45500 Tanjong Karang, SelangB76, Taman Seri Jaya, 45500 Tanjong Karang, SelangB76, Taman Seri Jaya, 45500 Tanjong Karang, Seland",
     };
 
-    List<String> binKeys = binComplaintData.keys.toList();
+    List<String> userDataKeys = userData.keys.toList();
 
     Column cardList = Column(
       children: [
@@ -43,15 +39,23 @@ class _UserMyComplaints extends State<UserMyComplaints> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (String binKey in binKeys)
+              Align(
+                alignment: Alignment.center,
+                child: Icon(
+                  Icons.account_circle_sharp,
+                  color: wordAndIconBlue,
+                  size: 80,
+                ),
+              ),
+              for (String userDataKey in userDataKeys)
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      flex: 4,
+                      flex: 2,
                       child: Container(
                         padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                        child: Text(binKey,
+                        child: Text(userDataKey,
                             style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
                       ),
                     ),
@@ -59,34 +63,14 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                       width: 10,
                     ),
                     Expanded(
-                      flex: 6,
+                      flex: 8,
                       child: Container(
-                        child: Text(binComplaintData[binKey],
+                        child: Text(userData[userDataKey],
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                       ),
                     )
                   ],
                 ),
-              Container(
-                padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                child: Text(sStatus,
-                    style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
-              ),
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => UserMyComplaintsStatus(binComplaintData: binComplaintData,)),
-                  );
-                },
-                color: buttonBlue,
-                child: Text(sPending,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                // textColor: Colors.black,
-              ),
             ],
           ),
         ),
@@ -95,14 +79,14 @@ class _UserMyComplaints extends State<UserMyComplaints> {
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: Stack(
-        children: [
-          BackgroundPainter(),
-          ArrowBackPop(),
-          SingleChildScrollView(
-            child: Container(
-              alignment: Alignment.center,
-              child: Column(
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          child: Stack(
+            children: [
+              BackgroundPainter(),
+              ArrowBackPop(),
+              Column(
                 children: [
                   SizedBox(
                     height: 50,
@@ -111,7 +95,7 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       IconAndTitle(screenWidth: screenWidth),
-                      Text(sMyComplaints,
+                      Text(sViewComplaints,
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                       Container(
                         width: screenWidth,
@@ -121,10 +105,10 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                   ),
                 ],
               ),
-            ),
-          )
-        ],
-      )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

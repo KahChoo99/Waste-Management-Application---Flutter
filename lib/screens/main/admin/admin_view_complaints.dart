@@ -3,24 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
-import 'package:waste_management/screens/main/user/user_my_complaints_status.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
+import 'package:waste_management/screens/main/admin/admin_view_complaints_detail.dart';
 
-class UserMyComplaints extends StatefulWidget {
+class AdminViewComplaints extends StatefulWidget {
   @override
-  _UserMyComplaints createState() => _UserMyComplaints();
+  _AdminViewComplaints createState() => _AdminViewComplaints();
 }
 
-class _UserMyComplaints extends State<UserMyComplaints> {
+class _AdminViewComplaints extends State<AdminViewComplaints> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    Map<String, String> binComplaintData= {
+    Map<String, String> binComplaintData = {
       sComplaintID: "202102030001",
+      sUserID: "001",
       sBinID: "B0001",
       sFTState: "Selangor",
       sDistrict: "Kuala Selangor",
@@ -52,7 +53,10 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                       child: Container(
                         padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                         child: Text(binKey,
-                            style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
+                            style: TextStyle(
+                                color: wordAndIconBlue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16)),
                       ),
                     ),
                     SizedBox(
@@ -62,7 +66,8 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                       flex: 6,
                       child: Container(
                         child: Text(binComplaintData[binKey],
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                       ),
                     )
                   ],
@@ -70,7 +75,10 @@ class _UserMyComplaints extends State<UserMyComplaints> {
               Container(
                 padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                 child: Text(sStatus,
-                    style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
+                    style: TextStyle(
+                        color: wordAndIconBlue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16)),
               ),
               FlatButton(
                 shape: RoundedRectangleBorder(
@@ -79,12 +87,16 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UserMyComplaintsStatus(binComplaintData: binComplaintData,)),
+                    MaterialPageRoute(
+                        builder: (context) => AdminViewComplaintsDetail(
+                              binComplaintData: binComplaintData,
+                            )),
                   );
                 },
                 color: buttonBlue,
-                child: Text(sPending,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                child: Text(sUpdateStatus,
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                 // textColor: Colors.black,
               ),
             ],
@@ -94,37 +106,37 @@ class _UserMyComplaints extends State<UserMyComplaints> {
     );
 
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: Stack(
-        children: [
-          BackgroundPainter(),
-          ArrowBackPop(),
-          SingleChildScrollView(
-            child: Container(
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      IconAndTitle(screenWidth: screenWidth),
-                      Text(sMyComplaints,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-                      Container(
-                        width: screenWidth,
-                        child: cardList,
-                      ),
-                    ],
-                  ),
-                ],
+        resizeToAvoidBottomPadding: false,
+        body: Stack(
+          children: [
+            BackgroundPainter(),
+            ArrowBackPop(),
+            SingleChildScrollView(
+              child: Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        IconAndTitle(screenWidth: screenWidth),
+                        Text(sViewComplaints,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 24)),
+                        Container(
+                          width: screenWidth,
+                          child: cardList,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
-      )
-    );
+            )
+          ],
+        ));
   }
 }

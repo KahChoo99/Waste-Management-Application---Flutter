@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/screens/main/admin/admin_main_page.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -80,7 +81,15 @@ class _AdminLogin extends State<AdminLogin> {
             ),
             minWidth: 150,
             height: 50,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => AdminMainPage(),
+                ),
+                    (route) => false,
+              );
+            },
             color: buttonGreen,
             child: Text(sLogin,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),

@@ -23,8 +23,9 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
       sBinID: "B0001",
       sFTState: "Selangor",
       sDistrict: "Kuala Selangor",
-      sSubDistrict: "Tanjong Karang",
-      sArea: "Taman Seri Jaya"
+      sSubDistrict: "Pasangan",
+      sArea: "Taman Seri Jaya",
+      sCleaningPeriod: "2 times per week"
     };
 
     List<String> binKeys = binData.keys.toList();
@@ -46,14 +47,18 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    flex: 3,
+                    flex: 4,
                     child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                       child: Text(binKey,
-                          style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 18)),
+                          style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
                     ),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Expanded(
-                    flex: 7,
+                    flex: 6,
                     child: Container(
                       child: Text(binData[binKey],
                           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
@@ -84,34 +89,36 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: Container(
-        alignment: Alignment.center,
-        child: Stack(
-          children: [
-            BackgroundPainter(),
-            ArrowBackPop(),
-            Column(
-              children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    IconAndTitle(screenWidth: screenWidth),
-                    Text(sRegisterComplaints,
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-                    Container(
-                      width: screenWidth,
-                      child: cardList,
-                    ),
-                  ],
-                ),
-              ],
+      body: Stack(
+        children: [
+          BackgroundPainter(),
+          ArrowBackPop(),
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      IconAndTitle(screenWidth: screenWidth),
+                      Text(sRegisterComplaints,
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                      Container(
+                        width: screenWidth,
+                        child: cardList,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
+          )
+        ],
+      )
     );
   }
 }

@@ -3,24 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
-import 'package:waste_management/screens/main/user/user_my_complaints_status.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
+import 'package:waste_management/screens/main/admin/admin_update_bins_detail.dart';
 
-class UserMyComplaints extends StatefulWidget {
+class AdminUpdateBins extends StatefulWidget {
   @override
-  _UserMyComplaints createState() => _UserMyComplaints();
+  _AdminUpdateBins createState() => _AdminUpdateBins();
 }
 
-class _UserMyComplaints extends State<UserMyComplaints> {
+class _AdminUpdateBins extends State<AdminUpdateBins> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    Map<String, String> binComplaintData= {
-      sComplaintID: "202102030001",
+    Map<String, String> binData = {
       sBinID: "B0001",
       sFTState: "Selangor",
       sDistrict: "Kuala Selangor",
@@ -29,7 +28,7 @@ class _UserMyComplaints extends State<UserMyComplaints> {
       sCleaningPeriod: "2 times per week"
     };
 
-    List<String> binKeys = binComplaintData.keys.toList();
+    List<String> binKeys = binData.keys.toList();
 
     Column cardList = Column(
       children: [
@@ -52,7 +51,10 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                       child: Container(
                         padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                         child: Text(binKey,
-                            style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
+                            style: TextStyle(
+                                color: wordAndIconBlue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16)),
                       ),
                     ),
                     SizedBox(
@@ -61,8 +63,9 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                     Expanded(
                       flex: 6,
                       child: Container(
-                        child: Text(binComplaintData[binKey],
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                        child: Text(binData[binKey],
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
                       ),
                     )
                   ],
@@ -70,7 +73,10 @@ class _UserMyComplaints extends State<UserMyComplaints> {
               Container(
                 padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                 child: Text(sStatus,
-                    style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
+                    style: TextStyle(
+                        color: wordAndIconBlue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16)),
               ),
               FlatButton(
                 shape: RoundedRectangleBorder(
@@ -79,13 +85,16 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UserMyComplaintsStatus(binComplaintData: binComplaintData,)),
+                    MaterialPageRoute(
+                        builder: (context) => AdminUpdateBinsDetail(
+                              binData: binData,
+                            )),
                   );
                 },
                 color: buttonBlue,
-                child: Text(sPending,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                // textColor: Colors.black,
+                child: Text(sUpdate,
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               ),
             ],
           ),
@@ -94,37 +103,37 @@ class _UserMyComplaints extends State<UserMyComplaints> {
     );
 
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: Stack(
-        children: [
-          BackgroundPainter(),
-          ArrowBackPop(),
-          SingleChildScrollView(
-            child: Container(
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      IconAndTitle(screenWidth: screenWidth),
-                      Text(sMyComplaints,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-                      Container(
-                        width: screenWidth,
-                        child: cardList,
-                      ),
-                    ],
-                  ),
-                ],
+        resizeToAvoidBottomPadding: false,
+        body: Stack(
+          children: [
+            BackgroundPainter(),
+            ArrowBackPop(),
+            SingleChildScrollView(
+              child: Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        IconAndTitle(screenWidth: screenWidth),
+                        Text(sUpdateBins,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 24)),
+                        Container(
+                          width: screenWidth,
+                          child: cardList,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
-      )
-    );
+            )
+          ],
+        ));
   }
 }
