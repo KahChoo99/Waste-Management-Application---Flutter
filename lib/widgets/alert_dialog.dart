@@ -147,6 +147,88 @@ showNameOrEmailOrAddressCannotBeEmpty(BuildContext context) {
   );
 }
 
+showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return WillPopScope(
+        onWillPop: () async => false,
+        child: AlertDialog(
+          contentPadding: EdgeInsets.all(5),
+          content: Container(
+            height: 250,
+            width: 350,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.warning_sharp,
+                  color: wordAndIconRed,
+                  size: 70,
+                ),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: sFTState,
+                          style: TextStyle(color: wordAndIconRed)),
+                      TextSpan(text: " $sOr "),
+                      TextSpan(
+                          text: sDistrict,
+                          style: TextStyle(color: wordAndIconRed)),
+                      TextSpan(text: " $sOr "),
+                      TextSpan(
+                          text: sSubDistrict,
+                          style: TextStyle(color: wordAndIconRed)),
+                      TextSpan(text: " $sOr "),
+                      TextSpan(
+                          text: sArea,
+                          style: TextStyle(color: wordAndIconRed)),
+                      TextSpan(text: " $sOr "),
+                      TextSpan(
+                          text: "$sCleaningPeriod ",
+                          style: TextStyle(color: wordAndIconRed)),
+                      TextSpan(text: sCannotBeEmpty),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  height: 50,
+                  minWidth: 150,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  color: buttonBlue,
+                  child: Text(
+                    sRetry,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
 showConfirmPasswordMustBeTheSameAsPassword(BuildContext context) {
   showDialog(
     context: context,
@@ -237,6 +319,116 @@ showPleaseUseValidEmail(BuildContext context) {
                 ),
                 Text(
                     sPleaseUseValidEmail,
+                    textAlign: TextAlign.center,
+                    style:
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                SizedBox(
+                  height: 20,
+                ),
+                FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  height: 50,
+                  minWidth: 150,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  color: buttonBlue,
+                  child: Text(
+                    sRetry,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+showPleaseSetAValidAreaName(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return WillPopScope(
+        onWillPop: () async => false,
+        child: AlertDialog(
+          contentPadding: EdgeInsets.all(5),
+          content: Container(
+            height: 200,
+            width: 350,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.warning_sharp,
+                  color: wordAndIconRed,
+                  size: 70,
+                ),
+                Text(
+                    sPleaseSetAValidAreaName,
+                    textAlign: TextAlign.center,
+                    style:
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                SizedBox(
+                  height: 20,
+                ),
+                FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  height: 50,
+                  minWidth: 150,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  color: buttonBlue,
+                  child: Text(
+                    sRetry,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+showPleaseSetInRange1To7Days(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return WillPopScope(
+        onWillPop: () async => false,
+        child: AlertDialog(
+          contentPadding: EdgeInsets.all(5),
+          content: Container(
+            height: 200,
+            width: 350,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.warning_sharp,
+                  color: wordAndIconRed,
+                  size: 70,
+                ),
+                Text(
+                    sPleaseSetInRange1To7Days,
                     textAlign: TextAlign.center,
                     style:
                     TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
@@ -775,6 +967,7 @@ showSaveSuccess(BuildContext context) {
                   height: 50,
                   minWidth: 150,
                   onPressed: () {
+                    Navigator.of(context).pop();
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
                   },
