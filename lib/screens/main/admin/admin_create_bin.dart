@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/bin/bin.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/alert_dialog.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
@@ -19,6 +21,9 @@ class _AdminCreateBin extends State<AdminCreateBin> {
   void initState() {
     super.initState();
   }
+
+  Data d = Data.getInstance();
+
   TextEditingController _areaEditingController = TextEditingController();
   TextEditingController _cleaningPeriodEditingController = TextEditingController();
 
@@ -214,9 +219,25 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                   ),
                   minWidth: 220,
                   height: 50,
-                  // onPressed: () => showConfirmSubmit(context, binData, _messageEditingController),
                   onPressed: () {
-                    showCreateSuccess(context);
+                    if (fTState == null || district == null || subDistrict == null || _areaEditingController.text.isEmpty || _cleaningPeriodEditingController.text.isEmpty)
+                      showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(context);
+                    else {
+                      String area = _areaEditingController.text.toString();
+                      String cleaningPeriod = _cleaningPeriodEditingController.text.toString() + " $sDaysPerWeek";
+                      if (area.startsWith("-") || area.startsWith("None") || area.startsWith("none"))
+                        showPleaseSetAValidAreaName(context);
+                      else {
+                        if (int.parse(cleaningPeriod[0]) > 7 || int.parse(cleaningPeriod[0]) == 0)
+                          showPleaseSetInRange1To7Days(context);
+                        else {
+                          String binID = d.getNewID(BoxType.bin);
+                          Bin bin = Bin(binID, fTState, district, subDistrict, area, cleaningPeriod);
+                          d.addNewBin(bin);
+                          showCreateSuccess(context);
+                        }
+                      }
+                    }
                   },
                   color: buttonBlue,
                   child: Text(sCreate,
