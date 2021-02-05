@@ -96,6 +96,8 @@ class _UserLogin extends State<UserLogin> {
                   showNoUsernameFound(context);
                 else {
                   if (d.checkUserCredential(username, password)) {
+                    String userID = d.getUserID(username);
+                    d.login(userID);
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(

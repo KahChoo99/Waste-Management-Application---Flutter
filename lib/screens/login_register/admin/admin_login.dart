@@ -96,6 +96,7 @@ class _AdminLogin extends State<AdminLogin> {
                   showWrongAdminUsername(context);
                 else {
                   if (d.checkAdminCredential(password)) {
+                    d.login(sAdmin);
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
