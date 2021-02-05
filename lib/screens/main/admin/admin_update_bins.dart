@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/bin/bin.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -15,34 +17,23 @@ class AdminUpdateBins extends StatefulWidget {
 }
 
 class _AdminUpdateBins extends State<AdminUpdateBins> {
+  Data d = Data.getInstance();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    Map<String, String> binData = {
-      sBinID: "B0001",
-      sFTState: "Selangor",
-      sDistrict: "Kuala Selangor",
-      sSubDistrict: "Pasangan",
-      sArea: "Taman Seri Jaya",
-      sCleaningPeriod: "2 times per week"
-    };
-
-    List<String> binKeys = binData.keys.toList();
-
     Column cardList = Column(
       children: [
-        SizedBox(
-          height: 20,
-        ),
+        for (Bin bin in d.binsAvailable)
         Container(
           padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-          margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
+          margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
           decoration: mainContainerBGBoxDecoration,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (String binKey in binKeys)
+              for (String binKey in bin.getBinData().keys.toList())
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -63,7 +54,7 @@ class _AdminUpdateBins extends State<AdminUpdateBins> {
                     Expanded(
                       flex: 6,
                       child: Container(
-                        child: Text(binData[binKey],
+                        child: Text(bin.getBinData()[binKey],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18)),
                       ),
@@ -87,7 +78,7 @@ class _AdminUpdateBins extends State<AdminUpdateBins> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => AdminUpdateBinsDetail(
-                              binData: binData,
+                              binData: bin.getBinData(),
                             )),
                   );
                 },
