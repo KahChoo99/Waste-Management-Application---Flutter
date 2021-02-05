@@ -2,15 +2,25 @@
 const sAppTitle = "Solid Waste Management";
 const sUsername = "Username";
 const sPassword = "Password";
-const sConfirmPassword = "Confirm Password";
+const sOr = "Or";
+const sCannotBeEmpty = "Cannot Be Empty";
+const sWrongPassword = "Wrong Password";
 const sLogin = "Login";
-const sSignUp = "Sign Up";
 const sHome = "Home";
 const sLogOut = "Log Out";
+const sOk = "Ok";
+const sRetry = "Retry";
 
 // User
 const sUserLogin = "User Login";
+const sNoUsernameFound = "No Username Found";
+const sSignUp = "Sign Up";
+const sConfirmPassword = "Confirm Password";
 const sUserRegister = "User Register";
+const sUsernameHasBeenTaken = "Username Has Been Taken";
+const sMustBeTheSameAs = "Must Be The Same As";
+const sPleaseUseValidEmail = "Please Use Valid Email with @ and .com";
+const sRegisterUserSuccessfully = "Register Account Successfully";
 const sUserDetail = "User Detail";
 const sRegisterComplaints = "Register Complaints";
 //// Register Complaints
@@ -31,7 +41,6 @@ const sSubmit = "Submit";
 const sCancel = "Cancel";
 const sSubmitSuccessfully = "Submit Successfully";
 const sComplaintID = "Complaint ID";
-const sOk = "Ok";
 //// My Complaints
 const sMyComplaints = "My Complaints";
 const sStatus = "Status";
@@ -48,7 +57,9 @@ const sSave = "Save";
 const sSaveSuccessfully = "Save Successfully";
 
 // Admin
+const sAdmin = "Admin";
 const sAdminLogin = "Admin Login";
+const sWrongAdminUsername = "Wrong Admin Username";
 //// Create Bin
 const sCreateBin = "Create Bin";
 const sSelectFTState = "Select FT/State";
