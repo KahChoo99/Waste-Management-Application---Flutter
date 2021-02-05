@@ -66,6 +66,9 @@ const sSelectFTState = "Select FT/State";
 const sSelectDistrict = "Select District";
 const sSelectSubDistrict = "Select Sub District";
 const sCreate = "Create";
+const sPleaseSetAValidAreaName = "Please Set A Valid Area Name";
+const sDaysPerWeek = "days per week";
+const sPleaseSetInRange1To7Days = "Please Set In The Range (1-7) Day/s";
 const sCreateSuccessfully = "Create Successfully";
 const sHowManyDaysPerWeek = "How Many Days Per Week";
 //// Update Bins
