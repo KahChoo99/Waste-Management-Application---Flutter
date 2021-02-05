@@ -33,7 +33,7 @@ class BinAdapter extends TypeAdapter<Bin> {
       ..writeByte(0)
       ..write(obj.binID)
       ..writeByte(1)
-      ..write(obj.ftState)
+      ..write(obj.fTState)
       ..writeByte(2)
       ..write(obj.district)
       ..writeByte(3)

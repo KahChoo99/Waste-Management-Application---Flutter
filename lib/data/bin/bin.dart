@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:waste_management/constants/strings.dart';
 
 part 'bin.g.dart';
 
@@ -9,7 +10,7 @@ class Bin {
   final String binID;
 
   @HiveField(1)
-  final String ftState;
+  final String fTState;
 
   @HiveField(2)
   final String district;
@@ -23,5 +24,16 @@ class Bin {
   @HiveField(5)
   final String cleaningPeriod;
 
-  Bin(this.binID, this.ftState, this.district, this.subDistrict, this.area, this.cleaningPeriod);
+  Bin(this.binID, this.fTState, this.district, this.subDistrict, this.area, this.cleaningPeriod);
+
+  Map<String, String> getBinData() {
+    return {
+      sBinID: this.binID,
+      sFTState: this.fTState,
+      sDistrict: this.district,
+      sSubDistrict: this.subDistrict,
+      sArea: this.area,
+      sCleaningPeriod: this.cleaningPeriod
+    };
+  }
 }
