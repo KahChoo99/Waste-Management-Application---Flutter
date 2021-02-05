@@ -91,6 +91,18 @@ class Data {
       return false;
   }
 
+  String getUserID(String username) {
+    List userIDs = this.usersProfileBox.keys.toList();
+    List<UserProfile> userProfiles = this.usersProfileBox.values.toList();
+    for (var i = 0; i < userProfiles.length; i++) {
+      if (userProfiles[i].user.username == username) {
+        print(userIDs[i]);
+        return userIDs[i];
+      }
+    }
+    return null;
+  }
+
   void login(userID) {
     this.currentUserID = userID;
     this.binsAvailable = this.binsAvailableBox.values.toList();
