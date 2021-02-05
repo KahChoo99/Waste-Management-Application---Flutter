@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/data.dart';
+import 'package:waste_management/widgets/alert_dialog.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/screens/main/user/user_main_page.dart';
@@ -18,10 +20,12 @@ class _UserLogin extends State<UserLogin> {
     super.initState();
   }
 
-  bool _obscureText = true;
+  Data d = Data.getInstance();
 
   TextEditingController _usernameEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
+
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -82,13 +86,27 @@ class _UserLogin extends State<UserLogin> {
             minWidth: 150,
             height: 50,
             onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => UserMainPage(),
-                ),
-                    (route) => false,
-              );
+              if (_usernameEditingController.text.isEmpty ||
+                  _passwordEditingController.text.isEmpty)
+                showUsernameOrPasswordCannotBeEmpty(context);
+              else {
+                String username = _usernameEditingController.text;
+                String password = _passwordEditingController.text;
+                if (!d.checkUserUsername(username))
+                  showNoUsernameFound(context);
+                else {
+                  if (d.checkUserCredential(username, password)) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => UserMainPage(),
+                      ),
+                          (route) => false,
+                    );
+                  } else
+                    showWrongPassword(context);
+                }
+              }
             },
             color: buttonGreen,
             child: Text(sLogin,

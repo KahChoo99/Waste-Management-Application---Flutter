@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/screens/main/admin/admin_main_page.dart';
+import 'package:waste_management/widgets/alert_dialog.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -18,10 +20,12 @@ class _AdminLogin extends State<AdminLogin> {
     super.initState();
   }
 
-  bool _obscureText = true;
+  Data d = Data.getInstance();
 
   TextEditingController _usernameEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
+
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -82,13 +86,27 @@ class _AdminLogin extends State<AdminLogin> {
             minWidth: 150,
             height: 50,
             onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => AdminMainPage(),
-                ),
-                    (route) => false,
-              );
+              if (_usernameEditingController.text.isEmpty ||
+                  _passwordEditingController.text.isEmpty)
+                showUsernameOrPasswordCannotBeEmpty(context);
+              else {
+                String username = _usernameEditingController.text;
+                String password = _passwordEditingController.text;
+                if (username != sAdmin)
+                  showWrongAdminUsername(context);
+                else {
+                  if (d.checkAdminCredential(password)) {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => AdminMainPage(),
+                      ),
+                          (route) => false,
+                    );
+                  } else
+                    showWrongPassword(context);
+                }
+              }
             },
             color: buttonGreen,
             child: Text(sLogin,

@@ -2,15 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/data.dart';
+import 'package:waste_management/data/user/user.dart';
+import 'package:waste_management/data/userProfile/userProfile.dart';
+import 'package:waste_management/widgets/alert_dialog.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 
 class UserRegisterDetail extends StatefulWidget {
-  final String username;
-  final String password;
+  final User user;
 
-  const UserRegisterDetail({this.username, this.password});
+  const UserRegisterDetail({this.user});
 
   @override
   _UserRegisterDetail createState() => _UserRegisterDetail();
@@ -21,6 +24,8 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
   void initState() {
     super.initState();
   }
+
+  Data d = Data.getInstance();
 
   TextEditingController _nameEditingController = TextEditingController();
   TextEditingController _emailEditingController = TextEditingController();
@@ -78,7 +83,30 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
             ),
             minWidth: 150,
             height: 50,
-            onPressed: () {},
+            onPressed: () {
+              if (_nameEditingController.text.isEmpty ||
+                  _emailEditingController.text.isEmpty ||
+                  _addressEditingController.text.isEmpty)
+                showNameOrEmailOrAddressCannotBeEmpty(context);
+              else {
+                String name = _nameEditingController.text;
+                String email = _emailEditingController.text;
+                String address = _addressEditingController.text;
+                String userID = d.getNewID(BoxType.user);
+
+                if (!email.contains("@") || !email.contains(".com"))
+                  showPleaseUseValidEmail(context);
+                else {
+                  print("User ID = " + userID);
+                  print("Name = " + name);
+                  print("Email = " + email);
+                  print("Address = " + address);
+                  UserProfile userProfile = UserProfile(widget.user, userID, name, email, address);
+                  d.addNewUser(userProfile);
+                  showRegisterUserSuccess(context);
+                }
+              }
+            },
             color: buttonGreen,
             child: Text(sSignUp,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
