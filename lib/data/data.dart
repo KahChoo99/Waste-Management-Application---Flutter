@@ -1,7 +1,9 @@
 import 'package:hive/hive.dart';
-import 'package:waste_management/data/bin.dart';
-import 'package:waste_management/data/complaint.dart';
-import 'package:waste_management/data/userProfile.dart';
+import 'package:waste_management/constants/strings.dart';
+import 'package:waste_management/data/bin/bin.dart';
+import 'package:waste_management/data/complaint/complaint.dart';
+import 'package:waste_management/data/user/user.dart';
+import 'package:waste_management/data/userProfile/userProfile.dart';
 
 enum BoxType {
   user,
@@ -26,33 +28,20 @@ class Data {
   List<Complaint> allComplaint;
   List<UserProfile> allUserProfile;
 
-  /// <"userID", userID>
-  Box currentUserBox;
   /// <0, Bin>
-  Box binsAvailableBox;
+  Box<Bin> binsAvailableBox;
   /// <0, Complaint>
-  Box complaintsBox;
+  Box<Complaint> complaintsBox;
   /// <userID, UserProfile>
-  Box usersProfileBox;
-  /// <username, User>
-  Box usersBox;
+  Box<UserProfile> usersProfileBox;
+  /// <username, User> - this include user and admin
+  Box<User> usersBox;
 
   Future init() async{
-    this.currentUserBox = await Hive.openBox('currentUser');
     this.binsAvailableBox = await Hive.openBox('bins');
     this.complaintsBox = await Hive.openBox('complaints');
     this.usersProfileBox = await Hive.openBox('usersProfile');
     this.usersBox = await Hive.openBox('users');
-
-    String currentUserID = this.currentUserBox.get("userID");
-
-    if (currentUserID != null) {
-      this.currentUserID = currentUserID;
-      this.binsAvailable = this.binsAvailableBox.values.toList();
-
-      _fetchComplaint();
-      _fetchUserProfile();
-    }
   }
 
   void _fetchComplaint() {
@@ -74,30 +63,51 @@ class Data {
       this.userProfile = this.usersProfileBox.get(this.currentUserID);
   }
 
+  bool checkUniqueUsername(String username) {
+    if (this.usersBox.get(username) == null)
+      return true;
+    else
+      return false;
+  }
+
+  bool checkUserUsername(username) {
+    if (this.usersBox.get(username) != null)
+      return true;
+    else
+      return false;
+  }
+
+  bool checkUserCredential(username, password) {
+    if (this.usersBox.get(username).password == password)
+      return true;
+    else
+      return false;
+  }
+
+  bool checkAdminCredential(password) {
+    if (this.usersBox.get(sAdmin).password == password)
+      return true;
+    else
+      return false;
+  }
+
   void login(userID) {
     this.currentUserID = userID;
-    this.currentUserBox.put("userID", this.currentUserID);
     this.binsAvailable = this.binsAvailableBox.values.toList();
+    this.usersBox.close();
 
     _fetchComplaint();
     _fetchUserProfile();
   }
 
-  void logout() {
-    this.currentUserBox.clear();
+  Future<void> logout() async {
     this.currentUserID = null;
     this.binsAvailable = null;
     this.userComplaint = null;
     this.userProfile = null;
     this.allComplaint = null;
     this.allUserProfile = null;
-  }
-
-  bool checkUniqueUsername(String username) {
-    if (this.usersBox.get(username) != null)
-      return false;
-    else
-      return true;
+    this.usersBox = await Hive.openBox('users');
   }
 
   /// Can use for userID, binID and complaintID
@@ -122,6 +132,8 @@ class Data {
 
   /// User side
   void addNewUser(UserProfile userProfile) {
+    User user = userProfile.user;
+    this.usersBox.put(user.username, user);
     this.usersProfileBox.put(userProfile.userID, userProfile);
   }
 
