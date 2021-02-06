@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/data/user/user.dart';
 
 part 'userProfile.g.dart';
@@ -21,4 +22,13 @@ class UserProfile {
   final String address;
 
   UserProfile(this.user, this.userID, this.name, this.email, this.address);
+
+  Map<String, String> getUseProfileData() {
+    return {
+      sUserID: this.userID,
+      sName: this.name,
+      sEmail: this.email,
+      sAddress: this.address,
+    };
+  }
 }
