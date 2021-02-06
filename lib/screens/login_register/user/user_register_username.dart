@@ -178,7 +178,6 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
                 fontSize: 24 * widthRatio,
               ),
             ),
-            // textColor: Colors.black,
           ),
         ),
         SizedBox(

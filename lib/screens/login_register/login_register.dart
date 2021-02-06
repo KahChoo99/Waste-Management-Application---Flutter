@@ -120,7 +120,6 @@ class LoginRegister extends StatelessWidget {
                 fontSize: 24 * widthRatio,
               ),
             ),
-            // textColor: Colors.black,
           ),
         ),
         SizedBox(

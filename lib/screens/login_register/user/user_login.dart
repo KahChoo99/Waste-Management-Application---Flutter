@@ -148,7 +148,6 @@ class _UserLogin extends State<UserLogin> {
                 fontSize: 24 * widthRatio,
               ),
             ),
-            // textColor: Colors.black,
           ),
         ),
         SizedBox(
