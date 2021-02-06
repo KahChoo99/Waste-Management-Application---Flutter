@@ -42,6 +42,15 @@ class Data {
     this.complaintsBox = await Hive.openBox('complaints');
     this.usersProfileBox = await Hive.openBox('usersProfile');
     this.usersBox = await Hive.openBox('users');
+    if (this.usersBox.get(sAdmin) == null){
+      User user = User(sAdmin, "12345");
+      this.usersBox.put(sAdmin, user);
+    }
+
+    this.binsAvailable = [];
+    this.userComplaint = [];
+    this.allComplaint = [];
+    this.allUserProfile = [];
   }
 
   void _fetchComplaint() {
@@ -71,7 +80,9 @@ class Data {
   }
 
   bool checkUserUsername(username) {
-    if (this.usersBox.get(username) != null)
+    if (username == sAdmin)
+      return false;
+    else if (this.usersBox.get(username) != null)
       return true;
     else
       return false;
@@ -114,11 +125,11 @@ class Data {
 
   Future<void> logout() async {
     this.currentUserID = null;
-    this.binsAvailable = null;
-    this.userComplaint = null;
     this.userProfile = null;
-    this.allComplaint = null;
-    this.allUserProfile = null;
+    this.binsAvailable = [];
+    this.userComplaint = [];
+    this.allComplaint = [];
+    this.allUserProfile = [];
     this.usersBox = await Hive.openBox('users');
   }
 
@@ -172,33 +183,22 @@ class Data {
         this.binsAvailable.removeAt(i);
         this.binsAvailable.insert(i, bin);
 
-        this.binsAvailableBox.deleteAt(i);
         this.binsAvailableBox.putAt(i, bin);
         break;
       }
     }
-    // for (var i = 0; i < allComplaint.length; i++) {
-    //   if (allComplaint[i].bin.binID == bin.binID) {
-    //     Complaint complaintToChange = this.allComplaint.removeAt(i);
-    //     complaintToChange.bin = bin;
-    //
-    //     this.allComplaint.insert(i, complaintToChange);
-    //
-    //     this.complaintsBox.deleteAt(i);
-    //     this.complaintsBox.putAt(i, complaintToChange);
-    //   }
-    // }
   }
 
   void updateComplaintStatus(Complaint complaint, String commentMessage) {
     for (var i = 0; i < allComplaint.length; i++) {
       if (allComplaint[i].complaintID == complaint.complaintID) {
+        print("Take out the complaint");
         Complaint complaintToChange = this.allComplaint.removeAt(i);
         complaintToChange.commentMessage = commentMessage;
+        complaintToChange.status = sCompleted;
 
         this.allComplaint.insert(i, complaintToChange);
 
-        this.complaintsBox.deleteAt(i);
         this.complaintsBox.putAt(i, complaintToChange);
       }
     }
