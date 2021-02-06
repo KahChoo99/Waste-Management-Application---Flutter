@@ -299,9 +299,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                       String cleaningPeriod =
                           _cleaningPeriodEditingController.text.toString() +
                               " $sDaysPerWeek";
-                      if (area.startsWith("-") ||
-                          area.startsWith("None") ||
-                          area.startsWith("none"))
+                      if (area == "-" || area == "None" || area == "none")
                         showPleaseSetAValidAreaName(context);
                       else {
                         if (int.parse(cleaningPeriod[0]) > 7 ||
@@ -340,48 +338,49 @@ class _AdminCreateBin extends State<AdminCreateBin> {
     return StatefulBuilder(
       builder: (context, setState) {
         return Scaffold(
-            body: Stack(
-          children: [
-            BackgroundPainter(),
-            SingleChildScrollView(
-              child: Container(
-                alignment: Alignment.center,
-                child: Stack(
-                  children: [
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: 40 * heightRatio,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            IconAndTitle(screenWidth: screenWidth),
-                            Text(
-                              sCreateBin,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24 * widthRatio,
+          body: Stack(
+            children: [
+              BackgroundPainter(),
+              SingleChildScrollView(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Stack(
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 40 * heightRatio,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              IconAndTitle(screenWidth: screenWidth),
+                              Text(
+                                sCreateBin,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24 * widthRatio,
+                                ),
                               ),
-                            ),
-                            Container(
-                              width: screenWidth,
-                              child: cardList,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    ArrowBackPop(
-                      screenWidth: screenWidth,
-                      screenHeight: screenHeight,
-                    ),
-                  ],
+                              Container(
+                                width: screenWidth,
+                                child: cardList,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      ArrowBackPop(
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
-        ));
+            ],
+          ),
+        );
       },
     );
   }
