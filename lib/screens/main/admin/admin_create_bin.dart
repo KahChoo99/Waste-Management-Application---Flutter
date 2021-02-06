@@ -25,7 +25,8 @@ class _AdminCreateBin extends State<AdminCreateBin> {
   Data d = Data.getInstance();
 
   TextEditingController _areaEditingController = TextEditingController();
-  TextEditingController _cleaningPeriodEditingController = TextEditingController();
+  TextEditingController _cleaningPeriodEditingController =
+      TextEditingController();
 
   String fTState;
   String district;
@@ -52,7 +53,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
             list_sFTState_sDistrict_SubDistrict[fTState].keys.toList();
       } else {
         subDistrictList =
-        list_sFTState_sDistrict_SubDistrict[fTState][district];
+            list_sFTState_sDistrict_SubDistrict[fTState][district];
       }
     }
 
@@ -91,8 +92,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                         margin: EdgeInsets.fromLTRB(10, 0, 10, 15),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all()
-                        ),
+                            border: Border.all()),
                         child: DropdownButtonHideUnderline(
                           child: ButtonTheme(
                             alignedDropdown: true,
@@ -103,12 +103,12 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                               items: allDropDownList[i]
                                   .map<DropdownMenuItem<String>>(
                                       (String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value,
-                                          style: TextStyle(fontSize: 16)),
-                                    );
-                                  }).toList(),
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value,
+                                      style: TextStyle(fontSize: 16)),
+                                );
+                              }).toList(),
                               onChanged: (String value) {
                                 setState(() {
                                   switch (i) {
@@ -144,69 +144,63 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                         )),
                   ],
                 ),
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: screenWidth,
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: Text(sArea,
-                          style:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Container(
+                  width: screenWidth,
+                  margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  child: Text(sArea,
+                      style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: TextField(
-                        maxLines: 2,
-                        maxLength: 50,
-                        maxLengthEnforced: true,
-                        controller: _areaEditingController,
-                        decoration: InputDecoration(
-                          hintText: sDescription,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(
-                              color: Colors.amber,
-                              style: BorderStyle.solid,
-                            ),
-                          ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  child: TextField(
+                    maxLines: 2,
+                    maxLength: 50,
+                    maxLengthEnforced: true,
+                    controller: _areaEditingController,
+                    decoration: InputDecoration(
+                      hintText: sDescription,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                          color: Colors.amber,
+                          style: BorderStyle.solid,
                         ),
                       ),
                     ),
-                  ]
-              ),
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: screenWidth,
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: Text("$sCleaningPeriod (days/per week)",
-                          style:
+                  ),
+                ),
+              ]),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Container(
+                  width: screenWidth,
+                  margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  child: Text("$sCleaningPeriod (days/per week)",
+                      style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: TextField(
-                        keyboardType: TextInputType.number,
-                        maxLines: 1,
-                        maxLength: 1,
-                        maxLengthEnforced: true,
-                        controller: _cleaningPeriodEditingController,
-                        decoration: InputDecoration(
-                          hintText: sHowManyDaysPerWeek,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: BorderSide(
-                              color: Colors.amber,
-                              style: BorderStyle.solid,
-                            ),
-                          ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    maxLines: 1,
+                    maxLength: 1,
+                    maxLengthEnforced: true,
+                    controller: _cleaningPeriodEditingController,
+                    decoration: InputDecoration(
+                      hintText: sHowManyDaysPerWeek,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                          color: Colors.amber,
+                          style: BorderStyle.solid,
                         ),
                       ),
                     ),
-                  ]
-              ),
+                  ),
+                ),
+              ]),
               SizedBox(
                 height: 10,
               ),
@@ -220,19 +214,30 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                   minWidth: 220,
                   height: 50,
                   onPressed: () {
-                    if (fTState == null || district == null || subDistrict == null || _areaEditingController.text.isEmpty || _cleaningPeriodEditingController.text.isEmpty)
-                      showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(context);
+                    if (fTState == null ||
+                        district == null ||
+                        subDistrict == null ||
+                        _areaEditingController.text.isEmpty ||
+                        _cleaningPeriodEditingController.text.isEmpty)
+                      showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(
+                          context);
                     else {
                       String area = _areaEditingController.text.toString();
-                      String cleaningPeriod = _cleaningPeriodEditingController.text.toString() + " $sDaysPerWeek";
-                      if (area.startsWith("-") || area.startsWith("None") || area.startsWith("none"))
+                      String cleaningPeriod =
+                          _cleaningPeriodEditingController.text.toString() +
+                              " $sDaysPerWeek";
+                      if (area.startsWith("-") ||
+                          area.startsWith("None") ||
+                          area.startsWith("none"))
                         showPleaseSetAValidAreaName(context);
                       else {
-                        if (int.parse(cleaningPeriod[0]) > 7 || int.parse(cleaningPeriod[0]) == 0)
+                        if (int.parse(cleaningPeriod[0]) > 7 ||
+                            int.parse(cleaningPeriod[0]) == 0)
                           showPleaseSetInRange1To7Days(context);
                         else {
                           String binID = d.getNewID(BoxType.bin);
-                          Bin bin = Bin(binID, fTState, district, subDistrict, area, cleaningPeriod);
+                          Bin bin = Bin(binID, fTState, district, subDistrict,
+                              area, cleaningPeriod);
                           d.addNewBin(bin);
                           showCreateSuccess(context);
                         }
@@ -242,7 +247,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                   color: buttonBlue,
                   child: Text(sCreate,
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                   textColor: Colors.black,
                 ),
               ),
@@ -252,41 +257,43 @@ class _AdminCreateBin extends State<AdminCreateBin> {
       ],
     );
 
-    return StatefulBuilder(builder: (context, setState) {
-      return Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            height: screenHeight,
-            alignment: Alignment.center,
-            child: Stack(
-              children: [
-                BackgroundPainter(),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        IconAndTitle(screenWidth: screenWidth),
-                        Text(sCreateBin,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 24)),
-                        Container(
-                          width: screenWidth,
-                          child: cardList,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                ArrowBackPop(),
-              ],
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+              height: screenHeight,
+              alignment: Alignment.center,
+              child: Stack(
+                children: [
+                  BackgroundPainter(),
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          IconAndTitle(screenWidth: screenWidth),
+                          Text(sCreateBin,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 24)),
+                          Container(
+                            width: screenWidth,
+                            child: cardList,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  ArrowBackPop(),
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }

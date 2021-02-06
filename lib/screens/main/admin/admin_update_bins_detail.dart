@@ -238,7 +238,7 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                     else {
                       String area = _areaEditingController.text.toString();
                       String cleaningPeriod = _cleaningPeriodEditingController.text.toString() + " $sDaysPerWeek";
-                      if (area.startsWith("-") || area.startsWith("None") || area.startsWith("none"))
+                      if (area == "-" || area == "None" || area == "none")
                         showPleaseSetAValidAreaName(context);
                       else {
                         if (int.parse(cleaningPeriod[0]) > 7 || int.parse(cleaningPeriod[0]) == 0)

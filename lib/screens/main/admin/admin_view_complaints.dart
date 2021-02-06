@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/complaint/complaint.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -15,128 +17,156 @@ class AdminViewComplaints extends StatefulWidget {
 }
 
 class _AdminViewComplaints extends State<AdminViewComplaints> {
+  Data d = Data.getInstance();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    Map<String, String> binComplaintData = {
-      sComplaintID: "202102030001",
-      sUserID: "001",
-      sBinID: "B0001",
-      sFTState: "Selangor",
-      sDistrict: "Kuala Selangor",
-      sSubDistrict: "Pasangan",
-      sArea: "Taman Seri Jaya",
-      sCleaningPeriod: "2 times per week"
-    };
-
-    List<String> binKeys = binComplaintData.keys.toList();
-
     Column cardList = Column(
       children: [
-        SizedBox(
-          height: 20,
-        ),
-        Container(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-          margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
-          decoration: mainContainerBGBoxDecoration,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              for (String binKey in binKeys)
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                        child: Text(binKey,
-                            style: TextStyle(
-                                color: wordAndIconBlue,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16)),
+        for (Complaint complaint in d.allComplaint)
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+            margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
+            decoration: mainContainerBGBoxDecoration,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (String complaintKey
+                    in complaint.getBinDataForAdmin().keys.toList())
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                          child: Text(complaintKey,
+                              style: TextStyle(
+                                  color: wordAndIconBlue,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16)),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      flex: 6,
-                      child: Container(
-                        child: Text(binComplaintData[binKey],
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
+                      SizedBox(
+                        width: 10,
                       ),
-                    )
-                  ],
+                      Expanded(
+                        flex: 6,
+                        child: Container(
+                          child: Text(
+                              complaint.getBinDataForAdmin()[complaintKey],
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18)),
+                        ),
+                      )
+                    ],
+                  ),
+                FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AdminViewComplaintsDetail(
+                                complaint: complaint,
+                              )),
+                    );
+                  },
+                  color:
+                      complaint.status == sPending ? buttonBlue : buttonGreen,
+                  child: Text(
+                      complaint.status == sPending ? sUpdateStatus : sUpdated,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                  // textColor: Colors.black,
                 ),
-              Container(
-                padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                child: Text(sStatus,
-                    style: TextStyle(
-                        color: wordAndIconBlue,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16)),
-              ),
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AdminViewComplaintsDetail(
-                              binComplaintData: binComplaintData,
-                            )),
-                  );
-                },
-                color: buttonBlue,
-                child: Text(sUpdateStatus,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                // textColor: Colors.black,
-              ),
-            ],
+              ],
+            ),
           ),
+        SizedBox(
+          height: 30,
         ),
       ],
     );
 
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: Stack(
-          children: [
-            BackgroundPainter(),
-            SingleChildScrollView(
-              child: Container(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        IconAndTitle(screenWidth: screenWidth),
-                        Text(sViewComplaints,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 24)),
-                        Container(
-                          width: screenWidth,
-                          child: cardList,
+      resizeToAvoidBottomPadding: false,
+      body: Stack(
+        children: [
+          BackgroundPainter(),
+          (d.allComplaint.length < 2)
+              ? Container(
+                  alignment: Alignment.center,
+                  child: Stack(
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 50,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              IconAndTitle(screenWidth: screenWidth),
+                              Text(
+                                sViewComplaints,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                ),
+                              ),
+                              Container(
+                                width: screenWidth,
+                                child: cardList,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      ArrowBackPop(),
+                    ],
+                  ),
+                )
+              : SingleChildScrollView(
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Stack(
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                IconAndTitle(screenWidth: screenWidth),
+                                Text(
+                                  sViewComplaints,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 24,
+                                  ),
+                                ),
+                                Container(
+                                  width: screenWidth,
+                                  child: cardList,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
+                        ArrowBackPop(),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-            ArrowBackPop(),
-          ],
-        ));
+        ],
+      ),
+    );
   }
 }

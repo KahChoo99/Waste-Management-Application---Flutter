@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/complaint/complaint.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/alert_dialog.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
@@ -10,28 +12,33 @@ import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
 
 class AdminViewComplaintsDetail extends StatefulWidget {
-  final Map<String, String> binComplaintData;
+  final Complaint complaint;
 
-  const AdminViewComplaintsDetail({this.binComplaintData});
+  const AdminViewComplaintsDetail({this.complaint});
 
   @override
   _AdminViewComplaintsDetail createState() => _AdminViewComplaintsDetail();
 }
 
 class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
+  Data d = Data.getInstance();
+
   TextEditingController _commentEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
 
-    Map<String, String> binComplaintData = widget.binComplaintData;
-
-    String complaintID = binComplaintData[sComplaintID];
-    String complaintMessage =
-        "ddaeghulkytsadhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuauisdhiadbasuvduhasvduashdbasbdjasbdsajbdjasdsadhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuauisdhiadbasuvduhasvduashdbasbdjasbdsajbdjasd";
-
+    Map<String, String> binComplaintData =
+    widget.complaint.getBinDataForAdmin();
+    String status = binComplaintData.remove(sStatus);
     List<String> binKeys = binComplaintData.keys.toList();
+
+    String complaintMessage = widget.complaint.complaintMessage;
+    String commentMessage = widget.complaint.commentMessage;
 
     Column cardList = Column(
       children: [
@@ -49,7 +56,7 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                 alignment: Alignment.centerLeft,
                 child: Text(sPostComplaint,
                     style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
               ),
               SizedBox(
                 height: 10,
@@ -100,25 +107,33 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(complaintMessage,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18)),
+                    child: Text(
+                      complaintMessage,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
                   )),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                  child: Text(sComment,
-                      style: TextStyle(
-                          color: wordAndIconBlue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16)),
+                  child: Text(
+                    sComment,
+                    style: TextStyle(
+                      color: wordAndIconBlue,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: TextField(
+                child: status == sPending
+                    ? TextField(
                   maxLines: 8,
                   maxLength: 225,
                   maxLengthEnforced: true,
@@ -133,22 +148,62 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                       ),
                     ),
                   ),
+                )
+                    : Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                    child: Text(
+                      commentMessage,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
                 decoration: mainButtonBoxDecoration,
-                child: FlatButton(
+                child: status == sPending
+                    ? FlatButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   minWidth: 220,
                   height: 50,
-                  onPressed: () => showUpdateSuccess(context),
+                  onPressed: () {
+                    String commentMessage = _commentEditingController.text;
+                    if (commentMessage == null || commentMessage == "")
+                      showPleaseWriteSomeMessage(context);
+                    else {
+                      if (commentMessage == "-" || commentMessage == "None" || commentMessage == "none")
+                        showPleaseWriteSomeMessage(context);
+                      else{
+                        d.updateComplaintStatus(widget.complaint, commentMessage);
+                        showUpdateSuccess(context);
+                      }
+                    }
+                  },
                   color: buttonBlue,
                   child: Text(sUpdate,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 24)),
+                  textColor: Colors.black,
+                )
+                    : FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  minWidth: 220,
+                  height: 50,
+                  onPressed: () {},
+                  color: buttonGreen,
+                  child: Text(sUpdated,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 24)),
                   textColor: Colors.black,
                 ),
               ),
@@ -183,13 +238,15 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 30,
+                    ),
                   ],
                 ),
               ),
             ),
             ArrowBackPop(),
           ],
-        )
-    );
+        ));
   }
 }
