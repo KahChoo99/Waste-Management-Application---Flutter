@@ -22,6 +22,7 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     Map<String, String> binComplaintData = widget.complaint.getBinDataForUser();
     List<String> binKeys = binComplaintData.keys.toList();
@@ -169,7 +170,7 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
               ),
             ),
           ),
-          ArrowBackPop(),
+          ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
         ],
       )
     );

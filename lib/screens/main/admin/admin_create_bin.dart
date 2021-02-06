@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/constants/values.dart';
 import 'package:waste_management/data/bin/bin.dart';
 import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/alert_dialog.dart';
@@ -64,7 +65,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
     Column cardList = Column(
       children: [
         SizedBox(
-          height: 10,
+          height: 10 * screenHeight / dDemoHeight,
         ),
         Container(
           width: screenWidth,
@@ -254,6 +255,9 @@ class _AdminCreateBin extends State<AdminCreateBin> {
             ],
           ),
         ),
+        SizedBox(
+          height: 30,
+        ),
       ],
     );
 
@@ -262,7 +266,6 @@ class _AdminCreateBin extends State<AdminCreateBin> {
         return Scaffold(
           body: SingleChildScrollView(
             child: Container(
-              height: screenHeight,
               alignment: Alignment.center,
               child: Stack(
                 children: [
@@ -287,7 +290,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                       ),
                     ],
                   ),
-                  ArrowBackPop(),
+                  ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
                 ],
               ),
             ),

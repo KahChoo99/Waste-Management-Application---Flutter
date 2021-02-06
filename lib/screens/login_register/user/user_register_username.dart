@@ -178,7 +178,7 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
                     ),
                   ],
                 ),
-                ArrowBackPop(),
+                ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
               ],
             ),
           ),

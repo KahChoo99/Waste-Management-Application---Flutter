@@ -27,10 +27,8 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     Map<String, String> binComplaintData =
     widget.complaint.getBinDataForAdmin();
@@ -245,7 +243,7 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                 ),
               ),
             ),
-            ArrowBackPop(),
+            ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
           ],
         ));
   }

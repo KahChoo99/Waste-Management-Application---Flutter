@@ -293,7 +293,7 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                     ),
                   ],
                 ),
-                ArrowBackPop(),
+                ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
               ],
             ),
           ),

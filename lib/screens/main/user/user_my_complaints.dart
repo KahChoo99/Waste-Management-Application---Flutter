@@ -135,15 +135,45 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                                   fontSize: 24,
                                 ),
                               ),
+                              (d.userComplaint.length != 0) ?
                               Container(
                                 width: screenWidth,
                                 child: cardList,
+                              ): Container(
+                                width: screenWidth,
+                                margin:
+                                EdgeInsets.fromLTRB(40, 20, 40, 40),
+                                padding:
+                                EdgeInsets.fromLTRB(10, 20, 10, 20),
+                                decoration: mainContainerBGBoxDecoration,
+                                alignment: Alignment.center,
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 3,
+                                      child: Icon(
+                                        Icons.info,
+                                        size: 45,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 8,
+                                      child: Text(
+                                        sNoComplaintAvailableAtTheMoment,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 24,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      ArrowBackPop(),
+                      ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
                     ],
                   ),
                 )
@@ -173,7 +203,7 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                             ),
                           ],
                         ),
-                        ArrowBackPop(),
+                        ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
                       ],
                     ),
                   ),

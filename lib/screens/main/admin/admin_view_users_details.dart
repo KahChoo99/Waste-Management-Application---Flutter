@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/constants/values.dart';
 import 'package:waste_management/data/data.dart';
 import 'package:waste_management/data/userProfile/userProfile.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
@@ -21,6 +22,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     Column cardList = Column(
       children: [
@@ -102,18 +104,50 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                                 sViewUserDetails,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 24,
+                                  fontSize: 24 * screenWidth / dDemoWidth,
                                 ),
                               ),
-                              Container(
-                                width: screenWidth,
-                                child: cardList,
-                              ),
+                              (d.allUserProfile.length != 0)
+                                  ? Container(
+                                      width: screenWidth,
+                                      child: cardList,
+                                    )
+                                  : Container(
+                                      width: screenWidth,
+                                      margin:
+                                          EdgeInsets.fromLTRB(40, 20, 40, 40),
+                                      padding:
+                                          EdgeInsets.fromLTRB(10, 20, 10, 20),
+                                      decoration: mainContainerBGBoxDecoration,
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            flex: 3,
+                                            child: Icon(
+                                              Icons.info,
+                                              size: 45,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 8,
+                                            child: Text(
+                                              sNoUserAvailableAtTheMoment,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 24,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                             ],
                           ),
                         ],
                       ),
-                      ArrowBackPop(),
+                      ArrowBackPop(
+                          screenWidth: screenWidth, screenHeight: screenHeight),
                     ],
                   ),
                 )
@@ -146,7 +180,9 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                             ),
                           ],
                         ),
-                        ArrowBackPop(),
+                        ArrowBackPop(
+                            screenWidth: screenWidth,
+                            screenHeight: screenHeight),
                       ],
                     ),
                   ),

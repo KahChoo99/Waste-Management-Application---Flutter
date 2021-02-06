@@ -196,7 +196,7 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                     ),
                   ],
                 ),
-                ArrowBackPop(),
+                ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
               ],
             ),
           ),

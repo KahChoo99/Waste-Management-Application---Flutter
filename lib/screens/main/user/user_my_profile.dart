@@ -139,7 +139,7 @@ class _UserMyProfile extends State<UserMyProfile> {
                   ),
                 ],
               ),
-              ArrowBackPop(),
+              ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
             ],
           ),
         ),

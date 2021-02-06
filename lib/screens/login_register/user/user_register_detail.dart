@@ -148,7 +148,7 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
                   ),
                 ],
               ),
-              ArrowBackPop(),
+              ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
             ],
           ),
         ),

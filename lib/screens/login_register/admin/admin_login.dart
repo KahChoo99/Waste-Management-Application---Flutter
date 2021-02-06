@@ -154,7 +154,7 @@ class _AdminLogin extends State<AdminLogin> {
                     ),
                   ],
                 ),
-                ArrowBackPop(),
+                ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
               ],
             ),
           ),

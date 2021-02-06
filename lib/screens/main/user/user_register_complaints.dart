@@ -22,6 +22,7 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     Column cardList = Column(
       children: [
@@ -114,19 +115,54 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               IconAndTitle(screenWidth: screenWidth),
-                              Text(sRegisterComplaints,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24)),
-                              Container(
-                                width: screenWidth,
-                                child: cardList,
+                              Text(
+                                sRegisterComplaints,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                ),
                               ),
+                              (d.binsAvailable.length != 0)
+                                  ? Container(
+                                      width: screenWidth,
+                                      child: cardList,
+                                    )
+                                  : Container(
+                                      width: screenWidth,
+                                      margin:
+                                          EdgeInsets.fromLTRB(40, 20, 40, 40),
+                                      padding:
+                                          EdgeInsets.fromLTRB(10, 20, 10, 20),
+                                      decoration: mainContainerBGBoxDecoration,
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            flex: 3,
+                                            child: Icon(
+                                              Icons.info,
+                                              size: 45,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 8,
+                                            child: Text(
+                                              sNoBinAvailableAtTheMoment,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 24,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                             ],
                           ),
                         ],
                       ),
-                      ArrowBackPop(),
+                      ArrowBackPop(
+                          screenWidth: screenWidth, screenHeight: screenHeight),
                     ],
                   ),
                 )
@@ -156,7 +192,9 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                             ),
                           ],
                         ),
-                        ArrowBackPop(),
+                        ArrowBackPop(
+                            screenWidth: screenWidth,
+                            screenHeight: screenHeight),
                       ],
                     ),
                   ),

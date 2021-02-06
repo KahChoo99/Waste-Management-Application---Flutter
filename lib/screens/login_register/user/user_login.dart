@@ -155,7 +155,7 @@ class _UserLogin extends State<UserLogin> {
                     ),
                   ],
                 ),
-                ArrowBackPop(),
+                ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
               ],
             ),
           ),

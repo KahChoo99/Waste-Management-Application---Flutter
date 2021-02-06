@@ -176,7 +176,7 @@ class _UserRegisterComplaintsTicket
                   ),
                 ],
               ),
-              ArrowBackPop(),
+              ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
             ],
           ),
         ),
