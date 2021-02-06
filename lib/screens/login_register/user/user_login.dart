@@ -70,8 +70,7 @@ class _UserLogin extends State<UserLogin> {
               labelText: sUsername,
             ),
             style: TextStyle(
-              fontSize:
-                  (defaultTextFieldFontSize + 2) * widthRatio,
+              fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
             ),
           ),
         ),
@@ -95,8 +94,7 @@ class _UserLogin extends State<UserLogin> {
             ),
             obscureText: _obscureText,
             style: TextStyle(
-              fontSize:
-                  (defaultTextFieldFontSize + 2) * widthRatio,
+              fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
             ),
           ),
         ),
