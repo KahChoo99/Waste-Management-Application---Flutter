@@ -24,12 +24,25 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
+    double widthRatio = screenWidth / dDemoWidth;
+    double heightRatio = screenHeight / dDemoHeight;
+
     Column cardList = Column(
       children: [
         for (UserProfile userProfile in d.allUserProfile)
           Container(
-            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-            margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
+            padding: EdgeInsets.fromLTRB(
+              10 * widthRatio,
+              10 * heightRatio,
+              10 * widthRatio,
+              10 * heightRatio,
+            ),
+            margin: EdgeInsets.fromLTRB(
+              30 * widthRatio,
+              20 * heightRatio,
+              30 * widthRatio,
+              0,
+            ),
             decoration: mainContainerBGBoxDecoration,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +52,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                   child: Icon(
                     Icons.account_circle_sharp,
                     color: wordAndIconBlue,
-                    size: 80,
+                    size: 80 * heightRatio,
                   ),
                 ),
                 for (String userDataKey
@@ -50,24 +63,35 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                          child: Text(userDataKey,
-                              style: TextStyle(
-                                  color: wordAndIconBlue,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16)),
+                          padding: EdgeInsets.fromLTRB(
+                            0,
+                            2 * heightRatio,
+                            0,
+                            0,
+                          ),
+                          child: Text(
+                            userDataKey,
+                            style: TextStyle(
+                              color: wordAndIconBlue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16 * widthRatio,
+                            ),
+                          ),
                         ),
                       ),
                       SizedBox(
-                        width: 10,
+                        width: 10 * widthRatio,
                       ),
                       Expanded(
                         flex: 8,
                         child: Container(
                           child: Text(
-                              userProfile.getUseProfileData()[userDataKey],
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18)),
+                            userProfile.getUseProfileData()[userDataKey],
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18 * widthRatio,
+                            ),
+                          ),
                         ),
                       )
                     ],
@@ -76,7 +100,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
             ),
           ),
         SizedBox(
-          height: 30,
+          height: 30 * heightRatio,
         ),
       ],
     );
@@ -94,7 +118,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                       Column(
                         children: [
                           SizedBox(
-                            height: 50,
+                            height: 50 * heightRatio,
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -104,7 +128,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                                 sViewUserDetails,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 24 * screenWidth / dDemoWidth,
+                                  fontSize: 24 * widthRatio,
                                 ),
                               ),
                               (d.allUserProfile.length != 0)
@@ -114,10 +138,18 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                                     )
                                   : Container(
                                       width: screenWidth,
-                                      margin:
-                                          EdgeInsets.fromLTRB(40, 20, 40, 40),
-                                      padding:
-                                          EdgeInsets.fromLTRB(10, 20, 10, 20),
+                                      margin: EdgeInsets.fromLTRB(
+                                        40 * widthRatio,
+                                        20 * heightRatio,
+                                        40 * widthRatio,
+                                        40 * heightRatio,
+                                      ),
+                                      padding: EdgeInsets.fromLTRB(
+                                        10 * widthRatio,
+                                        20 * heightRatio,
+                                        10 * widthRatio,
+                                        20 * heightRatio,
+                                      ),
                                       decoration: mainContainerBGBoxDecoration,
                                       alignment: Alignment.center,
                                       child: Row(
@@ -126,7 +158,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                                             flex: 3,
                                             child: Icon(
                                               Icons.info,
-                                              size: 45,
+                                              size: 45 * heightRatio,
                                             ),
                                           ),
                                           Expanded(
@@ -135,7 +167,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                                               sNoUserAvailableAtTheMoment,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: 24,
+                                                fontSize: 24 * widthRatio,
                                               ),
                                             ),
                                           )
@@ -147,7 +179,9 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                         ],
                       ),
                       ArrowBackPop(
-                          screenWidth: screenWidth, screenHeight: screenHeight),
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                      ),
                     ],
                   ),
                 )
@@ -159,7 +193,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                         Column(
                           children: [
                             SizedBox(
-                              height: 50,
+                              height: 50 * heightRatio,
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +203,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                                   sViewUserDetails,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 24,
+                                    fontSize: 24 * widthRatio,
                                   ),
                                 ),
                                 Container(
@@ -181,8 +215,9 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                           ],
                         ),
                         ArrowBackPop(
-                            screenWidth: screenWidth,
-                            screenHeight: screenHeight),
+                          screenWidth: screenWidth,
+                          screenHeight: screenHeight,
+                        ),
                       ],
                     ),
                   ),
