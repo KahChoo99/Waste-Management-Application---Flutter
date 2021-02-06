@@ -85,7 +85,6 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
           child: Stack(
             children: [
               BackgroundPainter(),
-              ArrowBackPop(),
               Column(
                 children: [
                   SizedBox(
@@ -105,6 +104,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                   ),
                 ],
               ),
+              ArrowBackPop(),
             ],
           ),
         ),

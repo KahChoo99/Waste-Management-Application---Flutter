@@ -157,7 +157,6 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
             child: Stack(
               children: [
                 BackgroundPainter(),
-                ArrowBackPop(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -179,6 +178,7 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
                     ),
                   ],
                 ),
+                ArrowBackPop(),
               ],
             ),
           ),

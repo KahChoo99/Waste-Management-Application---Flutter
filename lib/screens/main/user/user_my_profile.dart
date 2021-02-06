@@ -122,7 +122,6 @@ class _UserMyProfile extends State<UserMyProfile> {
           child: Stack(
             children: [
               BackgroundPainter(),
-              ArrowBackPop(),
               Column(
                 children: [
                   SizedBox(
@@ -142,6 +141,7 @@ class _UserMyProfile extends State<UserMyProfile> {
                   ),
                 ],
               ),
+              ArrowBackPop(),
             ],
           ),
         ),

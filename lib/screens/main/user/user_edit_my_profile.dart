@@ -132,7 +132,6 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
           child: Stack(
             children: [
               BackgroundPainter(),
-              ArrowBackPop(),
               Column(
                 children: [
                   SizedBox(
@@ -153,6 +152,7 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                   ),
                 ],
               ),
+              ArrowBackPop(),
             ],
           ),
         ),

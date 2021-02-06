@@ -261,7 +261,6 @@ class _AdminCreateBin extends State<AdminCreateBin> {
             child: Stack(
               children: [
                 BackgroundPainter(),
-                ArrowBackPop(),
                 Column(
                   children: [
                     SizedBox(
@@ -282,6 +281,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                     ),
                   ],
                 ),
+                ArrowBackPop(),
               ],
             ),
           ),

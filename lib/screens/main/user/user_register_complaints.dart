@@ -92,7 +92,6 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
       body: Stack(
         children: [
           BackgroundPainter(),
-          ArrowBackPop(),
           SingleChildScrollView(
             child: Container(
               alignment: Alignment.center,
@@ -116,7 +115,8 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                 ],
               ),
             ),
-          )
+          ),
+          ArrowBackPop(),
         ],
       )
     );

@@ -133,7 +133,6 @@ class _AdminLogin extends State<AdminLogin> {
             child: Stack(
               children: [
                 BackgroundPainter(),
-                ArrowBackPop(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -155,6 +154,7 @@ class _AdminLogin extends State<AdminLogin> {
                     ),
                   ],
                 ),
+                ArrowBackPop(),
               ],
             ),
           ),

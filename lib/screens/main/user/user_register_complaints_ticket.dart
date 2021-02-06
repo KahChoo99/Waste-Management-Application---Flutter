@@ -129,7 +129,6 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
       body: Stack(
         children: [
           BackgroundPainter(),
-          ArrowBackPop(),
           SingleChildScrollView(
             child: Container(
               height: screenHeight,
@@ -153,6 +152,7 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                   ),
             ),
           ),
+          ArrowBackPop(),
         ],
       )
     );

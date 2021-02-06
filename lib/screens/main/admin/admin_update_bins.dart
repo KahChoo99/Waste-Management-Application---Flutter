@@ -98,7 +98,6 @@ class _AdminUpdateBins extends State<AdminUpdateBins> {
         body: Stack(
           children: [
             BackgroundPainter(),
-            ArrowBackPop(),
             SingleChildScrollView(
               child: Container(
                 alignment: Alignment.center,
@@ -123,7 +122,8 @@ class _AdminUpdateBins extends State<AdminUpdateBins> {
                   ],
                 ),
               ),
-            )
+            ),
+            ArrowBackPop(),
           ],
         ));
   }

@@ -162,7 +162,6 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
         body: Stack(
           children: [
             BackgroundPainter(),
-            ArrowBackPop(),
             SingleChildScrollView(
               child: Container(
                 alignment: Alignment.center,
@@ -188,6 +187,7 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                 ),
               ),
             ),
+            ArrowBackPop(),
           ],
         )
     );
