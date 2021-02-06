@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/constants/values.dart';
 import 'package:waste_management/data/complaint/complaint.dart';
 import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/alert_dialog.dart';
@@ -30,8 +31,11 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
+    double widthRatio = screenWidth / dDemoWidth;
+    double heightRatio = screenHeight / dDemoHeight;
+
     Map<String, String> binComplaintData =
-    widget.complaint.getBinDataForAdmin();
+        widget.complaint.getBinDataForAdmin();
     String status = binComplaintData.remove(sStatus);
     List<String> binKeys = binComplaintData.keys.toList();
 
@@ -41,23 +45,27 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
     Column cardList = Column(
       children: [
         SizedBox(
-          height: 20,
+          height: 20 * heightRatio,
         ),
         Container(
           width: screenWidth,
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-          margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
+          padding: EdgeInsets.fromLTRB(
+            10 * widthRatio,
+            10 * heightRatio,
+            10 * widthRatio,
+            10 * heightRatio,
+          ),
+          margin: EdgeInsets.fromLTRB(
+            30 * widthRatio,
+            0,
+            30 * widthRatio,
+            0,
+          ),
           decoration: mainContainerBGBoxDecoration,
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(sPostComplaint,
-                    style:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-              ),
               SizedBox(
-                height: 10,
+                height: 10 * heightRatio,
               ),
               for (String binKey in binKeys)
                 Row(
@@ -66,25 +74,42 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                     Expanded(
                       flex: 4,
                       child: Container(
-                        padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        child: Text(binKey,
-                            style: TextStyle(
-                                color: wordAndIconBlue,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16)),
+                        padding: EdgeInsets.fromLTRB(
+                          0,
+                          2 * heightRatio,
+                          0,
+                          0,
+                        ),
+                        margin: EdgeInsets.fromLTRB(
+                          0,
+                          0,
+                          0,
+                          10 * heightRatio,
+                        ),
+                        child: Text(
+                          binKey,
+                          style: TextStyle(
+                            color: wordAndIconBlue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16 * widthRatio,
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 10 * widthRatio,
                     ),
                     Expanded(
                       flex: 6,
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        child: Text(binComplaintData[binKey],
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10 * heightRatio),
+                        child: Text(
+                          binComplaintData[binKey],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18 * widthRatio,
+                          ),
+                        ),
                       ),
                     )
                   ],
@@ -92,159 +117,219 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                  child: Text(sMessage,
-                      style: TextStyle(
-                          color: wordAndIconBlue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16)),
+                  padding: EdgeInsets.fromLTRB(
+                    0,
+                    2 * heightRatio,
+                    0,
+                    0,
+                  ),
+                  margin: EdgeInsets.fromLTRB(
+                    0,
+                    0,
+                    0,
+                    10 * heightRatio,
+                  ),
+                  child: Text(
+                    sMessage,
+                    style: TextStyle(
+                      color: wordAndIconBlue,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16 * widthRatio,
+                    ),
+                  ),
                 ),
               ),
               Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: EdgeInsets.fromLTRB(
+                    0,
+                    0,
+                    0,
+                    10 * heightRatio,
+                  ),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       complaintMessage,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        fontSize: 18 * widthRatio,
                       ),
                     ),
                   )),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  padding: EdgeInsets.fromLTRB(
+                    0,
+                    2 * heightRatio,
+                    0,
+                    0,
+                  ),
+                  margin: EdgeInsets.fromLTRB(
+                    0,
+                    0,
+                    0,
+                    10 * heightRatio,
+                  ),
                   child: Text(
                     sComment,
                     style: TextStyle(
                       color: wordAndIconBlue,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 16 * widthRatio,
                     ),
                   ),
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                margin: EdgeInsets.fromLTRB(
+                  0,
+                  0,
+                  0,
+                  10 * heightRatio,
+                ),
                 child: status == sPending
                     ? TextField(
-                  maxLines: 8,
-                  maxLength: 225,
-                  maxLengthEnforced: true,
-                  controller: _commentEditingController,
-                  decoration: InputDecoration(
-                    hintText: sDescription,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                      borderSide: BorderSide(
-                        color: Colors.amber,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                  ),
-                )
+                        maxLines: 8,
+                        maxLength: 225,
+                        maxLengthEnforced: true,
+                        controller: _commentEditingController,
+                        decoration: InputDecoration(
+                          hintText: sDescription,
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.circular(10.0 * heightRatio),
+                            borderSide: BorderSide(
+                              color: Colors.amber,
+                              style: BorderStyle.solid,
+                            ),
+                          ),
+                        ),
+                        style: TextStyle(
+                          fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
+                        ),
+                      )
                     : Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                    margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                    child: Text(
-                      commentMessage,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(
+                            0,
+                            2 * heightRatio,
+                            0,
+                            0,
+                          ),
+                          margin: EdgeInsets.fromLTRB(
+                            0,
+                            0,
+                            0,
+                            10 * heightRatio,
+                          ),
+                          child: Text(
+                            commentMessage,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18 * widthRatio,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
+                margin: EdgeInsets.fromLTRB(
+                  50 * widthRatio,
+                  10 * heightRatio,
+                  50 * widthRatio,
+                  10 * heightRatio,
+                ),
                 decoration: mainButtonBoxDecoration,
-                child: status == sPending
-                    ? FlatButton(
+                child: FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  minWidth: 220,
-                  height: 50,
-                  onPressed: () {
-                    String commentMessage = _commentEditingController.text;
-                    if (commentMessage == null || commentMessage == "")
-                      showPleaseWriteSomeMessage(context);
-                    else {
-                      if (commentMessage == "-" || commentMessage == "None" || commentMessage == "none")
-                        showPleaseWriteSomeMessage(context);
-                      else{
-                        d.updateComplaintStatus(widget.complaint, commentMessage);
-                        showUpdateSuccess(context);
-                      }
-                    }
-                  },
-                  color: buttonBlue,
-                  child: Text(sUpdate,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 24)),
-                  textColor: Colors.black,
-                )
-                    : FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                  minWidth: 220 * widthRatio,
+                  height: 50 * heightRatio,
+                  onPressed: status == sPending
+                      ? () {
+                          String commentMessage =
+                              _commentEditingController.text;
+                          if (commentMessage == null || commentMessage == "")
+                            showPleaseWriteSomeMessage(context);
+                          else {
+                            if (commentMessage == "-" ||
+                                commentMessage == "None" ||
+                                commentMessage == "none")
+                              showPleaseWriteSomeMessage(context);
+                            else {
+                              d.updateComplaintStatus(
+                                  widget.complaint, commentMessage);
+                              showUpdateSuccess(context);
+                            }
+                          }
+                        }
+                      : () {},
+                  color: status == sPending ? buttonBlue : buttonGreen,
+                  child: Text(
+                    status == sPending ? sUpdate : sUpdated,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24 * widthRatio,
+                    ),
                   ),
-                  minWidth: 220,
-                  height: 50,
-                  onPressed: () {},
-                  color: buttonGreen,
-                  child: Text(sUpdated,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 24)),
                   textColor: Colors.black,
                 ),
               ),
             ],
           ),
         ),
+        SizedBox(
+          height: 30 * heightRatio,
+        ),
       ],
     );
 
     return Scaffold(
-        body: Stack(
-          children: [
-            BackgroundPainter(),
-            SingleChildScrollView(
-              child: Container(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        IconAndTitle(screenWidth: screenWidth),
-                        Text(sUpdateStatus,
+      body: Stack(
+        children: [
+          BackgroundPainter(),
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.center,
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: 50 * heightRatio,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          IconAndTitle(screenWidth: screenWidth),
+                          Text(
+                            sUpdateStatus,
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 24)),
-                        Container(
-                          width: screenWidth,
-                          child: cardList,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                  ],
-                ),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24 * widthRatio,
+                            ),
+                          ),
+                          Container(
+                            width: screenWidth,
+                            child: cardList,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  ArrowBackPop(
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
+                  ),
+                ],
               ),
             ),
-            ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
