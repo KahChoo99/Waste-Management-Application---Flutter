@@ -41,9 +41,9 @@ class UserMainPage extends StatelessWidget {
         for (var i = 0; i < iconList.length; i++)
           Container(
             margin: EdgeInsets.fromLTRB(
-              30 * widthRatio,
+              35 * widthRatio,
               30 * heightRatio,
-              30 * widthRatio,
+              35 * widthRatio,
               0,
             ),
             decoration: mainButtonBoxDecoration,
