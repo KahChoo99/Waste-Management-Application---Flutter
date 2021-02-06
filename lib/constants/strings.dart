@@ -73,10 +73,12 @@ const sCreateSuccessfully = "Create Successfully";
 const sHowManyDaysPerWeek = "How Many Days Per Week";
 //// Update Bins
 const sUpdateBins = "Update Bins";
+const sNoBinAvailableAtTheMoment = "No bin available at the moment";
 const sUpdate = "Update";
 const sUpdateSuccessfully = "Update Successfully";
 //// View Complaints
 const sViewComplaints = "View Complaints";
+const sNoComplaintAvailableAtTheMoment = "No complaint available at the moment";
 const sUpdateStatus = "Update Status";
 const sComment = "Comment";
 const sUpdated = "Updated";
@@ -84,6 +86,7 @@ const sUpdated = "Updated";
 const sViewWorkReport = "View Work Report";
 //// Users Details
 const sViewUserDetails = "User Details";
+const sNoUserAvailableAtTheMoment = "No user available at the moment";
 
 const list_sFTState_sDistrict_SubDistrict = {
   // JOHOR
