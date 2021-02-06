@@ -24,7 +24,7 @@ const sRegisterUserSuccessfully = "Register Account Successfully";
 const sUserDetail = "User Detail";
 const sRegisterComplaints = "Register Complaints";
 //// Register Complaints
-const sTicket = "Ticket";
+const sAddComplaint = "+ Complaint";
 const sBinID = "Bin ID";
 const sFTState = "FT/State";
 const sDistrict = "District";
@@ -35,8 +35,8 @@ const sPostComplaint = "Post Complaint";
 const sMessage = "Message";
 const sDescription = "Description";
 const sContinue = "Continue";
+const sPleaseWriteSomeMessage = "Please Write Some Message. Thanks!";
 const sConfirm = "Confirm?";
-const sNoDescription = "-";
 const sSubmit = "Submit";
 const sCancel = "Cancel";
 const sSubmitSuccessfully = "Submit Successfully";
@@ -79,6 +79,7 @@ const sUpdateSuccessfully = "Update Successfully";
 const sViewComplaints = "View Complaints";
 const sUpdateStatus = "Update Status";
 const sComment = "Comment";
+const sUpdated = "Updated";
 //// View Work Report
 const sViewWorkReport = "View Work Report";
 //// Users Details
