@@ -171,7 +171,6 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
       return Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            height: screenHeight,
             alignment: Alignment.center,
             child: Stack(
               children: [

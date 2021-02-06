@@ -115,7 +115,6 @@ class _UserMyProfile extends State<UserMyProfile> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: screenHeight,
           alignment: Alignment.center,
           child: Stack(
             children: [

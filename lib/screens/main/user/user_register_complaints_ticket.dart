@@ -154,7 +154,6 @@ class _UserRegisterComplaintsTicket
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: screenHeight,
           alignment: Alignment.center,
           child: Stack(
             children: [

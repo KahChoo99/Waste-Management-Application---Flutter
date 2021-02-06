@@ -115,7 +115,6 @@ class _UserMyComplaints extends State<UserMyComplaints> {
           BackgroundPainter(),
           (d.userComplaint.length < 2)
               ? Container(
-                  height: screenHeight,
                   alignment: Alignment.center,
                   child: Stack(
                     children: [

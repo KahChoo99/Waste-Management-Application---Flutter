@@ -122,7 +122,6 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: screenHeight,
           alignment: Alignment.center,
           child: Stack(
             children: [

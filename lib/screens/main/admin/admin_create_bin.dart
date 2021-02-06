@@ -264,37 +264,41 @@ class _AdminCreateBin extends State<AdminCreateBin> {
     return StatefulBuilder(
       builder: (context, setState) {
         return Scaffold(
-          body: SingleChildScrollView(
-            child: Container(
-              alignment: Alignment.center,
-              child: Stack(
-                children: [
-                  BackgroundPainter(),
-                  Column(
+          body: Stack(
+            children: [
+              BackgroundPainter(),
+              SingleChildScrollView(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Stack(
                     children: [
-                      SizedBox(
-                        height: 40,
-                      ),
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          IconAndTitle(screenWidth: screenWidth),
-                          Text(sCreateBin,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 24)),
-                          Container(
-                            width: screenWidth,
-                            child: cardList,
+                        children: [
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              IconAndTitle(screenWidth: screenWidth),
+                              Text(sCreateBin,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 24)),
+                              Container(
+                                width: screenWidth,
+                                child: cardList,
+                              ),
+                            ],
                           ),
                         ],
                       ),
+                      ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
                     ],
                   ),
-                  ArrowBackPop(screenWidth: screenWidth, screenHeight: screenHeight),
-                ],
+                ),
               ),
-            ),
-          ),
+            ],
+          )
         );
       },
     );
