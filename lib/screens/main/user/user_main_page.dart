@@ -16,133 +16,77 @@ import 'package:waste_management/widgets/icon_and_title.dart';
 class UserMainPage extends StatelessWidget {
   Data d = Data.getInstance();
 
+  List<IconData> iconList = [
+    Icons.app_registration,
+    Icons.preview_sharp,
+    Icons.account_circle_sharp
+  ];
+  List<String> buttonString = [sRegisterComplaints, sMyComplaints, sMyProfile];
+  var classList = [
+    UserRegisterComplaints(),
+    UserMyComplaints(),
+    UserMyProfile()
+  ];
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    double widthRatio = screenWidth / dDemoWidth;
+    double heightRatio = screenHeight / dDemoHeight;
 
     Column buttonList = Column(
       children: [
-        SizedBox(
-          height: 30,
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
-          decoration: mainButtonBoxDecoration,
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+        for (var i = 0; i < iconList.length; i++)
+          Container(
+            margin: EdgeInsets.fromLTRB(
+              30 * widthRatio,
+              30 * heightRatio,
+              30 * widthRatio,
+              0,
             ),
-            minWidth: 220,
-            height: 80,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => UserRegisterComplaints()),
-              );
-            },
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Icon(
-                    Icons.app_registration,
-                    color: wordAndIconBlue,
-                    size: 40,
+            decoration: mainButtonBoxDecoration,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0 * heightRatio),
+              ),
+              minWidth: 220 * widthRatio,
+              height: 80 * heightRatio,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => classList[i],
                   ),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(sRegisterComplaints,
+                );
+              },
+              color: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Icon(
+                      iconList[i],
+                      color: wordAndIconBlue,
+                      size: 40,
+                    ),
+                  ),
+                  Expanded(
+                    flex: 7,
+                    child: Text(
+                      buttonString[i],
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26 * screenWidth / dDemoWidth)),
-                ),
-              ],
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26 * widthRatio,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(50, 30, 50, 0),
-          decoration: mainButtonBoxDecoration,
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            minWidth: 220,
-            height: 80,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => UserMyComplaints()),
-              );
-            },
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Icon(
-                    Icons.preview_sharp,
-                    color: wordAndIconBlue,
-                    size: 45,
-                  ),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(sMyComplaints,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26)),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(50, 30, 50, 10),
-          decoration: mainButtonBoxDecoration,
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            minWidth: 220,
-            height: 80,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => UserMyProfile()),
-              );
-            },
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Icon(
-                    Icons.account_circle_sharp,
-                    color: wordAndIconBlue,
-                    size: 45,
-                  ),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(sMyProfile,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26)),
-                ),
-              ],
-            ),
-          ),
-        ),
       ],
     );
 
@@ -180,14 +124,14 @@ class UserMainPage extends StatelessWidget {
         ),
         child: BottomNavigationBar(
           onTap: (int index) {
-            if(index == 1){
+            if (index == 1) {
               d.logout();
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) => LoginRegister(),
                 ),
-                    (route) => false,
+                (route) => false,
               );
             }
           },
@@ -199,15 +143,27 @@ class UserMainPage extends StatelessWidget {
           currentIndex: 0,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(
+                Icons.home,
+                size: 24 * heightRatio,
+              ),
               title: Text(
                 sHome,
+                style: TextStyle(
+                  fontSize: 14 * widthRatio,
+                ),
               ),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.logout),
+              icon: Icon(
+                Icons.logout,
+                size: 24 * heightRatio,
+              ),
               title: Text(
                 sLogOut,
+                style: TextStyle(
+                  fontSize: 14 * widthRatio,
+                ),
               ),
             ),
           ],
