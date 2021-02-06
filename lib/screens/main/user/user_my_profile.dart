@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/data.dart';
+import 'package:waste_management/data/userProfile/userProfile.dart';
 import 'package:waste_management/screens/main/user/user_edit_my_profile.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
@@ -15,19 +17,15 @@ class UserMyProfile extends StatefulWidget {
 }
 
 class _UserMyProfile extends State<UserMyProfile> {
+  Data d = Data.getInstance();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    Map<String, String> userData= {
-      sUserID: "001",
-      sName: "Apa saja la",
-      sEmail: "entahla@gmail.com",
-      sAddress: "B76, Taman Seri Jaya, 45500 Tanjong Karang, SelangB76, Taman Seri Jaya, 45500 Tanjong Karang, SelangB76, Taman Seri Jaya, 45500 Tanjong Karang, Seland",
-    };
-
-    List<String> userDataKeys = userData.keys.toList();
+    UserProfile userProfile = d.userProfile;
+    Map<String, String> userData = userProfile.getUseProfileData();
 
     Column cardList = Column(
       children: [
@@ -52,7 +50,7 @@ class _UserMyProfile extends State<UserMyProfile> {
               SizedBox(
                 height: 20,
               ),
-              for (String userDataKey in userDataKeys)
+              for (String userDataKey in userData.keys.toList())
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -98,7 +96,7 @@ class _UserMyProfile extends State<UserMyProfile> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UserEditMyProfile(userData: userData,)),
+                          builder: (context) => UserEditMyProfile(userProfile: userProfile,)),
                     );
                   },
                   color: buttonBlue,
@@ -122,7 +120,6 @@ class _UserMyProfile extends State<UserMyProfile> {
           child: Stack(
             children: [
               BackgroundPainter(),
-              ArrowBackPop(),
               Column(
                 children: [
                   SizedBox(
@@ -142,6 +139,7 @@ class _UserMyProfile extends State<UserMyProfile> {
                   ),
                 ],
               ),
+              ArrowBackPop(),
             ],
           ),
         ),
