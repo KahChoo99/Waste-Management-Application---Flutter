@@ -177,17 +177,17 @@ class Data {
         break;
       }
     }
-    for (var i = 0; i < allComplaint.length; i++) {
-      if (allComplaint[i].bin.binID == bin.binID) {
-        Complaint complaintToChange = this.allComplaint.removeAt(i);
-        complaintToChange.bin = bin;
-
-        this.allComplaint.insert(i, complaintToChange);
-
-        this.complaintsBox.deleteAt(i);
-        this.complaintsBox.putAt(i, complaintToChange);
-      }
-    }
+    // for (var i = 0; i < allComplaint.length; i++) {
+    //   if (allComplaint[i].bin.binID == bin.binID) {
+    //     Complaint complaintToChange = this.allComplaint.removeAt(i);
+    //     complaintToChange.bin = bin;
+    //
+    //     this.allComplaint.insert(i, complaintToChange);
+    //
+    //     this.complaintsBox.deleteAt(i);
+    //     this.complaintsBox.putAt(i, complaintToChange);
+    //   }
+    // }
   }
 
   void updateComplaintStatus(Complaint complaint, String commentMessage) {
