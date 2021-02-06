@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
 import 'package:waste_management/constants/values.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/screens/login_register/login_register.dart';
 import 'package:waste_management/screens/main/admin/admin_update_bins.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
@@ -14,6 +15,8 @@ import 'package:waste_management/screens/main/admin/admin_view_complaints.dart';
 import 'package:waste_management/screens/main/admin/admin_view_users_details.dart';
 
 class AdminMainPage extends StatelessWidget {
+  Data d = Data.getInstance();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -218,6 +221,7 @@ class AdminMainPage extends StatelessWidget {
         child: BottomNavigationBar(
           onTap: (int index) {
             if(index == 1){
+              d.logout();
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(

@@ -2,19 +2,29 @@
 const sAppTitle = "Solid Waste Management";
 const sUsername = "Username";
 const sPassword = "Password";
-const sConfirmPassword = "Confirm Password";
+const sOr = "Or";
+const sCannotBeEmpty = "Cannot Be Empty";
+const sWrongPassword = "Wrong Password";
 const sLogin = "Login";
-const sSignUp = "Sign Up";
 const sHome = "Home";
 const sLogOut = "Log Out";
+const sOk = "Ok";
+const sRetry = "Retry";
 
 // User
 const sUserLogin = "User Login";
+const sNoUsernameFound = "No Username Found";
+const sSignUp = "Sign Up";
+const sConfirmPassword = "Confirm Password";
 const sUserRegister = "User Register";
+const sUsernameHasBeenTaken = "Username Has Been Taken";
+const sMustBeTheSameAs = "Must Be The Same As";
+const sPleaseUseValidEmail = "Please Use Valid Email with @ and .com";
+const sRegisterUserSuccessfully = "Register Account Successfully";
 const sUserDetail = "User Detail";
 const sRegisterComplaints = "Register Complaints";
 //// Register Complaints
-const sTicket = "Ticket";
+const sAddComplaint = "+ Complaint";
 const sBinID = "Bin ID";
 const sFTState = "FT/State";
 const sDistrict = "District";
@@ -25,13 +35,12 @@ const sPostComplaint = "Post Complaint";
 const sMessage = "Message";
 const sDescription = "Description";
 const sContinue = "Continue";
+const sPleaseWriteSomeMessage = "Please Write Some Message. Thanks!";
 const sConfirm = "Confirm?";
-const sNoDescription = "-";
 const sSubmit = "Submit";
 const sCancel = "Cancel";
 const sSubmitSuccessfully = "Submit Successfully";
 const sComplaintID = "Complaint ID";
-const sOk = "Ok";
 //// My Complaints
 const sMyComplaints = "My Complaints";
 const sStatus = "Status";
@@ -48,13 +57,18 @@ const sSave = "Save";
 const sSaveSuccessfully = "Save Successfully";
 
 // Admin
+const sAdmin = "Admin";
 const sAdminLogin = "Admin Login";
+const sWrongAdminUsername = "Wrong Admin Username";
 //// Create Bin
 const sCreateBin = "Create Bin";
 const sSelectFTState = "Select FT/State";
 const sSelectDistrict = "Select District";
 const sSelectSubDistrict = "Select Sub District";
 const sCreate = "Create";
+const sPleaseSetAValidAreaName = "Please Set A Valid Area Name";
+const sDaysPerWeek = "days per week";
+const sPleaseSetInRange1To7Days = "Please Set In The Range (1-7) Day/s";
 const sCreateSuccessfully = "Create Successfully";
 const sHowManyDaysPerWeek = "How Many Days Per Week";
 //// Update Bins
@@ -65,6 +79,7 @@ const sUpdateSuccessfully = "Update Successfully";
 const sViewComplaints = "View Complaints";
 const sUpdateStatus = "Update Status";
 const sComment = "Comment";
+const sUpdated = "Updated";
 //// View Work Report
 const sViewWorkReport = "View Work Report";
 //// Users Details

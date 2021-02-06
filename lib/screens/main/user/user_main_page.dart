@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
 import 'package:waste_management/constants/values.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/screens/login_register/login_register.dart';
 import 'package:waste_management/screens/main/user/user_my_complaints.dart';
 import 'package:waste_management/screens/main/user/user_my_profile.dart';
@@ -13,6 +14,8 @@ import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
 
 class UserMainPage extends StatelessWidget {
+  Data d = Data.getInstance();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -178,6 +181,7 @@ class UserMainPage extends StatelessWidget {
         child: BottomNavigationBar(
           onTap: (int index) {
             if(index == 1){
+              d.logout();
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(

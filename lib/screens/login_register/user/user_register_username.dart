@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/data.dart';
+import 'package:waste_management/data/user/user.dart';
 import 'package:waste_management/screens/login_register/user/user_register_detail.dart';
+import 'package:waste_management/widgets/alert_dialog.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -18,12 +21,14 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
     super.initState();
   }
 
-  bool _obscureText = true;
+  Data d = Data.getInstance();
 
   TextEditingController _usernameEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
   TextEditingController _confirmPasswordEditingController =
       TextEditingController();
+
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -100,10 +105,32 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
             minWidth: 150,
             height: 50,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => UserRegisterDetail()),
-              );
+              if (_usernameEditingController.text.isEmpty ||
+                  _passwordEditingController.text.isEmpty ||
+                  _confirmPasswordEditingController.text.isEmpty)
+                showUsernameOrPasswordCannotBeEmpty(context);
+              else {
+                String username = _usernameEditingController.text;
+                String password = _passwordEditingController.text;
+                String confirmPassword = _confirmPasswordEditingController.text;
+                if (password == confirmPassword) {
+                  if (d.checkUniqueUsername(username)) {
+                    User user = User(username, password);
+                    print("Username = " + username);
+                    print("Password = " + password);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UserRegisterDetail(
+                          user: user,
+                        ),
+                      ),
+                    );
+                  } else
+                    showUsernameHasBeenTaken(context);
+                } else
+                  showConfirmPasswordMustBeTheSameAsPassword(context);
+              }
             },
             color: buttonBlue,
             child: Text(sContinue,
@@ -130,7 +157,6 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
             child: Stack(
               children: [
                 BackgroundPainter(),
-                ArrowBackPop(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -152,6 +178,7 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
                     ),
                   ],
                 ),
+                ArrowBackPop(),
               ],
             ),
           ),

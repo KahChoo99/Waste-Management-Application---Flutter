@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/bin/bin.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -22,6 +24,8 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
   void initState() {
     super.initState();
   }
+  Data d = Data.getInstance();
+
   String fTState;
   String district;
   String subDistrict;
@@ -43,6 +47,8 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+
+    String binID = widget.binData[sBinID];
 
     if (fTState != null) {
       if (district == null) {
@@ -227,7 +233,23 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                   height: 50,
                   // onPressed: () => showConfirmSubmit(context, binData, _messageEditingController),
                   onPressed: () {
-                    showUpdateSuccess(context);
+                    if (fTState == null || district == null || subDistrict == null || _areaEditingController.text.isEmpty || _cleaningPeriodEditingController.text.isEmpty)
+                      showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(context);
+                    else {
+                      String area = _areaEditingController.text.toString();
+                      String cleaningPeriod = _cleaningPeriodEditingController.text.toString() + " $sDaysPerWeek";
+                      if (area == "-" || area == "None" || area == "none")
+                        showPleaseSetAValidAreaName(context);
+                      else {
+                        if (int.parse(cleaningPeriod[0]) > 7 || int.parse(cleaningPeriod[0]) == 0)
+                          showPleaseSetInRange1To7Days(context);
+                        else {
+                          Bin bin = Bin(binID, fTState, district, subDistrict, area, cleaningPeriod);
+                          d.editBin(bin);
+                          showUpdateSuccess(context);
+                        }
+                      }
+                    }
                   },
                   color: buttonBlue,
                   child: Text(sUpdate,
@@ -251,7 +273,6 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
             child: Stack(
               children: [
                 BackgroundPainter(),
-                ArrowBackPop(),
                 Column(
                   children: [
                     SizedBox(
@@ -272,6 +293,7 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                     ),
                   ],
                 ),
+                ArrowBackPop(),
               ],
             ),
           ),
