@@ -17,172 +17,84 @@ import 'package:waste_management/screens/main/admin/admin_view_users_details.dar
 class AdminMainPage extends StatelessWidget {
   Data d = Data.getInstance();
 
+  List<IconData> iconList = [
+    Icons.app_registration,
+    Icons.edit_sharp,
+    Icons.preview_sharp,
+    Icons.account_circle_sharp
+  ];
+  List<String> buttonString = [
+    sCreateBin,
+    sUpdateBins,
+    sViewComplaints,
+    sViewUserDetails
+  ];
+  var classList = [
+    AdminCreateBin(),
+    AdminUpdateBins(),
+    AdminViewComplaints(),
+    AdminViewUsersDetails()
+  ];
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    double widthRatio = screenWidth / dDemoWidth;
+    double heightRatio = screenHeight / dDemoHeight;
 
     Column buttonList = Column(
       children: [
-        SizedBox(
-          height: 30,
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
-          decoration: mainButtonBoxDecoration,
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+        for (var i = 0; i < iconList.length; i++)
+          Container(
+            margin: EdgeInsets.fromLTRB(
+              40 * widthRatio,
+              30 * heightRatio,
+              40 * widthRatio,
+              0,
             ),
-            minWidth: 220,
-            height: 80,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => AdminCreateBin()),
-              );
-            },
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Icon(
-                    Icons.app_registration,
-                    color: wordAndIconBlue,
-                    size: 40,
+            decoration: mainButtonBoxDecoration,
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0 * heightRatio),
+              ),
+              minWidth: 220 * widthRatio,
+              height: 80 * heightRatio,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => classList[i],
                   ),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(sCreateBin,
+                );
+              },
+              color: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Icon(
+                      iconList[i],
+                      color: wordAndIconBlue,
+                      size: 40,
+                    ),
+                  ),
+                  Expanded(
+                    flex: 7,
+                    child: Text(
+                      buttonString[i],
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26 * screenWidth / dDemoWidth)),
-                ),
-              ],
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26 * widthRatio,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(50, 30, 50, 0),
-          decoration: mainButtonBoxDecoration,
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            minWidth: 220,
-            height: 80,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AdminUpdateBins()),
-              );
-            },
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Icon(
-                    Icons.edit_sharp,
-                    color: wordAndIconBlue,
-                    size: 45,
-                  ),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(sUpdateBins,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26)),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(50, 30, 50, 0),
-          decoration: mainButtonBoxDecoration,
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            minWidth: 220,
-            height: 80,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AdminViewComplaints()),
-              );
-            },
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Icon(
-                    Icons.preview_sharp,
-                    color: wordAndIconBlue,
-                    size: 45,
-                  ),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(sViewComplaints,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26)),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(50, 30, 50, 10),
-          decoration: mainButtonBoxDecoration,
-          child: FlatButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            minWidth: 220,
-            height: 80,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AdminViewUsersDetails()),
-              );
-            },
-            color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Icon(
-                    Icons.account_circle_sharp,
-                    color: wordAndIconBlue,
-                    size: 45,
-                  ),
-                ),
-                Expanded(
-                  flex: 7,
-                  child: Text(sViewUserDetails,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 26)),
-                ),
-              ],
-            ),
-          ),
-        ),
       ],
     );
 
@@ -220,14 +132,14 @@ class AdminMainPage extends StatelessWidget {
         ),
         child: BottomNavigationBar(
           onTap: (int index) {
-            if(index == 1){
+            if (index == 1) {
               d.logout();
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
                   builder: (BuildContext context) => LoginRegister(),
                 ),
-                    (route) => false,
+                (route) => false,
               );
             }
           },
@@ -239,15 +151,27 @@ class AdminMainPage extends StatelessWidget {
           currentIndex: 0,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(
+                Icons.home,
+                size: 24 * heightRatio,
+              ),
               title: Text(
                 sHome,
+                style: TextStyle(
+                  fontSize: 14 * widthRatio,
+                ),
               ),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.logout),
+              icon: Icon(
+                Icons.logout,
+                size: 24 * heightRatio,
+              ),
               title: Text(
                 sLogOut,
+                style: TextStyle(
+                  fontSize: 14 * widthRatio,
+                ),
               ),
             ),
           ],
