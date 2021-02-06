@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/bin/bin.dart';
+import 'package:waste_management/data/complaint/complaint.dart';
+import 'package:waste_management/data/data.dart';
 
 showUsernameOrPasswordCannotBeEmpty(BuildContext context) {
   showDialog(
@@ -147,7 +149,8 @@ showNameOrEmailOrAddressCannotBeEmpty(BuildContext context) {
   );
 }
 
-showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(BuildContext context) {
+showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(
+    BuildContext context) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -188,8 +191,7 @@ showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(BuildConte
                           style: TextStyle(color: wordAndIconRed)),
                       TextSpan(text: " $sOr "),
                       TextSpan(
-                          text: sArea,
-                          style: TextStyle(color: wordAndIconRed)),
+                          text: sArea, style: TextStyle(color: wordAndIconRed)),
                       TextSpan(text: " $sOr "),
                       TextSpan(
                           text: "$sCleaningPeriod ",
@@ -317,11 +319,10 @@ showPleaseUseValidEmail(BuildContext context) {
                   color: wordAndIconRed,
                   size: 70,
                 ),
-                Text(
-                    sPleaseUseValidEmail,
+                Text(sPleaseUseValidEmail,
                     textAlign: TextAlign.center,
                     style:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                 SizedBox(
                   height: 20,
                 ),
@@ -372,11 +373,10 @@ showPleaseSetAValidAreaName(BuildContext context) {
                   color: wordAndIconRed,
                   size: 70,
                 ),
-                Text(
-                    sPleaseSetAValidAreaName,
+                Text(sPleaseSetAValidAreaName,
                     textAlign: TextAlign.center,
                     style:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                 SizedBox(
                   height: 20,
                 ),
@@ -427,11 +427,10 @@ showPleaseSetInRange1To7Days(BuildContext context) {
                   color: wordAndIconRed,
                   size: 70,
                 ),
-                Text(
-                    sPleaseSetInRange1To7Days,
+                Text(sPleaseSetInRange1To7Days,
                     textAlign: TextAlign.center,
                     style:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                 SizedBox(
                   height: 20,
                 ),
@@ -590,11 +589,10 @@ showWrongAdminUsername(BuildContext context) {
                   color: wordAndIconRed,
                   size: 70,
                 ),
-                Text(
-                    sWrongAdminUsername,
+                Text(sWrongAdminUsername,
                     textAlign: TextAlign.center,
                     style:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                 SizedBox(
                   height: 20,
                 ),
@@ -645,8 +643,7 @@ showUsernameHasBeenTaken(BuildContext context) {
                   color: wordAndIconRed,
                   size: 70,
                 ),
-                Text(
-                    sUsernameHasBeenTaken,
+                Text(sUsernameHasBeenTaken,
                     textAlign: TextAlign.center,
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
@@ -680,13 +677,74 @@ showUsernameHasBeenTaken(BuildContext context) {
   );
 }
 
-showConfirmSubmit(BuildContext context, Map<String, String> binData,
-    TextEditingController _messageEditingController) {
-  List<String> binKeys = binData.keys.toList();
+showPleaseWriteSomeMessage(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return WillPopScope(
+        onWillPop: () async => false,
+        child: AlertDialog(
+          contentPadding: EdgeInsets.all(5),
+          content: Container(
+            height: 200,
+            width: 350,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.warning_sharp,
+                  color: wordAndIconRed,
+                  size: 70,
+                ),
+                Text(
+                  sPleaseWriteSomeMessage,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  height: 50,
+                  minWidth: 150,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  color: buttonBlue,
+                  child: Text(
+                    sRetry,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+showConfirmSubmit(BuildContext context, Bin bin, String userID,
+    String message) {
+  List<String> binKeys = bin.getBinData().keys.toList();
 
   showDialog(
     context: context,
     builder: (context) {
+      Data d = Data.getInstance();
+
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
@@ -696,7 +754,7 @@ showConfirmSubmit(BuildContext context, Map<String, String> binData,
           content: SingleChildScrollView(
             child: Container(
               width: 350,
-              height: 300 + 300 * _messageEditingController.text.length / 225,
+              height: 300 + 300 * message.length / 225,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -726,7 +784,7 @@ showConfirmSubmit(BuildContext context, Map<String, String> binData,
                           child: Container(
                             margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                             child: Text(
-                              binData[binKey],
+                              bin.getBinData()[binKey],
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 17),
                             ),
@@ -743,9 +801,7 @@ showConfirmSubmit(BuildContext context, Map<String, String> binData,
                             fontSize: 15)),
                   ),
                   Text(
-                    _messageEditingController.text.isNotEmpty
-                        ? _messageEditingController.text
-                        : sNoDescription,
+                    message,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                   ),
                   SizedBox(
@@ -785,8 +841,13 @@ showConfirmSubmit(BuildContext context, Map<String, String> binData,
                           ),
                           height: 50,
                           onPressed: () {
+                            String complaintID = d.getNewID(BoxType.complaint);
+                            String commentMessage = "";
+                            String status = sPending;
+                            Complaint complaint = Complaint(complaintID, userID, bin, message, commentMessage, status);
+                            d.addComplaint(complaint);
                             Navigator.of(context).pop();
-                            showSubmitSuccess(context);
+                            showSubmitSuccess(context, complaintID);
                           },
                           color: buttonGreen,
                           child: Text(
@@ -866,11 +927,7 @@ showRegisterUserSuccess(BuildContext context) {
   );
 }
 
-showSubmitSuccess(BuildContext context) {
-  DateTime now = DateTime.now();
-  DateFormat formatter = DateFormat('yyyyMMdd');
-  String dateString = formatter.format(now);
-
+showSubmitSuccess(BuildContext context, String complaintID) {
   showDialog(
     context: context,
     builder: (context) {
@@ -898,7 +955,7 @@ showSubmitSuccess(BuildContext context) {
                   height: 10,
                 ),
                 Text(
-                  "$sComplaintID = ${dateString}0001",
+                  "$sComplaintID = $complaintID",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 SizedBox(
