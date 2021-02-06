@@ -157,7 +157,7 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              IconAndTitle(screenWidth: screenWidth),
+                              IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sMyComplaints,
                                 style: TextStyle(
@@ -232,7 +232,7 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                IconAndTitle(screenWidth: screenWidth),
+                                IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                                 Text(
                                   sMyComplaints,
                                   style: TextStyle(

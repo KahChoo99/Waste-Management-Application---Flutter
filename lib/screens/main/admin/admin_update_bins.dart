@@ -138,7 +138,7 @@ class _AdminUpdateBins extends State<AdminUpdateBins> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              IconAndTitle(screenWidth: screenWidth),
+                              IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sUpdateBins,
                                 style: TextStyle(
@@ -213,7 +213,7 @@ class _AdminUpdateBins extends State<AdminUpdateBins> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                IconAndTitle(screenWidth: screenWidth),
+                                IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                                 Text(
                                   sUpdateBins,
                                   style: TextStyle(

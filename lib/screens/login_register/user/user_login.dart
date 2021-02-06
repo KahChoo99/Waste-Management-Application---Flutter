@@ -118,12 +118,12 @@ class _UserLogin extends State<UserLogin> {
             onPressed: () {
               if (_usernameEditingController.text.isEmpty ||
                   _passwordEditingController.text.isEmpty)
-                showUsernameOrPasswordCannotBeEmpty(context);
+                showUsernameOrPasswordCannotBeEmpty(context, widthRatio, heightRatio);
               else {
                 String username = _usernameEditingController.text;
                 String password = _passwordEditingController.text;
                 if (!d.checkUserUsername(username))
-                  showNoUsernameFound(context);
+                  showNoUsernameFound(context, widthRatio, heightRatio);
                 else {
                   if (d.checkUserCredential(username, password)) {
                     String userID = d.getUserID(username);
@@ -136,7 +136,7 @@ class _UserLogin extends State<UserLogin> {
                       (route) => false,
                     );
                   } else
-                    showWrongPassword(context);
+                    showWrongPassword(context, widthRatio, heightRatio);
                 }
               }
             },

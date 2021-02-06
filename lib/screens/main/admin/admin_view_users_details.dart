@@ -123,7 +123,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              IconAndTitle(screenWidth: screenWidth),
+                              IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sViewUserDetails,
                                 style: TextStyle(
@@ -198,7 +198,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                IconAndTitle(screenWidth: screenWidth),
+                                IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                                 Text(
                                   sViewUserDetails,
                                   style: TextStyle(

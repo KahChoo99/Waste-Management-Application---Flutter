@@ -246,7 +246,7 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      IconAndTitle(screenWidth: screenWidth),
+                      IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                       Container(
                         width: screenWidth,
                         child: cardList,

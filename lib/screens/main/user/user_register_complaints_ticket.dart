@@ -196,15 +196,15 @@ class _UserRegisterComplaintsTicket
                   onPressed: () {
                     String message = _messageEditingController.text;
                     if (message == null || message == "")
-                      showPleaseWriteSomeMessage(context);
+                      showPleaseWriteSomeMessage(context, widthRatio, heightRatio);
                     else {
                       if (message == "-" ||
                           message == "None" ||
                           message == "none")
-                        showPleaseWriteSomeMessage(context);
+                        showPleaseWriteSomeMessage(context, widthRatio, heightRatio);
                       else
                         showConfirmSubmit(
-                            context, widget.bin, d.currentUserID, message);
+                            context, widget.bin, d.currentUserID, message, widthRatio, heightRatio);
                     }
                   },
                   color: buttonBlue,
@@ -244,7 +244,7 @@ class _UserRegisterComplaintsTicket
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          IconAndTitle(screenWidth: screenWidth),
+                          IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                           Container(
                             width: screenWidth,
                             child: cardList,

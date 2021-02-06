@@ -118,12 +118,12 @@ class _AdminLogin extends State<AdminLogin> {
             onPressed: () {
               if (_usernameEditingController.text.isEmpty ||
                   _passwordEditingController.text.isEmpty)
-                showUsernameOrPasswordCannotBeEmpty(context);
+                showUsernameOrPasswordCannotBeEmpty(context, widthRatio, heightRatio);
               else {
                 String username = _usernameEditingController.text;
                 String password = _passwordEditingController.text;
                 if (username != sAdmin)
-                  showWrongAdminUsername(context);
+                  showWrongAdminUsername(context, widthRatio, heightRatio);
                 else {
                   if (d.checkAdminCredential(password)) {
                     d.login(sAdmin);
@@ -135,7 +135,7 @@ class _AdminLogin extends State<AdminLogin> {
                       (route) => false,
                     );
                   } else
-                    showWrongPassword(context);
+                    showWrongPassword(context, widthRatio, heightRatio);
                 }
               }
             },

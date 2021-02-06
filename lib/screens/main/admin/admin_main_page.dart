@@ -107,7 +107,7 @@ class AdminMainPage extends StatelessWidget {
             BackgroundPainter(),
             Column(
               children: [
-                IconAndTitle(screenWidth: screenWidth),
+                IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                 Column(
                   children: <Widget>[
                     Container(

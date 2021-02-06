@@ -177,15 +177,15 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                     String address = _addressEditingController.text;
                     print(address);
                     if (name == null || email == null || address == null)
-                      showNameOrEmailOrAddressCannotBeEmpty(context);
+                      showNameOrEmailOrAddressCannotBeEmpty(context, widthRatio, heightRatio);
                     else {
                       if (!email.contains("@") || !email.contains(".com"))
-                        showPleaseUseValidEmail(context);
+                        showPleaseUseValidEmail(context, widthRatio, heightRatio);
                       else {
                         UserProfile userProfile =
                             UserProfile(user, userID, name, email, address);
                         d.editProfile(userProfile);
-                        showSaveSuccess(context);
+                        showSaveSuccess(context, widthRatio, heightRatio);
                       }
                     }
                   },
@@ -224,7 +224,7 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            IconAndTitle(screenWidth: screenWidth),
+                            IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                             Text(
                               sEditProfile,
                               style: TextStyle(

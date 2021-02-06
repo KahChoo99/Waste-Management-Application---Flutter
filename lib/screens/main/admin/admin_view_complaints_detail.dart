@@ -253,16 +253,16 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                           String commentMessage =
                               _commentEditingController.text;
                           if (commentMessage == null || commentMessage == "")
-                            showPleaseWriteSomeMessage(context);
+                            showPleaseWriteSomeMessage(context, widthRatio, heightRatio);
                           else {
                             if (commentMessage == "-" ||
                                 commentMessage == "None" ||
                                 commentMessage == "none")
-                              showPleaseWriteSomeMessage(context);
+                              showPleaseWriteSomeMessage(context, widthRatio, heightRatio);
                             else {
                               d.updateComplaintStatus(
                                   widget.complaint, commentMessage);
-                              showUpdateSuccess(context);
+                              showUpdateSuccess(context, widthRatio, heightRatio);
                             }
                           }
                         }
@@ -304,7 +304,7 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          IconAndTitle(screenWidth: screenWidth),
+                          IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                           Text(
                             sUpdateStatus,
                             style: TextStyle(

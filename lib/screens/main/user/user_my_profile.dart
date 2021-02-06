@@ -175,7 +175,7 @@ class _UserMyProfile extends State<UserMyProfile> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          IconAndTitle(screenWidth: screenWidth),
+                          IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                           Text(
                             sMyProfile,
                             style: TextStyle(

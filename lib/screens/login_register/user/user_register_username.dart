@@ -146,7 +146,7 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
               if (_usernameEditingController.text.isEmpty ||
                   _passwordEditingController.text.isEmpty ||
                   _confirmPasswordEditingController.text.isEmpty)
-                showUsernameOrPasswordCannotBeEmpty(context);
+                showUsernameOrPasswordCannotBeEmpty(context, widthRatio, heightRatio);
               else {
                 String username = _usernameEditingController.text;
                 String password = _passwordEditingController.text;
@@ -165,9 +165,9 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
                       ),
                     );
                   } else
-                    showUsernameHasBeenTaken(context);
+                    showUsernameHasBeenTaken(context, widthRatio, heightRatio);
                 } else
-                  showConfirmPasswordMustBeTheSameAsPassword(context);
+                  showConfirmPasswordMustBeTheSameAsPassword(context, widthRatio, heightRatio);
               }
             },
             color: buttonBlue,

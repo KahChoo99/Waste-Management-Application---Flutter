@@ -125,7 +125,7 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
               if (_nameEditingController.text.isEmpty ||
                   _emailEditingController.text.isEmpty ||
                   _addressEditingController.text.isEmpty)
-                showNameOrEmailOrAddressCannotBeEmpty(context);
+                showNameOrEmailOrAddressCannotBeEmpty(context, widthRatio, heightRatio);
               else {
                 String name = _nameEditingController.text;
                 String email = _emailEditingController.text;
@@ -133,7 +133,7 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
                 String userID = d.getNewID(BoxType.user);
 
                 if (!email.contains("@") || !email.contains(".com"))
-                  showPleaseUseValidEmail(context);
+                  showPleaseUseValidEmail(context, widthRatio, heightRatio);
                 else {
                   print("User ID = " + userID);
                   print("Name = " + name);
@@ -142,7 +142,7 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
                   UserProfile userProfile =
                       UserProfile(widget.user, userID, name, email, address);
                   d.addNewUser(userProfile);
-                  showRegisterUserSuccess(context);
+                  showRegisterUserSuccess(context, widthRatio, heightRatio);
                 }
               }
             },

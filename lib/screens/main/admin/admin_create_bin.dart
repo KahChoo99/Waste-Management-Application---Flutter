@@ -293,24 +293,24 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                         _areaEditingController.text.isEmpty ||
                         _cleaningPeriodEditingController.text.isEmpty)
                       showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(
-                          context);
+                          context, widthRatio, heightRatio);
                     else {
                       String area = _areaEditingController.text.toString();
                       String cleaningPeriod =
                           _cleaningPeriodEditingController.text.toString() +
                               " $sDaysPerWeek";
                       if (area == "-" || area == "None" || area == "none")
-                        showPleaseSetAValidAreaName(context);
+                        showPleaseSetAValidAreaName(context, widthRatio, heightRatio);
                       else {
                         if (int.parse(cleaningPeriod[0]) > 7 ||
                             int.parse(cleaningPeriod[0]) == 0)
-                          showPleaseSetInRange1To7Days(context);
+                          showPleaseSetInRange1To7Days(context, widthRatio, heightRatio);
                         else {
                           String binID = d.getNewID(BoxType.bin);
                           Bin bin = Bin(binID, fTState, district, subDistrict,
                               area, cleaningPeriod);
                           d.addNewBin(bin);
-                          showCreateSuccess(context);
+                          showCreateSuccess(context, widthRatio, heightRatio);
                         }
                       }
                     }
@@ -354,7 +354,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              IconAndTitle(screenWidth: screenWidth),
+                              IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sCreateBin,
                                 style: TextStyle(

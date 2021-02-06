@@ -136,7 +136,7 @@ class _AdminViewComplaints extends State<AdminViewComplaints> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              IconAndTitle(screenWidth: screenWidth),
+                              IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sViewComplaints,
                                 style: TextStyle(
@@ -211,7 +211,7 @@ class _AdminViewComplaints extends State<AdminViewComplaints> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                IconAndTitle(screenWidth: screenWidth),
+                                IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                                 Text(
                                   sViewComplaints,
                                   style: TextStyle(

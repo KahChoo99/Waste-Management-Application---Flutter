@@ -17,7 +17,6 @@ class ArrowBackPop extends StatelessWidget {
         height: 55 * screenHeight / dDemoHeight,
         margin: EdgeInsets.fromLTRB(0, 40 * screenHeight / dDemoHeight, 0, 0),
         child: IconButton(
-          // padding: EdgeInsets.fromLTRB(20, 50, 0, 0),
           icon: Icon(
             Icons.arrow_back_ios_sharp,
             color: Colors.white,
