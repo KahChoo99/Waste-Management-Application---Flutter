@@ -6,7 +6,8 @@ import 'package:waste_management/data/bin/bin.dart';
 import 'package:waste_management/data/complaint/complaint.dart';
 import 'package:waste_management/data/data.dart';
 
-showUsernameOrPasswordCannotBeEmpty(BuildContext context) {
+showUsernameOrPasswordCannotBeEmpty(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -14,46 +15,62 @@ showUsernameOrPasswordCannotBeEmpty(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24 * widthRatio,
+                    ),
                     children: <TextSpan>[
                       TextSpan(
-                          text: sUsername,
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: " $sOr "),
+                        text: sUsername,
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
                       TextSpan(
-                          text: "$sPassword ",
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: sCannotBeEmpty),
+                        text: " $sOr ",
+                      ),
+                      TextSpan(
+                        text: "$sPassword ",
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
+                      TextSpan(
+                        text: sCannotBeEmpty,
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -63,7 +80,7 @@ showUsernameOrPasswordCannotBeEmpty(BuildContext context) {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                      fontSize: 22 * widthRatio,
                     ),
                   ),
                 ),
@@ -76,7 +93,8 @@ showUsernameOrPasswordCannotBeEmpty(BuildContext context) {
   );
 }
 
-showNameOrEmailOrAddressCannotBeEmpty(BuildContext context) {
+showNameOrEmailOrAddressCannotBeEmpty(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -84,49 +102,71 @@ showNameOrEmailOrAddressCannotBeEmpty(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24 * widthRatio,
+                    ),
                     children: <TextSpan>[
                       TextSpan(
-                          text: sName, style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: " $sOr "),
+                        text: sName,
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
                       TextSpan(
-                          text: sEmail,
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: " $sOr "),
+                        text: " $sOr ",
+                      ),
                       TextSpan(
-                          text: "$sAddress ",
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: sCannotBeEmpty),
+                        text: sEmail,
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " $sOr ",
+                      ),
+                      TextSpan(
+                        text: "$sAddress ",
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
+                      TextSpan(
+                        text: sCannotBeEmpty,
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -136,7 +176,7 @@ showNameOrEmailOrAddressCannotBeEmpty(BuildContext context) {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                      fontSize: 22 * widthRatio,
                     ),
                   ),
                 ),
@@ -150,7 +190,7 @@ showNameOrEmailOrAddressCannotBeEmpty(BuildContext context) {
 }
 
 showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(
-    BuildContext context) {
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -158,57 +198,89 @@ showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 250,
-            width: 350,
+            height: 250 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24 * widthRatio,
+                    ),
                     children: <TextSpan>[
                       TextSpan(
-                          text: sFTState,
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: " $sOr "),
+                        text: sFTState,
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
                       TextSpan(
-                          text: sDistrict,
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: " $sOr "),
+                        text: " $sOr ",
+                      ),
                       TextSpan(
-                          text: sSubDistrict,
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: " $sOr "),
+                        text: sDistrict,
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
                       TextSpan(
-                          text: sArea, style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: " $sOr "),
+                        text: " $sOr ",
+                      ),
                       TextSpan(
-                          text: "$sCleaningPeriod ",
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: sCannotBeEmpty),
+                        text: sSubDistrict,
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " $sOr ",
+                      ),
+                      TextSpan(
+                        text: sArea,
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " $sOr ",
+                      ),
+                      TextSpan(
+                        text: "$sCleaningPeriod ",
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
+                      TextSpan(
+                        text: sCannotBeEmpty,
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -218,7 +290,7 @@ showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                      fontSize: 22 * widthRatio,
                     ),
                   ),
                 ),
@@ -231,7 +303,8 @@ showFTStateOrDistrictOrSubDistrictOrAreaOrCleaningPeriodCannotBeEmpty(
   );
 }
 
-showConfirmPasswordMustBeTheSameAsPassword(BuildContext context) {
+showConfirmPasswordMustBeTheSameAsPassword(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -239,45 +312,59 @@ showConfirmPasswordMustBeTheSameAsPassword(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24 * widthRatio,
+                    ),
                     children: <TextSpan>[
                       TextSpan(
-                          text: sConfirmPassword,
-                          style: TextStyle(color: wordAndIconRed)),
-                      TextSpan(text: " $sMustBeTheSameAs "),
+                        text: sConfirmPassword,
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
                       TextSpan(
-                          text: "$sPassword ",
-                          style: TextStyle(color: wordAndIconRed)),
+                        text: " $sMustBeTheSameAs ",
+                      ),
+                      TextSpan(
+                        text: "$sPassword ",
+                        style: TextStyle(
+                          color: wordAndIconRed,
+                        ),
+                      ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -285,9 +372,10 @@ showConfirmPasswordMustBeTheSameAsPassword(BuildContext context) {
                   child: Text(
                     sRetry,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -299,7 +387,8 @@ showConfirmPasswordMustBeTheSameAsPassword(BuildContext context) {
   );
 }
 
-showPleaseUseValidEmail(BuildContext context) {
+showPleaseUseValidEmail(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -307,31 +396,40 @@ showPleaseUseValidEmail(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
-                Text(sPleaseUseValidEmail,
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                Text(
+                  sPleaseUseValidEmail,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -339,9 +437,10 @@ showPleaseUseValidEmail(BuildContext context) {
                   child: Text(
                     sRetry,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -353,7 +452,8 @@ showPleaseUseValidEmail(BuildContext context) {
   );
 }
 
-showPleaseSetAValidAreaName(BuildContext context) {
+showPleaseSetAValidAreaName(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -361,31 +461,40 @@ showPleaseSetAValidAreaName(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
-                Text(sPleaseSetAValidAreaName,
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                Text(
+                  sPleaseSetAValidAreaName,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -393,9 +502,10 @@ showPleaseSetAValidAreaName(BuildContext context) {
                   child: Text(
                     sRetry,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -407,7 +517,8 @@ showPleaseSetAValidAreaName(BuildContext context) {
   );
 }
 
-showPleaseSetInRange1To7Days(BuildContext context) {
+showPleaseSetInRange1To7Days(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -415,31 +526,40 @@ showPleaseSetInRange1To7Days(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
-                Text(sPleaseSetInRange1To7Days,
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                Text(
+                  sPleaseSetInRange1To7Days,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -447,9 +567,10 @@ showPleaseSetInRange1To7Days(BuildContext context) {
                   child: Text(
                     sRetry,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -461,7 +582,8 @@ showPleaseSetInRange1To7Days(BuildContext context) {
   );
 }
 
-showNoUsernameFound(BuildContext context) {
+showNoUsernameFound(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -469,31 +591,40 @@ showNoUsernameFound(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
-                Text(sNoUsernameFound,
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                Text(
+                  sNoUsernameFound,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -501,9 +632,10 @@ showNoUsernameFound(BuildContext context) {
                   child: Text(
                     sRetry,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -515,7 +647,7 @@ showNoUsernameFound(BuildContext context) {
   );
 }
 
-showWrongPassword(BuildContext context) {
+showWrongPassword(BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -523,31 +655,40 @@ showWrongPassword(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
-                Text(sWrongPassword,
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                Text(
+                  sWrongPassword,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -555,9 +696,10 @@ showWrongPassword(BuildContext context) {
                   child: Text(
                     sRetry,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -569,7 +711,8 @@ showWrongPassword(BuildContext context) {
   );
 }
 
-showWrongAdminUsername(BuildContext context) {
+showWrongAdminUsername(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -577,31 +720,40 @@ showWrongAdminUsername(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
-                Text(sWrongAdminUsername,
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                Text(
+                  sWrongAdminUsername,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -609,9 +761,10 @@ showWrongAdminUsername(BuildContext context) {
                   child: Text(
                     sRetry,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -623,7 +776,8 @@ showWrongAdminUsername(BuildContext context) {
   );
 }
 
-showUsernameHasBeenTaken(BuildContext context) {
+showUsernameHasBeenTaken(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -631,31 +785,40 @@ showUsernameHasBeenTaken(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
-                Text(sUsernameHasBeenTaken,
-                    textAlign: TextAlign.center,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                Text(
+                  sUsernameHasBeenTaken,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -663,9 +826,10 @@ showUsernameHasBeenTaken(BuildContext context) {
                   child: Text(
                     sRetry,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -677,7 +841,8 @@ showUsernameHasBeenTaken(BuildContext context) {
   );
 }
 
-showPleaseWriteSomeMessage(BuildContext context) {
+showPleaseWriteSomeMessage(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -685,35 +850,40 @@ showPleaseWriteSomeMessage(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.warning_sharp,
                   color: wordAndIconRed,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 Text(
                   sPleaseWriteSomeMessage,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 24,
+                    fontSize: 24 * widthRatio,
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -723,7 +893,7 @@ showPleaseWriteSomeMessage(BuildContext context) {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                      fontSize: 22 * widthRatio,
                     ),
                   ),
                 ),
@@ -736,8 +906,8 @@ showPleaseWriteSomeMessage(BuildContext context) {
   );
 }
 
-showConfirmSubmit(BuildContext context, Bin bin, String userID,
-    String message) {
+showConfirmSubmit(BuildContext context, Bin bin, String userID, String message,
+    double widthRatio, double heightRatio) {
   List<String> binKeys = bin.getBinData().keys.toList();
 
   showDialog(
@@ -748,13 +918,18 @@ showConfirmSubmit(BuildContext context, Bin bin, String userID,
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          title: Text(sConfirm,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+          title: Text(
+            sConfirm,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24 * widthRatio,
+            ),
+          ),
           content: SingleChildScrollView(
             child: Container(
-              width: 350,
-              height: 300 + 300 * message.length / 225,
+              width: 350 * widthRatio,
+              height: (300 + 300 * message.length / 225) * heightRatio,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -766,46 +941,70 @@ showConfirmSubmit(BuildContext context, Bin bin, String userID,
                         Expanded(
                           flex: 4,
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(0, 2, 0, 5),
+                            margin: EdgeInsets.fromLTRB(
+                              0,
+                              2 * heightRatio,
+                              0,
+                              5 * heightRatio,
+                            ),
                             child: Text(
                               binKey,
                               style: TextStyle(
-                                  color: wordAndIconBlue,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15),
+                                color: wordAndIconBlue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15 * widthRatio,
+                              ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: 10,
+                          width: 10 * widthRatio,
                         ),
                         Expanded(
                           flex: 6,
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                            margin: EdgeInsets.fromLTRB(
+                              0,
+                              0,
+                              0,
+                              5 * heightRatio,
+                            ),
                             child: Text(
                               bin.getBinData()[binKey],
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 17),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17 * widthRatio,
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(0, 2, 0, 5),
-                    child: Text(sMessage,
-                        style: TextStyle(
-                            color: wordAndIconBlue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15)),
+                    margin: EdgeInsets.fromLTRB(
+                      0,
+                      2 * heightRatio,
+                      0,
+                      5 * heightRatio,
+                    ),
+                    child: Text(
+                      sMessage,
+                      style: TextStyle(
+                        color: wordAndIconBlue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15 * widthRatio,
+                      ),
+                    ),
                   ),
                   Text(
                     message,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17 * widthRatio,
+                    ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 20 * heightRatio,
                   ),
                   Row(
                     children: [
@@ -813,9 +1012,10 @@ showConfirmSubmit(BuildContext context, Bin bin, String userID,
                         flex: 1,
                         child: FlatButton(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius:
+                                BorderRadius.circular(10.0 * heightRatio),
                           ),
-                          height: 50,
+                          height: 50 * heightRatio,
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -823,39 +1023,44 @@ showConfirmSubmit(BuildContext context, Bin bin, String userID,
                           child: Text(
                             sCancel,
                             style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20 * widthRatio,
+                            ),
                           ),
                           // textColor: Colors.black,
                         ),
                       ),
                       SizedBox(
-                        width: 20,
+                        width: 20 * widthRatio,
                       ),
                       Expanded(
                         flex: 1,
                         child: FlatButton(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius:
+                                BorderRadius.circular(10.0 * heightRatio),
                           ),
-                          height: 50,
+                          height: 50 * heightRatio,
                           onPressed: () {
                             String complaintID = d.getNewID(BoxType.complaint);
                             String commentMessage = "";
                             String status = sPending;
-                            Complaint complaint = Complaint(complaintID, userID, bin, message, commentMessage, status);
+                            Complaint complaint = Complaint(complaintID, userID,
+                                bin, message, commentMessage, status);
                             d.addComplaint(complaint);
                             Navigator.of(context).pop();
-                            showSubmitSuccess(context, complaintID);
+                            showSubmitSuccess(
+                                context, complaintID, widthRatio, heightRatio);
                           },
                           color: buttonGreen,
                           child: Text(
                             sSubmit,
                             style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20 * widthRatio,
+                            ),
                           ),
                         ),
                       )
@@ -871,39 +1076,48 @@ showConfirmSubmit(BuildContext context, Bin bin, String userID,
   );
 }
 
-showRegisterUserSuccess(BuildContext context) {
+showRegisterUserSuccess(
+    BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     builder: (context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.thumb_up,
                   color: wordAndIconBlue,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 Text(
                   sRegisterUserSuccessfully,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
@@ -913,9 +1127,10 @@ showRegisterUserSuccess(BuildContext context) {
                   child: Text(
                     sOk,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -927,46 +1142,58 @@ showRegisterUserSuccess(BuildContext context) {
   );
 }
 
-showSubmitSuccess(BuildContext context, String complaintID) {
+showSubmitSuccess(BuildContext context, String complaintID, double widthRatio,
+    double heightRatio) {
   showDialog(
     context: context,
     builder: (context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.thumb_up,
                   color: wordAndIconBlue,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 Text(
                   sSubmitSuccessfully,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 10 * heightRatio,
                 ),
                 Text(
                   "$sComplaintID = $complaintID",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15 * widthRatio,
+                  ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 10 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
@@ -976,9 +1203,10 @@ showSubmitSuccess(BuildContext context, String complaintID) {
                   child: Text(
                     sOk,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -990,39 +1218,47 @@ showSubmitSuccess(BuildContext context, String complaintID) {
   );
 }
 
-showSaveSuccess(BuildContext context) {
+showSaveSuccess(BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     builder: (context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.save_alt_sharp,
                   color: wordAndIconBlue,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 Text(
                   sSaveSuccessfully,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
@@ -1032,9 +1268,10 @@ showSaveSuccess(BuildContext context) {
                   child: Text(
                     sOk,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -1046,7 +1283,7 @@ showSaveSuccess(BuildContext context) {
   );
 }
 
-showCreateSuccess(BuildContext context) {
+showCreateSuccess(BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -1054,32 +1291,40 @@ showCreateSuccess(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.done_outline_sharp,
                   color: wordAndIconBlue,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 Text(
                   sCreateSuccessfully,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
@@ -1088,9 +1333,10 @@ showCreateSuccess(BuildContext context) {
                   child: Text(
                     sOk,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
@@ -1102,7 +1348,7 @@ showCreateSuccess(BuildContext context) {
   );
 }
 
-showUpdateSuccess(BuildContext context) {
+showUpdateSuccess(BuildContext context, double widthRatio, double heightRatio) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -1110,32 +1356,40 @@ showUpdateSuccess(BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
         child: AlertDialog(
-          contentPadding: EdgeInsets.all(5),
+          contentPadding: EdgeInsets.fromLTRB(
+            5 * widthRatio,
+            5 * heightRatio,
+            5 * widthRatio,
+            5 * heightRatio,
+          ),
           content: Container(
-            height: 200,
-            width: 350,
+            height: 200 * heightRatio,
+            width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.save_sharp,
                   color: wordAndIconBlue,
-                  size: 70,
+                  size: 70 * heightRatio,
                 ),
                 Text(
                   sUpdateSuccessfully,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20 * heightRatio,
                 ),
                 FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  height: 50,
-                  minWidth: 150,
+                  height: 50 * heightRatio,
+                  minWidth: 150 * widthRatio,
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop();
@@ -1145,9 +1399,10 @@ showUpdateSuccess(BuildContext context) {
                   child: Text(
                     sOk,
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22 * widthRatio,
+                    ),
                   ),
                 ),
               ],
