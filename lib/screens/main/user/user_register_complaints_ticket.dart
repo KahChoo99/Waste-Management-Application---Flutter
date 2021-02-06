@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/data/bin/bin.dart';
+import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
@@ -10,22 +12,27 @@ import 'package:waste_management/widgets/icon_and_title.dart';
 import 'package:waste_management/widgets/alert_dialog.dart';
 
 class UserRegisterComplaintsTicket extends StatefulWidget {
-  final Map<String, String> binData;
+  final Bin bin;
 
-  const UserRegisterComplaintsTicket({this.binData});
+  const UserRegisterComplaintsTicket({this.bin});
+
   @override
-  _UserRegisterComplaintsTicket createState() => _UserRegisterComplaintsTicket();
+  _UserRegisterComplaintsTicket createState() =>
+      _UserRegisterComplaintsTicket();
 }
 
-class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> {
+class _UserRegisterComplaintsTicket
+    extends State<UserRegisterComplaintsTicket> {
   TextEditingController _messageEditingController = TextEditingController();
+
+  Data d = Data.getInstance();
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    Map<String, String> binData= widget.binData;
+    Map<String, String> binData = widget.bin.getBinData();
 
     List<String> binKeys = binData.keys.toList();
 
@@ -44,44 +51,52 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(sPostComplaint,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
               ),
               SizedBox(
                 height: 10,
               ),
               for (String binKey in binKeys)
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                      child: Text(binKey,
-                            style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        child: Text(binKey,
+                            style: TextStyle(
+                                color: wordAndIconBlue,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16)),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    flex: 6,
-                    child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                      child: Text(binData[binKey],
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                    SizedBox(
+                      width: 10,
                     ),
-                  )
-                ],
-              ),
+                    Expanded(
+                      flex: 6,
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        child: Text(binData[binKey],
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18)),
+                      ),
+                    )
+                  ],
+                ),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: Text(sMessage,
-                      style: TextStyle(color: wordAndIconBlue, fontWeight: FontWeight.bold, fontSize: 16)),
+                      style: TextStyle(
+                          color: wordAndIconBlue,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16)),
                 ),
               ),
               Container(
@@ -112,10 +127,21 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
                   ),
                   minWidth: 220,
                   height: 50,
-                  onPressed: () => showConfirmSubmit(context, binData, _messageEditingController),
+                  onPressed: () {
+                    String message = _messageEditingController.text;
+                    if (message == null || message == "")
+                      showPleaseWriteSomeMessage(context);
+                    else{
+                      if (message == "-" || message == "None" || message == "none")
+                        showPleaseWriteSomeMessage(context);
+                      else
+                        showConfirmSubmit(context, widget.bin, d.currentUserID, message);
+                    }
+                  },
                   color: buttonBlue,
                   child: Text(sContinue,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
                   textColor: Colors.black,
                 ),
               ),
@@ -126,35 +152,35 @@ class _UserRegisterComplaintsTicket extends State<UserRegisterComplaintsTicket> 
     );
 
     return Scaffold(
-      body: Stack(
-        children: [
-          BackgroundPainter(),
-          SingleChildScrollView(
-            child: Container(
-              height: screenHeight,
-              alignment: Alignment.center,
-              child: Column(
-                    children: [
-                      SizedBox(
-                        height: 50,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          IconAndTitle(screenWidth: screenWidth),
-                          Container(
-                            width: screenWidth,
-                            child: cardList,
-                          ),
-                        ],
+      body: SingleChildScrollView(
+        child: Container(
+          height: screenHeight,
+          alignment: Alignment.center,
+          child: Stack(
+            children: [
+              BackgroundPainter(),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      IconAndTitle(screenWidth: screenWidth),
+                      Container(
+                        width: screenWidth,
+                        child: cardList,
                       ),
                     ],
                   ),
-            ),
+                ],
+              ),
+              ArrowBackPop(),
+            ],
           ),
-          ArrowBackPop(),
-        ],
-      )
+        ),
+      ),
     );
   }
 }
