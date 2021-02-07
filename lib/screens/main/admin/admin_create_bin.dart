@@ -140,6 +140,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                                   child: Text(
                                     value,
                                     style: TextStyle(
+                                      color: Colors.black,
                                       fontSize:
                                           defaultTextFieldFontSize * widthRatio,
                                     ),
