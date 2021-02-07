@@ -239,6 +239,7 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                             ),
                             Text(
                               sEditProfile,
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 24 * widthRatio,

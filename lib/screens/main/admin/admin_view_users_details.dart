@@ -126,6 +126,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                               IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sViewUserDetails,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 24 * widthRatio,
@@ -201,6 +202,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                                 IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                                 Text(
                                   sViewUserDetails,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 24 * widthRatio,

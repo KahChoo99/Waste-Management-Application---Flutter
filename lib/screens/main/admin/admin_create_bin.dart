@@ -373,6 +373,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                               ),
                               Text(
                                 sCreateBin,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 24 * widthRatio,

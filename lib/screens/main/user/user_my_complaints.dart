@@ -160,6 +160,7 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                               IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sMyComplaints,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 24 * widthRatio,
@@ -235,6 +236,7 @@ class _UserMyComplaints extends State<UserMyComplaints> {
                                 IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                                 Text(
                                   sMyComplaints,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 24 * widthRatio,

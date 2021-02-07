@@ -322,6 +322,7 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                           ),
                           Text(
                             sUpdateStatus,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 24 * widthRatio,

@@ -379,6 +379,7 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                               IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sUpdateBins,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 24 * widthRatio,

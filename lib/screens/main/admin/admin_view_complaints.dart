@@ -139,6 +139,7 @@ class _AdminViewComplaints extends State<AdminViewComplaints> {
                               IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sViewComplaints,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 24 * widthRatio,
@@ -214,6 +215,7 @@ class _AdminViewComplaints extends State<AdminViewComplaints> {
                                 IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                                 Text(
                                   sViewComplaints,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 24 * widthRatio,
