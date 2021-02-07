@@ -152,6 +152,7 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                                   child: Text(
                                     value,
                                     style: TextStyle(
+                                      color: Colors.black,
                                       fontSize: (defaultTextFieldFontSize + 2) *
                                           widthRatio,
                                     ),
