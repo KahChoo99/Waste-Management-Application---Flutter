@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/constants/values.dart';
 import 'package:waste_management/data/data.dart';
 import 'package:waste_management/data/user/user.dart';
 import 'package:waste_management/screens/login_register/user/user_register_detail.dart';
@@ -35,6 +36,9 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
+    double widthRatio = screenWidth / dDemoWidth;
+    double heightRatio = screenHeight / dDemoHeight;
+
     void _togglePasswordView() {
       setState(() {
         _obscureText = !_obscureText;
@@ -44,24 +48,42 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
     Column registerPart = Column(
       children: [
         SizedBox(
-          height: 30,
+          height: 30 * heightRatio,
         ),
-        Text(sUserRegister,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+        Text(
+          sUserRegister,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24 * widthRatio,
+          ),
+        ),
         SizedBox(
-          height: 10,
+          height: 10 * heightRatio,
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+          margin: EdgeInsets.fromLTRB(
+            30 * widthRatio,
+            10 * heightRatio,
+            30 * widthRatio,
+            10 * heightRatio,
+          ),
           child: TextField(
             controller: _usernameEditingController,
             decoration: InputDecoration(
               labelText: sUsername,
             ),
+            style: TextStyle(
+              fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
+            ),
           ),
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+          margin: EdgeInsets.fromLTRB(
+            30 * widthRatio,
+            10 * heightRatio,
+            30 * widthRatio,
+            10 * heightRatio,
+          ),
           child: TextField(
             controller: _passwordEditingController,
             decoration: InputDecoration(
@@ -74,10 +96,18 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
               ),
             ),
             obscureText: _obscureText,
+            style: TextStyle(
+              fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
+            ),
           ),
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+          margin: EdgeInsets.fromLTRB(
+            30 * widthRatio,
+            10 * heightRatio,
+            30 * widthRatio,
+            10 * heightRatio,
+          ),
           child: TextField(
             controller: _confirmPasswordEditingController,
             decoration: InputDecoration(
@@ -90,25 +120,33 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
               ),
             ),
             obscureText: _obscureText,
+            style: TextStyle(
+              fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
+            ),
           ),
         ),
         SizedBox(
-          height: 20,
+          height: 20 * heightRatio,
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
+          margin: EdgeInsets.fromLTRB(
+            50 * widthRatio,
+            10 * heightRatio,
+            50 * widthRatio,
+            10 * heightRatio,
+          ),
           decoration: mainButtonBoxDecoration,
           child: FlatButton(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(10.0 * heightRatio),
             ),
-            minWidth: 150,
-            height: 50,
+            minWidth: 150 * widthRatio,
+            height: 50 * heightRatio,
             onPressed: () {
               if (_usernameEditingController.text.isEmpty ||
                   _passwordEditingController.text.isEmpty ||
                   _confirmPasswordEditingController.text.isEmpty)
-                showUsernameOrPasswordCannotBeEmpty(context);
+                showUsernameOrPasswordCannotBeEmpty(context, widthRatio, heightRatio);
               else {
                 String username = _usernameEditingController.text;
                 String password = _passwordEditingController.text;
@@ -127,19 +165,23 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
                       ),
                     );
                   } else
-                    showUsernameHasBeenTaken(context);
+                    showUsernameHasBeenTaken(context, widthRatio, heightRatio);
                 } else
-                  showConfirmPasswordMustBeTheSameAsPassword(context);
+                  showConfirmPasswordMustBeTheSameAsPassword(context, widthRatio, heightRatio);
               }
             },
             color: buttonBlue,
-            child: Text(sContinue,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
-            // textColor: Colors.black,
+            child: Text(
+              sContinue,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24 * widthRatio,
+              ),
+            ),
           ),
         ),
         SizedBox(
-          height: 60,
+          height: 20 * heightRatio,
         ),
       ],
     );
@@ -152,7 +194,6 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
       return Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            height: screenHeight,
             alignment: Alignment.center,
             child: Stack(
               children: [
@@ -160,25 +201,43 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    SizedBox(
+                      height: 50 * heightRatio,
+                    ),
                     Image.asset(
                       "assets/icon/apps_icon.png",
-                      height: 200,
+                      height: 200 * heightRatio,
                     ),
-                    Text(sAppTitle,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24)),
+                    Text(
+                      sAppTitle,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24 * widthRatio,
+                      ),
+                    ),
                     SizedBox(
-                      height: 16,
+                      height: 16 * heightRatio,
                     ),
                     Container(
                       width: screenWidth,
-                      margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
+                      margin: EdgeInsets.fromLTRB(
+                        50 * heightRatio,
+                        0,
+                        50 * heightRatio,
+                        0,
+                      ),
                       decoration: mainContainerBGBoxDecoration,
                       child: registerPart,
                     ),
+                    SizedBox(
+                      height: 30 * heightRatio,
+                    ),
                   ],
                 ),
-                ArrowBackPop(),
+                ArrowBackPop(
+                  screenWidth: screenWidth,
+                  screenHeight: screenHeight,
+                ),
               ],
             ),
           ),

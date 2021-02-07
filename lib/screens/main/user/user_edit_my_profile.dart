@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/constants/values.dart';
 import 'package:waste_management/data/data.dart';
 import 'package:waste_management/data/user/user.dart';
 import 'package:waste_management/data/userProfile/userProfile.dart';
@@ -26,6 +27,7 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
   void initState() {
     super.initState();
   }
+
   Data d = Data.getInstance();
 
   TextEditingController _nameEditingController = TextEditingController();
@@ -36,6 +38,9 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+
+    double widthRatio = screenWidth / dDemoWidth;
+    double heightRatio = screenHeight / dDemoHeight;
 
     User user = widget.userProfile.user;
     Map<String, String> userData = widget.userProfile.getUseProfileData();
@@ -61,25 +66,35 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
     Column cardList = Column(
       children: [
         SizedBox(
-          height: 20,
+          height: 20 * heightRatio,
         ),
         Container(
           width: screenWidth,
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-          margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
+          padding: EdgeInsets.fromLTRB(
+            10 * widthRatio,
+            10 * heightRatio,
+            10 * widthRatio,
+            10 * heightRatio,
+          ),
+          margin: EdgeInsets.fromLTRB(
+            30 * widthRatio,
+            0,
+            30 * widthRatio,
+            0,
+          ),
           decoration: mainContainerBGBoxDecoration,
           child: Column(
             children: [
               SizedBox(
-                height: 10,
+                height: 10 * heightRatio,
               ),
               Icon(
                 Icons.account_circle_sharp,
                 color: wordAndIconBlue,
-                size: 100,
+                size: 100 * heightRatio,
               ),
               SizedBox(
-                height: 10,
+                height: 10 * heightRatio,
               ),
               for (var i = 0; i < userDataKeys.length; i++)
                 Row(
@@ -88,29 +103,39 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                     Expanded(
                       flex: 3,
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(10, 10, 0, 10),
+                        margin: EdgeInsets.fromLTRB(
+                          10 * widthRatio,
+                          10 * heightRatio,
+                          0,
+                          10 * heightRatio,
+                        ),
                         child: Text(
                           userDataKeys[i],
                           style: TextStyle(
                             color: wordAndIconBlue,
                             fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontSize: 20 * widthRatio,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: 15,
+                      width: 15 * widthRatio,
                     ),
                     Expanded(
                       flex: 7,
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
+                        margin: EdgeInsets.fromLTRB(
+                            0, 0, 10 * widthRatio, 10 * heightRatio),
                         child: i != userDataKeys.length - 1
                             ? TextField(
                                 keyboardType: TextInputType.multiline,
                                 maxLines: null,
                                 controller: _editingController[i],
+                                style: TextStyle(
+                                  fontSize: (defaultTextFieldFontSize + 2) *
+                                      widthRatio,
+                                ),
                               )
                             : TextField(
                                 keyboardType: TextInputType.multiline,
@@ -118,23 +143,32 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                                 maxLength: 150,
                                 maxLengthEnforced: true,
                                 controller: _editingController[i],
+                                style: TextStyle(
+                                  fontSize: (defaultTextFieldFontSize + 2) *
+                                      widthRatio,
+                                ),
                               ),
                       ),
                     )
                   ],
                 ),
               SizedBox(
-                height: 10,
+                height: 10 * heightRatio,
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
+                margin: EdgeInsets.fromLTRB(
+                  50 * widthRatio,
+                  10 * heightRatio,
+                  50 * widthRatio,
+                  10 * heightRatio,
+                ),
                 decoration: mainButtonBoxDecoration,
                 child: FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  minWidth: 220,
-                  height: 50,
+                  minWidth: 220 * widthRatio,
+                  height: 50 * heightRatio,
                   onPressed: () {
                     String name = _nameEditingController.text;
                     print(name);
@@ -143,21 +177,26 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                     String address = _addressEditingController.text;
                     print(address);
                     if (name == null || email == null || address == null)
-                      showNameOrEmailOrAddressCannotBeEmpty(context);
+                      showNameOrEmailOrAddressCannotBeEmpty(context, widthRatio, heightRatio);
                     else {
                       if (!email.contains("@") || !email.contains(".com"))
-                        showPleaseUseValidEmail(context);
+                        showPleaseUseValidEmail(context, widthRatio, heightRatio);
                       else {
-                        UserProfile userProfile = UserProfile(user, userID, name, email, address);
+                        UserProfile userProfile =
+                            UserProfile(user, userID, name, email, address);
                         d.editProfile(userProfile);
-                        showSaveSuccess(context);
+                        showSaveSuccess(context, widthRatio, heightRatio);
                       }
                     }
                   },
                   color: buttonGreen,
-                  child: Text(sSave,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                  child: Text(
+                    sSave,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24 * widthRatio,
+                    ),
+                  ),
                   textColor: Colors.black,
                 ),
               ),
@@ -167,39 +206,49 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
       ],
     );
 
-    return StatefulBuilder(builder: (context, setState){
+    return StatefulBuilder(builder: (context, setState) {
       return Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            height: screenHeight,
-            alignment: Alignment.center,
-            child: Stack(
-              children: [
-                BackgroundPainter(),
-                Column(
+        body: Stack(
+          children: [
+            BackgroundPainter(),
+            SingleChildScrollView(
+              child: Container(
+                alignment: Alignment.center,
+                child: Stack(
                   children: [
-                    SizedBox(
-                      height: 50,
-                    ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        IconAndTitle(screenWidth: screenWidth),
-                        Text(sEditProfile,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 24)),
-                        Container(
-                          width: screenWidth,
-                          child: cardList,
+                      children: [
+                        SizedBox(
+                          height: 50 * heightRatio,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
+                            Text(
+                              sEditProfile,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24 * widthRatio,
+                              ),
+                            ),
+                            Container(
+                              width: screenWidth,
+                              child: cardList,
+                            ),
+                          ],
                         ),
                       ],
                     ),
+                    ArrowBackPop(
+                      screenWidth: screenWidth,
+                      screenHeight: screenHeight,
+                    ),
                   ],
                 ),
-                ArrowBackPop(),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       );
     });
