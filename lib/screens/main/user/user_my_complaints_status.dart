@@ -228,6 +228,9 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
             ],
           ),
         ),
+        SizedBox(
+          height: 30 * heightRatio,
+        ),
       ],
     );
 
