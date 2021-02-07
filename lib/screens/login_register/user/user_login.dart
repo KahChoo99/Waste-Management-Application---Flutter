@@ -49,6 +49,7 @@ class _UserLogin extends State<UserLogin> {
         ),
         Text(
           sUserLogin,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24 * widthRatio,
@@ -143,6 +144,7 @@ class _UserLogin extends State<UserLogin> {
             color: buttonGreen,
             child: Text(
               sLogin,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24 * widthRatio,
@@ -179,6 +181,7 @@ class _UserLogin extends State<UserLogin> {
                     ),
                     Text(
                       sAppTitle,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24 * widthRatio,

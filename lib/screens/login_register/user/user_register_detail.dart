@@ -47,6 +47,7 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
         ),
         Text(
           sUserDetail,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24 * widthRatio,
@@ -149,6 +150,7 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
             color: buttonGreen,
             child: Text(
               sSignUp,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24 * widthRatio,
@@ -181,6 +183,7 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
                   ),
                   Text(
                     sAppTitle,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24 * widthRatio,

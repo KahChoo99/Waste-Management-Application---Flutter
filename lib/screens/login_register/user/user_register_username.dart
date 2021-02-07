@@ -52,6 +52,7 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
         ),
         Text(
           sUserRegister,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24 * widthRatio,
@@ -173,6 +174,7 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
             color: buttonBlue,
             child: Text(
               sContinue,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24 * widthRatio,
@@ -210,6 +212,7 @@ class _UserRegisterUsername extends State<UserRegisterUsername> {
                     ),
                     Text(
                       sAppTitle,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24 * widthRatio,
