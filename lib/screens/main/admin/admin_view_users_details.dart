@@ -38,9 +38,9 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
               10 * heightRatio,
             ),
             margin: EdgeInsets.fromLTRB(
-              30 * widthRatio,
+              20 * widthRatio,
               20 * heightRatio,
-              30 * widthRatio,
+              20 * widthRatio,
               0,
             ),
             decoration: mainContainerBGBoxDecoration,
@@ -83,7 +83,7 @@ class _AdminViewUsersDetails extends State<AdminViewUsersDetails> {
                         width: 10 * widthRatio,
                       ),
                       Expanded(
-                        flex: 8,
+                        flex: 7,
                         child: Container(
                           child: Text(
                             userProfile.getUseProfileData()[userDataKey],

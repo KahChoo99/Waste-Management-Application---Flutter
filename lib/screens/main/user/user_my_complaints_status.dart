@@ -124,8 +124,8 @@ class _UserMyComplaintsStatus extends State<UserMyComplaintsStatus> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 2 * heightRatio, 0, 0),
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10 * heightRatio),
+                  padding: EdgeInsets.fromLTRB(0, 2 * heightRatio, 0, 0,),
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10 * heightRatio,),
                   child: Text(
                     sMessage,
                     style: TextStyle(

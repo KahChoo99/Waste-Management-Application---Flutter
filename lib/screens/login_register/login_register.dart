@@ -166,6 +166,9 @@ class LoginRegister extends StatelessWidget {
                     child: buttonList,
                   ),
                 ),
+                SizedBox(
+                  height: 50 * heightRatio,
+                ),
               ],
             ),
           ],

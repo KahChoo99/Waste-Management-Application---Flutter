@@ -128,6 +128,9 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                             child: DropdownButton<String>(
                               hint: Text(hintTextList[i]),
                               value: allValues[i],
+                              style: TextStyle(
+                                fontSize: defaultTextFieldFontSize * widthRatio,
+                              ),
                               icon: Icon(Icons.arrow_drop_down),
                               items: allDropDownList[i]
                                   .map<DropdownMenuItem<String>>(
@@ -137,8 +140,8 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                                   child: Text(
                                     value,
                                     style: TextStyle(
-                                      fontSize: (defaultTextFieldFontSize + 2) *
-                                          widthRatio,
+                                      fontSize:
+                                          defaultTextFieldFontSize * widthRatio,
                                     ),
                                   ),
                                 );
@@ -218,7 +221,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                       ),
                     ),
                     style: TextStyle(
-                      fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
+                      fontSize: defaultTextFieldFontSize * widthRatio,
                     ),
                   ),
                 ),
@@ -264,7 +267,7 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                       ),
                     ),
                     style: TextStyle(
-                      fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
+                      fontSize: defaultTextFieldFontSize * widthRatio,
                     ),
                   ),
                 ),
@@ -300,11 +303,13 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                           _cleaningPeriodEditingController.text.toString() +
                               " $sDaysPerWeek";
                       if (area == "-" || area == "None" || area == "none")
-                        showPleaseSetAValidAreaName(context, widthRatio, heightRatio);
+                        showPleaseSetAValidAreaName(
+                            context, widthRatio, heightRatio);
                       else {
                         if (int.parse(cleaningPeriod[0]) > 7 ||
                             int.parse(cleaningPeriod[0]) == 0)
-                          showPleaseSetInRange1To7Days(context, widthRatio, heightRatio);
+                          showPleaseSetInRange1To7Days(
+                              context, widthRatio, heightRatio);
                         else {
                           String binID = d.getNewID(BoxType.bin);
                           Bin bin = Bin(binID, fTState, district, subDistrict,
@@ -354,7 +359,10 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
+                              IconAndTitle(
+                                widthRatio: widthRatio,
+                                heightRatio: heightRatio,
+                              ),
                               Text(
                                 sCreateBin,
                                 style: TextStyle(

@@ -102,7 +102,7 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                     Expanded(
                       flex: 6,
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10 * heightRatio),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10 * heightRatio,),
                         child: Text(
                           binComplaintData[binKey],
                           style: TextStyle(
