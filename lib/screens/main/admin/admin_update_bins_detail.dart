@@ -11,6 +11,7 @@ import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
 import 'package:waste_management/widgets/alert_dialog.dart';
+import 'package:waste_management/widgets/text_input_formatter.dart';
 
 class AdminUpdateBinsDetail extends StatefulWidget {
   final Map<String, String> binData;
@@ -222,6 +223,9 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                     maxLines: 2,
                     maxLength: 50,
                     maxLengthEnforced: true,
+                    inputFormatters: [
+                      ModifiedLengthLimitingTextInputFormatter(50)
+                    ],
                     controller: _areaEditingController,
                     decoration: InputDecoration(
                       hintText: sDescription,
@@ -268,6 +272,9 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                     maxLines: 1,
                     maxLength: 1,
                     maxLengthEnforced: true,
+                    inputFormatters: [
+                      ModifiedLengthLimitingTextInputFormatter(1)
+                    ],
                     controller: _cleaningPeriodEditingController,
                     decoration: InputDecoration(
                       hintText: sHowManyDaysPerWeek,
@@ -372,6 +379,7 @@ class _AdminUpdateBinsDetail extends State<AdminUpdateBinsDetail> {
                               IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sUpdateBins,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 24 * widthRatio,

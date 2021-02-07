@@ -928,11 +928,12 @@ showConfirmSubmit(BuildContext context, Bin bin, String userID, String message,
           ),
           content: SingleChildScrollView(
             child: Container(
+              constraints: BoxConstraints(
+                minHeight: 200 * heightRatio,
+              ),
               width: 350 * widthRatio,
-              height: (300 + 300 * message.length / 225) * heightRatio * widthRatio,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   for (String binKey in binKeys)
                     Row(
@@ -1006,70 +1007,60 @@ showConfirmSubmit(BuildContext context, Bin bin, String userID, String message,
                   SizedBox(
                     height: 20 * heightRatio,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(10.0 * heightRatio),
-                          ),
-                          height: 50 * heightRatio,
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          color: buttonBlue,
-                          child: Text(
-                            sCancel,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20 * widthRatio,
-                            ),
-                          ),
-                          // textColor: Colors.black,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20 * widthRatio,
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(10.0 * heightRatio),
-                          ),
-                          height: 50 * heightRatio,
-                          onPressed: () {
-                            String complaintID = d.getNewID(BoxType.complaint);
-                            String commentMessage = "";
-                            String status = sPending;
-                            Complaint complaint = Complaint(complaintID, userID,
-                                bin, message, commentMessage, status);
-                            d.addComplaint(complaint);
-                            Navigator.of(context).pop();
-                            showSubmitSuccess(
-                                context, complaintID, widthRatio, heightRatio);
-                          },
-                          color: buttonGreen,
-                          child: Text(
-                            sSubmit,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20 * widthRatio,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  )
                 ],
               ),
             ),
           ),
+          actions: [
+            FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.circular(10.0 * heightRatio),
+              ),
+              height: 50 * heightRatio,
+              minWidth: 100 * widthRatio,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: buttonBlue,
+              child: Text(
+                sCancel,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20 * widthRatio,
+                ),
+              ),
+            ),
+            FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.circular(10.0 * heightRatio),
+              ),
+              height: 50 * heightRatio,
+              minWidth: 100 * widthRatio,
+              onPressed: () {
+                String complaintID = d.getNewID(BoxType.complaint);
+                String commentMessage = "";
+                String status = sPending;
+                Complaint complaint = Complaint(complaintID, userID,
+                    bin, message, commentMessage, status);
+                d.addComplaint(complaint);
+                Navigator.of(context).pop();
+                showSubmitSuccess(
+                    context, complaintID, widthRatio, heightRatio);
+              },
+              color: buttonGreen,
+              child: Text(
+                sSubmit,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20 * widthRatio,
+                ),
+              ),
+            ),
+          ],
         ),
       );
     },

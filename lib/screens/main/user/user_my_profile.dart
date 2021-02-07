@@ -178,6 +178,7 @@ class _UserMyProfile extends State<UserMyProfile> {
                           IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                           Text(
                             sMyProfile,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 24 * widthRatio,

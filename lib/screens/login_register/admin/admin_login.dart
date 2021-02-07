@@ -49,6 +49,7 @@ class _AdminLogin extends State<AdminLogin> {
         ),
         Text(
           sAdminLogin,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24 * widthRatio,
@@ -142,6 +143,7 @@ class _AdminLogin extends State<AdminLogin> {
             color: buttonGreen,
             child: Text(
               sLogin,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24 * widthRatio,
@@ -178,6 +180,7 @@ class _AdminLogin extends State<AdminLogin> {
                     ),
                     Text(
                       sAppTitle,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 24 * widthRatio,

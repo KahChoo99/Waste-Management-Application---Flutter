@@ -11,6 +11,7 @@ import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
 import 'package:waste_management/widgets/alert_dialog.dart';
+import 'package:waste_management/widgets/text_input_formatter.dart';
 
 class UserRegisterComplaintsTicket extends StatefulWidget {
   final Bin bin;
@@ -163,6 +164,9 @@ class _UserRegisterComplaintsTicket
                   maxLines: 8,
                   maxLength: 225,
                   maxLengthEnforced: true,
+                  inputFormatters: [
+                    ModifiedLengthLimitingTextInputFormatter(225)
+                  ],
                   controller: _messageEditingController,
                   decoration: InputDecoration(
                     hintText: sDescription,

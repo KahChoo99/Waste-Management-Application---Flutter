@@ -79,7 +79,7 @@ class UserMainPage extends StatelessWidget {
                       buttonString[i],
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 26 * widthRatio,
+                        fontSize: 24 * widthRatio,
                       ),
                     ),
                   ),

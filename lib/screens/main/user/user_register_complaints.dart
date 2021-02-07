@@ -141,6 +141,7 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                               IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                               Text(
                                 sRegisterComplaints,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 24 * widthRatio,
@@ -216,6 +217,7 @@ class _UserRegisterComplaints extends State<UserRegisterComplaints> {
                                 IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
                                 Text(
                                   sRegisterComplaints,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 24 * widthRatio,

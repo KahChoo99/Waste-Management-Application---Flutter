@@ -26,9 +26,9 @@ class LoginRegister extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.fromLTRB(
-            50 * widthRatio,
+            30 * widthRatio,
             10 * heightRatio,
-            50 * widthRatio,
+            30 * widthRatio,
             10 * heightRatio,
           ),
           decoration: mainButtonBoxDecoration,
@@ -47,6 +47,7 @@ class LoginRegister extends StatelessWidget {
             color: buttonBlue,
             child: Text(
               sUserLogin,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24 * widthRatio,
@@ -60,9 +61,9 @@ class LoginRegister extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.fromLTRB(
-            50 * widthRatio,
+            0 * widthRatio,
             10 * heightRatio,
-            50 * widthRatio,
+            0 * widthRatio,
             10 * heightRatio,
           ),
           decoration: mainButtonBoxDecoration,
@@ -81,6 +82,7 @@ class LoginRegister extends StatelessWidget {
             color: buttonBlue,
             child: Text(
               sUserRegister,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24 * widthRatio,
@@ -94,9 +96,9 @@ class LoginRegister extends StatelessWidget {
         ),
         Container(
           margin: EdgeInsets.fromLTRB(
-            50 * widthRatio,
+            0 * widthRatio,
             10 * heightRatio,
-            50 * widthRatio,
+            0 * widthRatio,
             10 * heightRatio,
           ),
           decoration: mainButtonBoxDecoration,
@@ -115,6 +117,7 @@ class LoginRegister extends StatelessWidget {
             color: buttonBlue,
             child: Text(
               sAdminLogin,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24 * widthRatio,
@@ -145,6 +148,7 @@ class LoginRegister extends StatelessWidget {
                 ),
                 Text(
                   sAppTitle,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24 * widthRatio,
@@ -157,9 +161,9 @@ class LoginRegister extends StatelessWidget {
                   child: Container(
                     width: screenWidth,
                     margin: EdgeInsets.fromLTRB(
-                      50 * widthRatio,
+                      40 * widthRatio,
                       0,
-                      50 * widthRatio,
+                      40 * widthRatio,
                       0,
                     ),
                     decoration: mainContainerBGBoxDecoration,
