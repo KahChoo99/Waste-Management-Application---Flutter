@@ -22,7 +22,7 @@ showUsernameOrPasswordCannotBeEmpty(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -109,7 +109,7 @@ showNameOrEmailOrAddressCannotBeEmpty(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -319,7 +319,7 @@ showConfirmPasswordMustBeTheSameAsPassword(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -403,7 +403,7 @@ showPleaseUseValidEmail(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -468,7 +468,7 @@ showPleaseSetAValidAreaName(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -533,7 +533,7 @@ showPleaseSetInRange1To7Days(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -598,7 +598,7 @@ showNoUsernameFound(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -662,7 +662,7 @@ showWrongPassword(BuildContext context, double widthRatio, double heightRatio) {
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -727,7 +727,7 @@ showWrongAdminUsername(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -792,7 +792,7 @@ showUsernameHasBeenTaken(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -857,7 +857,7 @@ showPleaseWriteSomeMessage(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -929,7 +929,7 @@ showConfirmSubmit(BuildContext context, Bin bin, String userID, String message,
           content: SingleChildScrollView(
             child: Container(
               width: 350 * widthRatio,
-              height: (300 + 300 * message.length / 225) * heightRatio,
+              height: (300 + 300 * message.length / 225) * heightRatio * widthRatio,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1091,7 +1091,7 @@ showRegisterUserSuccess(
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1157,7 +1157,7 @@ showSubmitSuccess(BuildContext context, String complaintID, double widthRatio,
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1232,7 +1232,7 @@ showSaveSuccess(BuildContext context, double widthRatio, double heightRatio) {
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1298,7 +1298,7 @@ showCreateSuccess(BuildContext context, double widthRatio, double heightRatio) {
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1363,7 +1363,7 @@ showUpdateSuccess(BuildContext context, double widthRatio, double heightRatio) {
             5 * heightRatio,
           ),
           content: Container(
-            height: 200 * heightRatio,
+            height: 250 * heightRatio,
             width: 350 * widthRatio,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

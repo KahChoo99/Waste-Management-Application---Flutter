@@ -70,11 +70,11 @@ class UserMainPage extends StatelessWidget {
                     child: Icon(
                       iconList[i],
                       color: wordAndIconBlue,
-                      size: 40,
+                      size: 40 * heightRatio,
                     ),
                   ),
                   Expanded(
-                    flex: 7,
+                    flex: 8,
                     child: Text(
                       buttonString[i],
                       style: TextStyle(

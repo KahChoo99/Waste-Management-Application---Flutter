@@ -78,11 +78,11 @@ class AdminMainPage extends StatelessWidget {
                     child: Icon(
                       iconList[i],
                       color: wordAndIconBlue,
-                      size: 40,
+                      size: 40 * heightRatio,
                     ),
                   ),
                   Expanded(
-                    flex: 7,
+                    flex: 8,
                     child: Text(
                       buttonString[i],
                       style: TextStyle(
@@ -95,31 +95,39 @@ class AdminMainPage extends StatelessWidget {
               ),
             ),
           ),
+        SizedBox(
+          height: 50 * heightRatio,
+        ),
       ],
     );
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: Container(
-        alignment: Alignment.center,
-        child: Stack(
-          children: [
-            BackgroundPainter(),
-            Column(
-              children: [
-                IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      width: screenWidth,
-                      child: buttonList,
-                    ),
-                  ],
-                ),
-              ],
+      body: Stack(
+        children: [
+          BackgroundPainter(),
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  IconAndTitle(
+                    widthRatio: widthRatio,
+                    heightRatio: heightRatio,
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        width: screenWidth,
+                        child: buttonList,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(

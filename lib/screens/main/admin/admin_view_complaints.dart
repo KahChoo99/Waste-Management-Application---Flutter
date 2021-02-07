@@ -57,7 +57,7 @@ class _AdminViewComplaints extends State<AdminViewComplaints> {
                         flex: 4,
                         child: Container(
                           padding:
-                              EdgeInsets.fromLTRB(0, 2 * heightRatio, 0, 0),
+                              EdgeInsets.fromLTRB(0, 2 * heightRatio, 0, 0,),
                           child: Text(
                             complaintKey,
                             style: TextStyle(
