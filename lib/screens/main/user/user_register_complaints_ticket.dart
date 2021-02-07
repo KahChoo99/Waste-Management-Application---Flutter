@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:waste_management/constants/strings.dart';
 import 'package:waste_management/constants/themes.dart';
+import 'package:waste_management/constants/values.dart';
 import 'package:waste_management/data/bin/bin.dart';
 import 'package:waste_management/data/data.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
@@ -32,6 +33,9 @@ class _UserRegisterComplaintsTicket
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
+    double widthRatio = screenWidth / dDemoWidth;
+    double heightRatio = screenHeight / dDemoHeight;
+
     Map<String, String> binData = widget.bin.getBinData();
 
     List<String> binKeys = binData.keys.toList();
@@ -39,23 +43,37 @@ class _UserRegisterComplaintsTicket
     Column cardList = Column(
       children: [
         SizedBox(
-          height: 20,
+          height: 10 * heightRatio,
         ),
         Container(
           width: screenWidth,
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-          margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
+          padding: EdgeInsets.fromLTRB(
+            10 * widthRatio,
+            10 * heightRatio,
+            10 * widthRatio,
+            10 * heightRatio,
+          ),
+          margin: EdgeInsets.fromLTRB(
+            30 * widthRatio,
+            0,
+            30 * widthRatio,
+            0,
+          ),
           decoration: mainContainerBGBoxDecoration,
           child: Column(
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(sPostComplaint,
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                child: Text(
+                  sPostComplaint,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24 * widthRatio,
+                  ),
+                ),
               ),
               SizedBox(
-                height: 10,
+                height: 10 * heightRatio,
               ),
               for (String binKey in binKeys)
                 Row(
@@ -64,25 +82,47 @@ class _UserRegisterComplaintsTicket
                     Expanded(
                       flex: 4,
                       child: Container(
-                        padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        child: Text(binKey,
-                            style: TextStyle(
-                                color: wordAndIconBlue,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16)),
+                        padding: EdgeInsets.fromLTRB(
+                          0,
+                          2 * heightRatio,
+                          0,
+                          0,
+                        ),
+                        margin: EdgeInsets.fromLTRB(
+                          0,
+                          0,
+                          0,
+                          10 * heightRatio,
+                        ),
+                        child: Text(
+                          binKey,
+                          style: TextStyle(
+                            color: wordAndIconBlue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16 * widthRatio,
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: 10,
+                      width: 10 * widthRatio,
                     ),
                     Expanded(
                       flex: 6,
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        child: Text(binData[binKey],
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18)),
+                        margin: EdgeInsets.fromLTRB(
+                          0,
+                          0,
+                          0,
+                          10 * heightRatio,
+                        ),
+                        child: Text(
+                          binData[binKey],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18 * widthRatio,
+                          ),
+                        ),
                       ),
                     )
                   ],
@@ -90,17 +130,35 @@ class _UserRegisterComplaintsTicket
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                  child: Text(sMessage,
-                      style: TextStyle(
-                          color: wordAndIconBlue,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16)),
+                  padding: EdgeInsets.fromLTRB(
+                    0,
+                    2 * heightRatio,
+                    0,
+                    0,
+                  ),
+                  margin: EdgeInsets.fromLTRB(
+                    0,
+                    0,
+                    0,
+                    10 * heightRatio,
+                  ),
+                  child: Text(
+                    sMessage,
+                    style: TextStyle(
+                      color: wordAndIconBlue,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16 * widthRatio,
+                    ),
+                  ),
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                margin: EdgeInsets.fromLTRB(
+                  0,
+                  0,
+                  0,
+                  10 * heightRatio,
+                ),
                 child: TextField(
                   maxLines: 8,
                   maxLength: 225,
@@ -109,77 +167,101 @@ class _UserRegisterComplaintsTicket
                   decoration: InputDecoration(
                     hintText: sDescription,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
+                      borderRadius: BorderRadius.circular(10.0 * heightRatio),
                       borderSide: BorderSide(
                         color: Colors.amber,
                         style: BorderStyle.solid,
                       ),
                     ),
                   ),
+                  style: TextStyle(
+                    fontSize: (defaultTextFieldFontSize + 2) * widthRatio,
+                  ),
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
+                margin: EdgeInsets.fromLTRB(
+                  50 * widthRatio,
+                  10 * heightRatio,
+                  50 * widthRatio,
+                  10 * heightRatio,
+                ),
                 decoration: mainButtonBoxDecoration,
                 child: FlatButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0 * heightRatio),
                   ),
-                  minWidth: 220,
-                  height: 50,
+                  minWidth: 220 * widthRatio,
+                  height: 50 * heightRatio,
                   onPressed: () {
                     String message = _messageEditingController.text;
                     if (message == null || message == "")
-                      showPleaseWriteSomeMessage(context);
-                    else{
-                      if (message == "-" || message == "None" || message == "none")
-                        showPleaseWriteSomeMessage(context);
+                      showPleaseWriteSomeMessage(context, widthRatio, heightRatio);
+                    else {
+                      if (message == "-" ||
+                          message == "None" ||
+                          message == "none")
+                        showPleaseWriteSomeMessage(context, widthRatio, heightRatio);
                       else
-                        showConfirmSubmit(context, widget.bin, d.currentUserID, message);
+                        showConfirmSubmit(
+                            context, widget.bin, d.currentUserID, message, widthRatio, heightRatio);
                     }
                   },
                   color: buttonBlue,
-                  child: Text(sContinue,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+                  child: Text(
+                    sContinue,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24 * widthRatio,
+                    ),
+                  ),
                   textColor: Colors.black,
                 ),
               ),
             ],
           ),
         ),
+        SizedBox(
+          height: 30 * heightRatio,
+        ),
       ],
     );
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          height: screenHeight,
-          alignment: Alignment.center,
-          child: Stack(
-            children: [
-              BackgroundPainter(),
-              Column(
+      body: Stack(
+        children: [
+          BackgroundPainter(),
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.center,
+              child: Stack(
                 children: [
-                  SizedBox(
-                    height: 50,
-                  ),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      IconAndTitle(screenWidth: screenWidth),
-                      Container(
-                        width: screenWidth,
-                        child: cardList,
+                    children: [
+                      SizedBox(
+                        height: 50 * heightRatio,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
+                          Container(
+                            width: screenWidth,
+                            child: cardList,
+                          ),
+                        ],
                       ),
                     ],
                   ),
+                  ArrowBackPop(
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
+                  ),
                 ],
               ),
-              ArrowBackPop(),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
