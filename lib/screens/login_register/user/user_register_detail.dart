@@ -10,6 +10,7 @@ import 'package:waste_management/widgets/alert_dialog.dart';
 import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
+import 'package:waste_management/widgets/text_input_formatter.dart';
 
 class UserRegisterDetail extends StatefulWidget {
   final User user;
@@ -99,6 +100,9 @@ class _UserRegisterDetail extends State<UserRegisterDetail> {
             maxLines: null,
             maxLength: 150,
             maxLengthEnforced: true,
+            inputFormatters: [
+              ModifiedLengthLimitingTextInputFormatter(150)
+            ],
             controller: _addressEditingController,
             decoration: InputDecoration(
               labelText: sAddress,

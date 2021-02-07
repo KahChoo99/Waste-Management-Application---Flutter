@@ -11,6 +11,7 @@ import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
+import 'package:waste_management/widgets/text_input_formatter.dart';
 
 class AdminViewComplaintsDetail extends StatefulWidget {
   final Complaint complaint;
@@ -102,7 +103,12 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                     Expanded(
                       flex: 6,
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10 * heightRatio,),
+                        margin: EdgeInsets.fromLTRB(
+                          0,
+                          0,
+                          0,
+                          10 * heightRatio,
+                        ),
                         child: Text(
                           binComplaintData[binKey],
                           style: TextStyle(
@@ -193,6 +199,9 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                         maxLines: 8,
                         maxLength: 225,
                         maxLengthEnforced: true,
+                        inputFormatters: [
+                          ModifiedLengthLimitingTextInputFormatter(225)
+                        ],
                         controller: _commentEditingController,
                         decoration: InputDecoration(
                           hintText: sDescription,
@@ -253,16 +262,19 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                           String commentMessage =
                               _commentEditingController.text;
                           if (commentMessage == null || commentMessage == "")
-                            showPleaseWriteSomeMessage(context, widthRatio, heightRatio);
+                            showPleaseWriteSomeMessage(
+                                context, widthRatio, heightRatio);
                           else {
                             if (commentMessage == "-" ||
                                 commentMessage == "None" ||
                                 commentMessage == "none")
-                              showPleaseWriteSomeMessage(context, widthRatio, heightRatio);
+                              showPleaseWriteSomeMessage(
+                                  context, widthRatio, heightRatio);
                             else {
                               d.updateComplaintStatus(
                                   widget.complaint, commentMessage);
-                              showUpdateSuccess(context, widthRatio, heightRatio);
+                              showUpdateSuccess(
+                                  context, widthRatio, heightRatio);
                             }
                           }
                         }
@@ -304,7 +316,10 @@ class _AdminViewComplaintsDetail extends State<AdminViewComplaintsDetail> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
+                          IconAndTitle(
+                            widthRatio: widthRatio,
+                            heightRatio: heightRatio,
+                          ),
                           Text(
                             sUpdateStatus,
                             style: TextStyle(

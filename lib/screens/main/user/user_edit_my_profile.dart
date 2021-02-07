@@ -12,6 +12,7 @@ import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
+import 'package:waste_management/widgets/text_input_formatter.dart';
 
 class UserEditMyProfile extends StatefulWidget {
   final UserProfile userProfile;
@@ -142,6 +143,9 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                                 maxLines: null,
                                 maxLength: 150,
                                 maxLengthEnforced: true,
+                                inputFormatters: [
+                                  ModifiedLengthLimitingTextInputFormatter(150)
+                                ],
                                 controller: _editingController[i],
                                 style: TextStyle(
                                   fontSize: (defaultTextFieldFontSize + 2) *
@@ -177,10 +181,12 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                     String address = _addressEditingController.text;
                     print(address);
                     if (name == null || email == null || address == null)
-                      showNameOrEmailOrAddressCannotBeEmpty(context, widthRatio, heightRatio);
+                      showNameOrEmailOrAddressCannotBeEmpty(
+                          context, widthRatio, heightRatio);
                     else {
                       if (!email.contains("@") || !email.contains(".com"))
-                        showPleaseUseValidEmail(context, widthRatio, heightRatio);
+                        showPleaseUseValidEmail(
+                            context, widthRatio, heightRatio);
                       else {
                         UserProfile userProfile =
                             UserProfile(user, userID, name, email, address);
@@ -203,6 +209,9 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
             ],
           ),
         ),
+        SizedBox(
+          height: 30 * heightRatio,
+        ),
       ],
     );
 
@@ -224,7 +233,10 @@ class _UserEditMyProfile extends State<UserEditMyProfile> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            IconAndTitle(widthRatio: widthRatio, heightRatio: heightRatio,),
+                            IconAndTitle(
+                              widthRatio: widthRatio,
+                              heightRatio: heightRatio,
+                            ),
                             Text(
                               sEditProfile,
                               style: TextStyle(

@@ -11,6 +11,7 @@ import 'package:waste_management/widgets/arrow_back_pop.dart';
 import 'package:waste_management/widgets/curve_painter.dart';
 import 'package:waste_management/widgets/custom_decoration.dart';
 import 'package:waste_management/widgets/icon_and_title.dart';
+import 'package:waste_management/widgets/text_input_formatter.dart';
 
 class AdminCreateBin extends StatefulWidget {
   @override
@@ -210,6 +211,9 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                     maxLines: 2,
                     maxLength: 50,
                     maxLengthEnforced: true,
+                    inputFormatters: [
+                      ModifiedLengthLimitingTextInputFormatter(50)
+                    ],
                     controller: _areaEditingController,
                     decoration: InputDecoration(
                       hintText: sDescription,
@@ -256,6 +260,9 @@ class _AdminCreateBin extends State<AdminCreateBin> {
                     maxLines: 1,
                     maxLength: 1,
                     maxLengthEnforced: true,
+                    inputFormatters: [
+                      ModifiedLengthLimitingTextInputFormatter(1)
+                    ],
                     controller: _cleaningPeriodEditingController,
                     decoration: InputDecoration(
                       hintText: sHowManyDaysPerWeek,
